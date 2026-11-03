@@ -18,7 +18,9 @@ jobs:
           java-version: '17'
       - name: Pure Java logic checks
         run: python3 tools/test_logic.py
-      - name: Android SDK packages
-        run: sdkmanager "platforms;android-35" "build-tools;35.0.0"
+      - name: Set up Android SDK
+        uses: android-actions/setup-android@be39fa834029ff78f1a44aa3bb0819b8fc2bd8fd # v4
+        with:
+          packages: platform-tools platforms;android-35 build-tools;35.0.0
       - name: Build, lint and compile instrumentation
         run: sh ./gradlew --no-daemon :app:assembleDebug :app:lintDebug :app:assembleDebugAndroidTest --stacktrace
