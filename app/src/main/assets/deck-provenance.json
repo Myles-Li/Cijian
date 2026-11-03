@@ -1,0 +1,16 @@
+{
+  "repository": "https://github.com/5mdld/anki-jlpt-decks",
+  "commit": "06a3cb26c06efe1fa37ae68687120c30a4f190bd",
+  "author": "egg rolls",
+  "license": "CC BY-NC 4.0",
+  "counts": {
+    "N1": 4045,
+    "N2": 3215,
+    "N3": 1817,
+    "N4": 757,
+    "N5": 807
+  },
+  "total": 10641,
+  "source_sha256": "30e9350c92c7bdeaf0f4c0317c9a0f659eb32e606a69870176deff159559eb1a",
+  "changes": "Converted Anki fields to SQLite, stripped display HTML and sound markers; uses system Japanese TTS instead of deck audio; keeps first example."
+}

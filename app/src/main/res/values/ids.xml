@@ -1,0 +1,4 @@
+<resources>
+    <item name="restore_marks_local" type="id" />
+    <item name="restore_marks_merge" type="id" />
+</resources>

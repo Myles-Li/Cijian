@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+  <string name="app_name">Cijian</string>
+  <string name="selected_words">Selected: %1$d</string>
+  <string name="task_summary">Due now: %1$d · New today: %2$d / %3$d\nAwaiting short-term relearning: %4$d. Return when due.</string>
+  <string name="task_dashboard">Due: %1$d · New today: %2$d / %3$d\nReviewed today: %4$d</string>
+  <string name="first_pass_total">/ %1$d</string>
+  <string name="first_pass_today">Seen in this selection today: %1$d\nFirst encounters today: %2$d / %3$d</string>
+  <string name="first_pass_estimate">%1$sEstimated study days remaining at your daily target: %2$d</string>
+  <string name="word_count">%1$d</string>
+</resources>

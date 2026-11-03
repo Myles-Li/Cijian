@@ -1,0 +1,24 @@
+.gradle/
+.tools/
+**/build/
+local.properties
+*.keystore
+*.jks
+*.apk
+.idea/
+captures/
+__pycache__/
+dist/
+*.log
+
+# Local-only records and signing inputs
+releases/
+data/feedback/
+AGENTS.md
+修改清单.md
+*.apk.sha256
+*.idsig
+*.aab
+keystore.properties
+secrets.properties
+.DS_Store

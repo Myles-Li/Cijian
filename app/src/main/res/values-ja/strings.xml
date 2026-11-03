@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+  <string name="app_name">词间</string>
+  <string name="selected_words">選択済み %1$d 語</string>
+  <string name="task_summary">今の復習 %1$d 語 · 今日の正式新出 %2$d / %3$d\n短期再学習待ち %4$d 語。期限になったら戻ってください。</string>
+  <string name="task_dashboard">復習 %1$d 語 · 今日の正式新出 %2$d / %3$d\n今日の復習 %4$d 語</string>
+  <string name="first_pass_total">/ %1$d 語に出会いました</string>
+  <string name="first_pass_today">この範囲で今日出会った語：%1$d\n今日の初見：%2$d / %3$d 語</string>
+  <string name="first_pass_estimate">%1$s1日の目標では、あと約 %2$d 学習日</string>
+  <string name="word_count">%1$d 語</string>
+</resources>

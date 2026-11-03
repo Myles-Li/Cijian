@@ -1,0 +1,45 @@
+<resources>
+    <style name="AppTheme" parent="AppThemeLight" />
+    <style name="AppThemeLight" parent="android:style/Theme.Material.Light.NoActionBar">
+        <item name="android:fontFamily">sans</item>
+        <item name="android:colorAccent">#32715F</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:statusBarColor">#F7F8F4</item>
+        <item name="android:navigationBarColor">#20302A</item>
+        <item name="android:windowActionModeOverlay">true</item>
+        <item name="android:windowBackground">#F7F8F4</item>
+    </style>
+    <style name="AppThemeDark" parent="android:style/Theme.Material.NoActionBar">
+        <item name="android:fontFamily">sans</item>
+        <item name="android:colorAccent">#99D5B8</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:statusBarColor">#111A16</item>
+        <item name="android:navigationBarColor">#111A16</item>
+        <item name="android:windowActionModeOverlay">true</item>
+        <item name="android:windowBackground">#111A16</item>
+    </style>
+    <style name="AppThemeGreenLight" parent="AppThemeLight"><item name="android:colorAccent">#32715F</item><item name="android:windowBackground">#F7F8F4</item><item name="android:statusBarColor">#F7F8F4</item><item name="android:navigationBarColor">#F7F8F4</item></style>
+    <style name="AppThemeGreenDark" parent="AppThemeDark"><item name="android:colorAccent">#99D5B8</item><item name="android:windowBackground">#111A16</item><item name="android:statusBarColor">#111A16</item><item name="android:navigationBarColor">#111A16</item></style>
+    <style name="AppThemeBlueLight" parent="AppThemeLight"><item name="android:colorAccent">#3066A3</item><item name="android:windowBackground">#F5F7FB</item><item name="android:statusBarColor">#F5F7FB</item><item name="android:navigationBarColor">#F5F7FB</item></style>
+    <style name="AppThemeBlueDark" parent="AppThemeDark"><item name="android:colorAccent">#9AC4F2</item><item name="android:windowBackground">#111923</item><item name="android:statusBarColor">#111923</item><item name="android:navigationBarColor">#111923</item></style>
+    <style name="AppThemeTealLight" parent="AppThemeLight"><item name="android:colorAccent">#246F73</item><item name="android:windowBackground">#F4F9F8</item><item name="android:statusBarColor">#F4F9F8</item><item name="android:navigationBarColor">#F4F9F8</item></style>
+    <style name="AppThemeTealDark" parent="AppThemeDark"><item name="android:colorAccent">#88D0CE</item><item name="android:windowBackground">#0E1B1B</item><item name="android:statusBarColor">#0E1B1B</item><item name="android:navigationBarColor">#0E1B1B</item></style>
+    <style name="AppThemePurpleLight" parent="AppThemeLight"><item name="android:colorAccent">#725294</item><item name="android:windowBackground">#F8F6FA</item><item name="android:statusBarColor">#F8F6FA</item><item name="android:navigationBarColor">#F8F6FA</item></style>
+    <style name="AppThemePurpleDark" parent="AppThemeDark"><item name="android:colorAccent">#CBB1EA</item><item name="android:windowBackground">#1A1522</item><item name="android:statusBarColor">#1A1522</item><item name="android:navigationBarColor">#1A1522</item></style>
+    <style name="AppThemeOrangeLight" parent="AppThemeLight"><item name="android:colorAccent">#985518</item><item name="android:windowBackground">#FBF7F2</item><item name="android:statusBarColor">#FBF7F2</item><item name="android:navigationBarColor">#FBF7F2</item></style>
+    <style name="AppThemeOrangeDark" parent="AppThemeDark"><item name="android:colorAccent">#EDBD85</item><item name="android:windowBackground">#211910</item><item name="android:statusBarColor">#211910</item><item name="android:navigationBarColor">#211910</item></style>
+    <style name="AppThemeRoseLight" parent="AppThemeLight"><item name="android:colorAccent">#A04368</item><item name="android:windowBackground">#FBF6F7</item><item name="android:statusBarColor">#FBF6F7</item><item name="android:navigationBarColor">#FBF6F7</item></style>
+    <style name="AppThemeRoseDark" parent="AppThemeDark"><item name="android:colorAccent">#EBB0C7</item><item name="android:windowBackground">#211519</item><item name="android:statusBarColor">#211519</item><item name="android:navigationBarColor">#211519</item></style>
+    <style name="AppThemeBlackLight" parent="AppThemeLight"><item name="android:colorAccent">#202124</item><item name="android:windowBackground">#F6F6F6</item><item name="android:statusBarColor">#F6F6F6</item><item name="android:navigationBarColor">#F6F6F6</item></style>
+    <style name="AppThemeBlackDark" parent="AppThemeDark"><item name="android:colorAccent">#D4D7DB</item><item name="android:windowBackground">#101010</item><item name="android:statusBarColor">#101010</item><item name="android:navigationBarColor">#101010</item></style>
+    <style name="AppThemeGrayLight" parent="AppThemeLight"><item name="android:colorAccent">#586471</item><item name="android:windowBackground">#F6F7F8</item><item name="android:statusBarColor">#F6F7F8</item><item name="android:navigationBarColor">#F6F7F8</item></style>
+    <style name="AppThemeGrayDark" parent="AppThemeDark"><item name="android:colorAccent">#C0CAD5</item><item name="android:windowBackground">#15191E</item><item name="android:statusBarColor">#15191E</item><item name="android:navigationBarColor">#15191E</item></style>
+    <style name="AppThemeIndigoLight" parent="AppThemeLight"><item name="android:colorAccent">#4C56A2</item><item name="android:windowBackground">#F6F6FC</item><item name="android:statusBarColor">#F6F6FC</item><item name="android:navigationBarColor">#F6F6FC</item></style>
+    <style name="AppThemeIndigoDark" parent="AppThemeDark"><item name="android:colorAccent">#B6BEFA</item><item name="android:windowBackground">#151727</item><item name="android:statusBarColor">#151727</item><item name="android:navigationBarColor">#151727</item></style>
+    <style name="AppThemeAmberLight" parent="AppThemeLight"><item name="android:colorAccent">#83611A</item><item name="android:windowBackground">#FBF9F1</item><item name="android:statusBarColor">#FBF9F1</item><item name="android:navigationBarColor">#FBF9F1</item></style>
+    <style name="AppThemeAmberDark" parent="AppThemeDark"><item name="android:colorAccent">#E5CC85</item><item name="android:windowBackground">#1F1B0E</item><item name="android:statusBarColor">#1F1B0E</item><item name="android:navigationBarColor">#1F1B0E</item></style>
+<style name="AppThemeRedLight" parent="AppThemeLight"><item name="android:colorAccent">#B43A3D</item><item name="android:windowBackground">#FFF6F5</item><item name="android:statusBarColor">#FFF6F5</item><item name="android:navigationBarColor">#FFF6F5</item></style>
+<style name="AppThemeRedDark" parent="AppThemeDark"><item name="android:colorAccent">#FFABA8</item><item name="android:windowBackground">#250F11</item><item name="android:statusBarColor">#250F11</item><item name="android:navigationBarColor">#250F11</item></style>
+<style name="AppThemeYellowLight" parent="AppThemeLight"><item name="android:colorAccent">#806400</item><item name="android:windowBackground">#FCFAF0</item><item name="android:statusBarColor">#FCFAF0</item><item name="android:navigationBarColor">#FCFAF0</item></style>
+<style name="AppThemeYellowDark" parent="AppThemeDark"><item name="android:colorAccent">#E8D771</item><item name="android:windowBackground">#201D0D</item><item name="android:statusBarColor">#201D0D</item><item name="android:navigationBarColor">#201D0D</item></style>
+</resources>

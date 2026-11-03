@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+  <string name="app_name">词间</string>
+  <string name="overlay_countdown" translatable="false">%1$s · %2$ss</string>
+  <string name="reading_grammar" translatable="false">%1$s  %2$s · %3$s</string>
+  <string name="slider_value" translatable="false">%1$s · %2$d%3$s</string>
+  <string name="custom_word" translatable="false">%1$s  %2$s  [%3$s]\n%4$s</string>
+  <string name="selected_words">已选 %1$d 词</string>
+  <string name="task_summary">当前待复习 %1$d 词 · 今日新学 %2$d / %3$d\n另有 %4$d 词待短时重学，未到时间时可稍后再来。</string>
+  <string name="task_dashboard">待复习 %1$d 词 · 今日新学 %2$d / %3$d\n今日已练 %4$d 词</string>
+  <string name="first_pass_total">/ %1$d 词已接触</string>
+  <string name="first_pass_percent" translatable="false">%1$d%%</string>
+  <string name="first_pass_today">本范围今日遇见 %1$d 词\n今日初见 %2$d / %3$d 词</string>
+  <string name="first_pass_estimate">%1$s按每日目标预计还需约 %2$d 个学习日</string>
+  <string name="word_count">%1$d 词</string>
+  <string name="font_size_label" translatable="false">%1$s · %2$d</string>
+  <string name="fold_title" translatable="false">%1$s  %2$s</string>
+</resources>

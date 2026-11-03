@@ -1,0 +1,27 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <application android:label="Kotoba test engine">
+        <provider android:name="com.myles.kotobafloat.PreviewDocumentProvider" android:authorities="com.myles.kotobafloat.test.documents" android:exported="true" android:grantUriPermissions="true" android:permission="android.permission.MANAGE_DOCUMENTS"><intent-filter><action android:name="android.content.action.DOCUMENTS_PROVIDER" /></intent-filter></provider>
+        <activity android:name="com.myles.kotobafloat.BackupCaptureActivity" android:exported="true" android:label="Kotoba TEST backup receiver"><intent-filter><action android:name="android.intent.action.SEND" /><category android:name="android.intent.category.DEFAULT" /><data android:mimeType="*/*" /></intent-filter></activity>
+        <activity android:name="com.myles.kotobafloat.FocusGrabActivity" android:exported="true" />
+        <service android:name="com.myles.kotobafloat.TestTtsEngine" android:exported="true" android:label="Kotoba TEST ONLY voice" android:process=":voice">
+            <intent-filter>
+                <action android:name="android.intent.action.TTS_SERVICE" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <meta-data android:name="android.speech.tts" android:resource="@xml/test_tts_engine" />
+        </service>
+    </application>
+    <instrumentation android:name="com.myles.kotobafloat.UpgradeFixture" android:targetPackage="com.myles.kotobafloat" android:label="Upgrade fixture" />
+    <instrumentation android:name="com.myles.kotobafloat.Feature16Fixture" android:targetPackage="com.myles.kotobafloat" android:label="1.6 disposable fixture" />
+    <instrumentation android:name="com.myles.kotobafloat.Feature17Instrumentation" android:targetPackage="com.myles.kotobafloat" android:label="1.7 isolated checks" />
+    <instrumentation android:name="com.myles.kotobafloat.Feature17Probe" android:targetPackage="com.myles.kotobafloat" android:label="1.7 disposable probe" />
+    <instrumentation android:name="com.myles.kotobafloat.Version17UpgradeBaseline" android:targetPackage="com.myles.kotobafloat" android:label="1.6 seeded upgrade baseline" />
+<instrumentation android:name="com.myles.kotobafloat.Feature175Instrumentation" android:targetPackage="com.myles.kotobafloat" android:label="1.7.5 isolated checks" />
+<instrumentation android:name="com.myles.kotobafloat.Feature180Stress" android:targetPackage="com.myles.kotobafloat" android:label="1.8.0 rapid-operation checks" />
+<instrumentation android:name="com.myles.kotobafloat.Feature180Lifecycle" android:targetPackage="com.myles.kotobafloat" android:label="1.8.0 rapid service lifecycle" />
+<instrumentation android:name="com.myles.kotobafloat.Feature190Rules" android:targetPackage="com.myles.kotobafloat" android:label="1.9.0 isolated boundaries" />
+<instrumentation android:name="com.myles.kotobafloat.Feature190Input" android:targetPackage="com.myles.kotobafloat.test" android:label="1.9.0 UI input" />
+<instrumentation android:name="com.myles.kotobafloat.Feature190Rapid" android:targetPackage="com.myles.kotobafloat" android:label="1.9.0 rapid UI outcomes" />
+<instrumentation android:name="com.myles.kotobafloat.Feature195Ui" android:targetPackage="com.myles.kotobafloat" android:label="1.9.5 layout and gestures" />
+<instrumentation android:name="com.myles.kotobafloat.Feature195Layouts" android:targetPackage="com.myles.kotobafloat" android:label="1.9.5 measured layouts" />
+</manifest>
