@@ -6,6 +6,8 @@
 
 在 **GPT-6.1 Sol** 辅助下开发，累计开发投入 **20 小时+（作者估算）**。需求、使用反馈和持续迭代由项目作者维护。[开发记录与时间口径](docs/开发记录.md)
 
+项目首个可核验版本形成于 **2026-10-27**；截至 **2026-11-03 的 1.9.5**，已迭代约一周，仍在持续更新。
+
 Native Android app for learning Japanese through Chinese meanings. The interface supports 简体中文 / English / 日本語. Interface language changes do not translate the dictionary.
 
 ## 下载
