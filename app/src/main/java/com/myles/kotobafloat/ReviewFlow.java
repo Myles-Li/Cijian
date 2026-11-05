@@ -24,6 +24,8 @@ final class ReviewFlow {
             }else load();
         });}catch(Exception e){Async.MAIN.post(()->error(L.t("复习加载失败，请返回重试。")));}});
     }
+    void editFonts(android.app.Activity activity){if(!canLeave())return;speech.stop();FontPicker.showApp(activity,prefs,()->{if(alive&&draft!=null&&!busy)card();});}
+    private float size(float value,int role){return host.overlay()?value:prefs.appSize(value,role);}
     private String scope(){return (prefs.groupMode().equals("CUSTOM")?"CUSTOM|"+String.join("|",prefs.customWords()):prefs.level()+"|"+Frequency.effective(prefs.level(),prefs.frequency()))+"|"+prefs.studyMode();}
     private int dp(float n){return Ui.dp(context,n);}
     private void toast(String message){if(alive)Toast.makeText(context,message,Toast.LENGTH_LONG).show();}
@@ -71,11 +73,11 @@ final class ReviewFlow {
     private void show(){
         Word w=current;boolean revealed=draft.revealed;String title=mode.equals("WEAK")?L.t("易忘词练习"):mode.equals("PRACTICE")?L.t("自由练习"):mode.equals("LIGHT")?L.t("先复习一小批"):mode.equals("DUE")?L.t("只复习到期词"):L.t("每日记忆任务");
         frame(title);LinearLayout body=content();body.addView(Ui.text(context,L.t("本轮 ")+(draft.session.position+1)+" / "+draft.session.queue.size()+" · "+(prefs.reverseRecall()?L.t("看义想词"):L.t("看词想义")),12,Ui.MUTED));Ui.gap(body,18);
-        body.addView(Ui.heading(context,prefs.reverseRecall()&&!revealed?Ui.meaning(w,prefs):w.word,host.overlay()?24:32,Ui.INK));Ui.gap(body,12);
-        if(!prefs.reverseRecall()||revealed)body.addView(Ui.prose(context,Ui.reading(w)+"  "+w.pitch+" · "+L.grammar(Grammar.describe(w.pos)),14,Ui.GREEN));
+        body.addView(Ui.heading(context,prefs.reverseRecall()&&!revealed?Ui.meaning(w,prefs):w.word,prefs.reverseRecall()&&!revealed?size(host.overlay()?24:32,2):size(host.overlay()?24:32,0),Ui.INK));Ui.gap(body,12);
+        if(!prefs.reverseRecall()||revealed)body.addView(Ui.prose(context,Ui.reading(w)+"  "+w.pitch+" · "+L.grammar(Grammar.describe(w.pos)),size(14,1),Ui.GREEN));
         Ui.gap(body,18);
-        if(revealed){body.addView(Ui.prose(context,Ui.meaning(w,prefs),host.overlay()?17:20,Ui.INK));
-            if(!w.example.isEmpty()){Ui.gap(body,18);body.addView(Ui.prose(context,w.example,16,Ui.INK));Ui.gap(body,6);body.addView(Ui.prose(context,w.exampleMeaning,14,Ui.MUTED));}
+        if(revealed){body.addView(Ui.prose(context,Ui.meaning(w,prefs),size(host.overlay()?17:20,2),Ui.INK));
+            if(!w.example.isEmpty()){Ui.gap(body,18);body.addView(Ui.prose(context,w.example,size(16,2),Ui.INK));Ui.gap(body,6);body.addView(Ui.prose(context,w.exampleMeaning,size(14,1),Ui.MUTED));}
         }else body.addView(Ui.prose(context,prefs.reverseRecall()?L.t("先想出日语单词和读音，再揭晓答案。"):L.t("先回忆中文含义，再揭晓并评价这次回忆。"),14,Ui.MUTED));
         Ui.gap(body,18);if(!prefs.reverseRecall()||revealed)body.addView(Ui.button(context,L.t("朗读"),false,v->read(true)));
         Ui.gap(body,10);voice=Ui.prose(context,speech.status(),11,Ui.MUTED);body.addView(voice);

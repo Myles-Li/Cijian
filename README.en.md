@@ -4,17 +4,25 @@
 
 A lightweight Android app for learning Japanese through Chinese meanings, either inside the app or in a floating window over other apps.
 
-**Current release: 1.9.5 / build 14 · Android 8.0+ · Native Java UI · Actively maintained**
+**Current release: 1.10.0 / build 15 · Android 8.0+ · Native Java UI · Actively maintained**
 
-Developed with assistance from **GPT-6.1 Sol**, with **20+ hours of development effort (author estimate)**. The project author maintains the requirements, usage feedback and iteration. The earliest verifiable release dates from **2026-10-27**; by **1.9.5 on 2026-11-03**, the project had evolved for about one week and continues to receive updates. [Development record and timing scope](docs/开发记录.md)
+Developed with assistance from **GPT-6.1 Sol**, with **25+ hours of effort over roughly two weeks (author estimates)**. The project author maintains the requirements, usage feedback and ongoing iteration. The earliest verifiable release is dated **2026-10-27**; **1.10.0 is dated 2026-11-05**. [Development record, Chinese](docs/开发记录.md)
 
 **Important language scope:** menus and help support Simplified Chinese, English and Japanese. Dictionary meanings and example translations remain Chinese. Selecting English or Japanese does not translate the dictionary.
+
+## See Cijian in under a minute
+
+[![Floating-study walkthrough](docs/demo/preview.gif)](https://github.com/Myles-Li/Cijian/releases/download/v1.10.0/cijian-demo-1.10.0.mp4)
+
+[Watch or download the full MP4 walkthrough (under one minute)](https://github.com/Myles-Li/Cijian/releases/download/v1.10.0/cijian-demo-1.10.0.mp4). See cross-app floating study, movement and locking, the small bubble, examples and favourites, then in-app browsing and active recall. Recorded from the real app on an Android emulator using sample data. Silent video with English and Chinese captions.
+
+You can view the demonstration on an iPhone. This release is for Android; the iOS port is deferred.
 
 ## Download
 
 **[Download the latest APK](https://github.com/Myles-Li/Cijian/releases/latest)** · [Full version history, in Chinese](CHANGELOG.md)
 
-Only the latest official 1.9.5 APK is published. Older version notes remain available; older APKs are not included. Before upgrading, export a backup and install the same-signature official APK over the existing app. Keep the existing installation to preserve local records.
+The latest release is 1.10.0; 1.9.5 remains available as a historical release. Before upgrading, export a backup and install the same-signature official APK over the existing app to retain local records.
 
 ## Features
 
@@ -44,6 +52,7 @@ Detailed guides and the map are currently in Chinese. Download the HTML and open
 
 | Version | Main changes |
 |---|---|
+| 1.10.0 | Independent in-app study text sizes, swipe navigation, header position lock, compact example action, adjustable detail height and a short walkthrough |
 | 1.9.5 | Detail drag/scroll handling, settings organisation and spacing, default-colour grid, equal study entry points, smoother mode changes and refresh recovery across key changes |
 | 1.9.0 | Cijian English display name, first-run language selection, default monochrome theme, custom batch size 1–50 and detailed review help |
 | 1.8.0 | Three UI languages, layered study/review navigation, sequential undo, rapid-operation and notification fixes |
@@ -72,7 +81,7 @@ macOS / Linux: sh ./gradlew :app:assembleDebug
 Logic checks:  python tools/test_logic.py
 ```
 
-The public project uses a normal local debug signature and contains no private release-signing configuration. A locally built APK has a different signature from the official APK; use a dedicated emulator for development. [Build and test scope, Chinese](docs/验证与测试.md) · [Final 1.9.5 validation record, Chinese](docs/VALIDATION.md)
+The public project uses a normal local debug signature and contains no private release-signing configuration. A locally built APK has a different signature from the official APK; use a dedicated emulator for development. [Build and test scope, Chinese](docs/验证与测试.md) · [Final 1.10.0 validation record, Chinese](docs/VALIDATION.md)
 
 The original pinned TSV, provenance and conversion script are included. `python tools/prepare_deck.py` rebuilds the repository vocabulary asset; it rebuilds its word table and does not operate on phone learning records.
 

@@ -61,6 +61,12 @@ final class Prefs {
     int wordSize(){return Math.max(16,Math.min(36,data.getInt("wordSize",23)));}
     int readingSize(){return Math.max(10,Math.min(22,data.getInt("readingSize",12)));}
     int meaningSize(){return Math.max(12,Math.min(24,data.getInt("meaningSize",14)));}
+    // App字号与悬浮字号独立，仍由sp继承系统缩放。 / Independent in-app sizes retain system sp scaling.
+    int appWordSize(){return Math.max(18,Math.min(48,data.getInt("appWordSize",34)));}
+    int appReadingSize(){return Math.max(10,Math.min(28,data.getInt("appReadingSize",15)));}
+    int appMeaningSize(){return Math.max(12,Math.min(32,data.getInt("appMeaningSize",21)));}
+    float appSize(float base,int role){return base*(role==0?appWordSize()/34f:role==1?appReadingSize()/15f:appMeaningSize()/21f);}
+    int detailHeight(){return Math.max(100,Math.min(420,data.getInt("detailHeight",180)));}
     boolean autoSpeak() { return data.getBoolean("autoSpeak", false); }
     boolean conceal() { return data.getBoolean("conceal", false); }
     boolean traditional() { return data.getBoolean("traditional", false); }

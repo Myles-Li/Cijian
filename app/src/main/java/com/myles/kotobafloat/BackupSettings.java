@@ -7,7 +7,7 @@ import java.util.*;
 final class BackupSettings {
     private static final Set<String> STRINGS=new HashSet<>(Arrays.asList("uiLanguage","scopeMemory","learningStyle","accent","customColor","level","theme","frequency","intervalSeconds","studyMode","groupMode","customWords","group.state","queue.state","currentId","voiceEngine"));
     private static final Set<String> BOOLEANS=new HashSet<>(Arrays.asList("reviewAutoSpeak","positionLocked","speakOnFlip","ballAudio","lockAudio","snapEdges","autoStart","shuffle","hideFamiliar","favoritesOnly","readChinese","readExample","autoSpeak","conceal","traditional","showFirstPass","reverseRecall"));
-    private static final Set<String> INTS=new HashSet<>(Arrays.asList("reviewBatch","wordSize","readingSize","meaningSize","meaningLines","seconds","width","alpha","wordRepeats","exampleRepeats","groupSize","groupRevision","dailyNewTarget","panelX","panelY","ballX","ballY","focusNewTarget","speechRate","speechGap"));
+    private static final Set<String> INTS=new HashSet<>(Arrays.asList("reviewBatch","appWordSize","appReadingSize","appMeaningSize","detailHeight","wordSize","readingSize","meaningSize","meaningLines","seconds","width","alpha","wordRepeats","exampleRepeats","groupSize","groupRevision","dailyNewTarget","panelX","panelY","ballX","ballY","focusNewTarget","speechRate","speechGap"));
     static JSONObject export(SharedPreferences prefs)throws JSONException{
         JSONObject out=new JSONObject();for(Map.Entry<String,?> e:prefs.getAll().entrySet())if(STRINGS.contains(e.getKey())||BOOLEANS.contains(e.getKey())||INTS.contains(e.getKey()))out.put(e.getKey(),e.getValue());return out;
     }
@@ -19,6 +19,7 @@ final class BackupSettings {
         if(data.has("reviewBatch")&&!ReviewBatch.valid(data.getInt("reviewBatch")))throw new JSONException("每批词数无效");
         if(data.has("scopeMemory"))ScopeMemory.validate(data.getString("scopeMemory"));
         if(data.has("intervalSeconds"))try{Interval.parseMillis(data.getString("intervalSeconds"));}catch(IllegalArgumentException e){throw new JSONException("切词间隔无效");}
+        range(data,"appWordSize",18,48);range(data,"appReadingSize",10,28);range(data,"appMeaningSize",12,32);range(data,"detailHeight",100,420);
         range(data,"wordSize",16,36);range(data,"readingSize",10,22);range(data,"meaningSize",12,24);
         range(data,"width",220,360);range(data,"alpha",45,100);range(data,"meaningLines",1,3);range(data,"wordRepeats",1,5);range(data,"exampleRepeats",1,5);range(data,"groupSize",1,10641);range(data,"dailyNewTarget",1,10641);
         range(data,"focusNewTarget",1,200);range(data,"speechRate",50,150);range(data,"speechGap",0,3000);oneOf(data,"learningStyle","ROAM","FOCUS");

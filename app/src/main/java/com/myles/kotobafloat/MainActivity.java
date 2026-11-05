@@ -24,7 +24,7 @@ public final class MainActivity extends Activity {
     private int tab, settingsCategory=-1;private volatile int searchGeneration;
     private volatile boolean alive=true;private boolean pendingStart, foreground;
     private String query="",libraryMode="all",libraryLevel="ALL",libraryFrequency="ALL";
-    private TextView voiceStatus;
+    private TextView voiceStatus,exampleAction;
     private boolean shownOverlay;
     private final Runnable overlayState=()->{if(alive&&foreground&&store!=null&&tab==0&&shownOverlay!=FloatService.running){int y=scroll==null?0:scroll.getScrollY();render();scroll.post(()->scroll.scrollTo(0,y));}};
     private boolean stateRegistered;
@@ -40,7 +40,7 @@ public final class MainActivity extends Activity {
         final int launchTheme=Ui.themeResource(this);setTheme(launchTheme);Ui.applyTheme(this);
         super.onCreate(state);
         prefs=new Prefs(this);prepareLanguagePrompt();StudySurface.observe(overlayState);stateRegistered=true;final String launchEngine=prefs.data.getString("voiceEngine","AUTO");speech=new Speech(this);speech.setOnUnavailable(this::voiceGuide);
-        speech.setOnChanged(()->{if(alive&&voiceStatus!=null)voiceStatus.setText(speech.status());});
+        speech.setOnChanged(()->{if(alive&&voiceStatus!=null)voiceStatus.setText(speech.status());Ui.exampleActionState(exampleAction,speech.isSpeakingExample());});
         voiceGuidePending=getIntent().getBooleanExtra("voiceHelp",false);pitchPending=getIntent().getStringExtra("pitchWord");if(pitchPending==null)pitchPending="";
         if(getIntent().getBooleanExtra("openReview",false))tab=2;
         if(state!=null) {java.util.ArrayList<String> folds=state.getStringArrayList("openFolds");if(folds!=null)openFolds.addAll(folds);voiceAdvanced=state.getBoolean("voiceAdvanced");settingsCategory=state.getInt("settingsCategory",-1);tab=state.getInt("tab");query=state.getString("query","");libraryMode=state.getString("libraryMode","all");pendingStart=state.getBoolean("pendingStart");libraryLevel=state.getString("libraryLevel","ALL");libraryFrequency=state.getString("libraryFrequency","ALL");}
@@ -223,9 +223,9 @@ public final class MainActivity extends Activity {
                 for(int i=0;i<Math.min(100,matches.size());i++){
                     Word w=matches.get(i);
                     LinearLayout row=Ui.column(this);Ui.pad(row,14);row.setBackground(Ui.shape(Ui.SURFACE,14,this));
-                    LinearLayout top=Ui.row(this);Ui.weighted(top,Ui.bold(this,w.word,19,Ui.INK));top.addView(Ui.text(this,Frequency.badge(w)+(w.favorite?" ★":""),11,Ui.GREEN));row.addView(top);
-                    Ui.gap(row,5);row.addView(Ui.text(this,Ui.reading(w)+"  ·  "+Ui.grammar(w),12,Ui.GREEN));Ui.gap(row,5);
-                    TextView meaning=Ui.text(this,Ui.meaning(w,prefs),13,Ui.MUTED);meaning.setMaxLines(2);row.addView(meaning);
+                    LinearLayout top=Ui.row(this);Ui.weighted(top,Ui.bold(this,w.word,prefs.appSize(19,0),Ui.INK));top.addView(Ui.text(this,Frequency.badge(w)+(w.favorite?" ★":""),11,Ui.GREEN));row.addView(top);
+                    Ui.gap(row,5);row.addView(Ui.text(this,Ui.reading(w)+"  ·  "+Ui.grammar(w),prefs.appSize(12,1),Ui.GREEN));Ui.gap(row,5);
+                    TextView meaning=Ui.text(this,Ui.meaning(w,prefs),prefs.appSize(13,2),Ui.MUTED);meaning.setMaxLines(2);row.addView(meaning);
                     row.setOnClickListener(v->wordDialog(w));results.addView(row);Ui.gap(results,8);
                 }
             });
@@ -233,14 +233,14 @@ public final class MainActivity extends Activity {
     }
     private void wordDialog(Word w) {
         LinearLayout content=Ui.column(this);Ui.pad(content,22);ScrollView scroller=new ScrollView(this);scroller.addView(content);
-        content.addView(Ui.heading(this,w.word,26,Ui.INK));Ui.gap(content,14);
-        TextView pitch=Ui.text(this,Frequency.badge(w)+"  ·  "+Ui.reading(w)+"  "+w.pitch+"  ›",14,Ui.GREEN);pitch.setMinHeight(d(40));pitch.setFocusable(true);pitch.setContentDescription(L.t("查看这个词的音调说明"));pitch.setOnClickListener(v->PitchGuide.show(this,w));content.addView(pitch);Ui.gap(content,14);
-        content.addView(Ui.bold(this,L.t("词性 · ")+L.grammar(Grammar.describe(w.pos)),14,Ui.GREEN));Ui.gap(content,8);
+        content.addView(Ui.heading(this,w.word,prefs.appSize(26,0),Ui.INK));Ui.gap(content,14);
+        TextView pitch=Ui.text(this,Frequency.badge(w)+"  ·  "+Ui.reading(w)+"  "+w.pitch+"  ›",prefs.appSize(14,1),Ui.GREEN);pitch.setMinHeight(d(40));pitch.setFocusable(true);pitch.setContentDescription(L.t("查看这个词的音调说明"));pitch.setOnClickListener(v->PitchGuide.show(this,w));content.addView(pitch);Ui.gap(content,14);
+        content.addView(Ui.bold(this,L.t("词性 · ")+L.grammar(Grammar.describe(w.pos)),prefs.appSize(14,1),Ui.GREEN));Ui.gap(content,8);
         content.addView(Ui.text(this,L.t("词频 · ")+("NONE".equals(w.frequency)?L.t("原词库未分档"):L.t(Frequency.label(w.frequency))+L.t("（JLPT 真题）")),12,Ui.MUTED));Ui.gap(content,12);
-        content.addView(Ui.text(this,Ui.meaning(w,prefs),17,Ui.INK));Ui.gap(content,18);
+        content.addView(Ui.text(this,Ui.meaning(w,prefs),prefs.appSize(17,2),Ui.INK));Ui.gap(content,18);
         if(!w.example.isEmpty()){
-            content.addView(Ui.text(this,w.example,17,Ui.INK));Ui.gap(content,7);content.addView(Ui.text(this,w.exampleMeaning,13,Ui.MUTED));
-            Ui.gap(content,10);content.addView(Ui.button(this,L.t("朗读例句"),false,v->speech.speakExample(w,true)));Ui.gap(content,12);
+            content.addView(Ui.text(this,w.example,prefs.appSize(17,2),Ui.INK));Ui.gap(content,7);content.addView(Ui.text(this,w.exampleMeaning,prefs.appSize(13,1),Ui.MUTED));
+            Ui.gap(content,10);exampleAction=Ui.exampleAction(this,speech::isSpeakingExample,v->{if(speech.isSpeakingExample())speech.stop();else speech.speakExample(w,true);});Ui.exampleActionState(exampleAction,speech.isSpeakingExample());content.addView(exampleAction);Ui.gap(content,12);
         }
         if(!w.note.isEmpty()){content.addView(Ui.text(this,w.note,13,Ui.MUTED));Ui.gap(content,12);}
         content.addView(Ui.button(this,L.t("朗读单词"),false,v->speech.speakWord(w,true)));Ui.gap(content,8);
@@ -258,7 +258,7 @@ public final class MainActivity extends Activity {
     }
     private void section(String text){Ui.gap(body,24);body.addView(Ui.heading(this,text,16,Ui.INK));Ui.gap(body,14);}
     private static final String[] SETTING_NAMES={"语言与外观","学习内容","悬浮窗","开机与后台","语音与朗读","备份与帮助","关于词间"};
-    private static final String[] SETTING_HINTS={"界面语言、浅深模式、主题色与自定义色号","等级词频、浏览目标、收藏熟悉筛选与分组","切词间隔、文字大小、宽度透明度与拖动锁定","开机自启动、通知、悬浮权限与后台运行","语音检测、引擎、单词例句连读与锁屏听词","分享备份、恢复撤回、教程与日语入门说明","版本信息、词库来源和许可说明"};
+    private static final String[] SETTING_HINTS={"界面语言、浅深模式、主题色与 App 内学习字号","等级词频、浏览目标、收藏熟悉筛选与分组","切词间隔、文字大小、详情高度与拖动锁定","开机自启动、通知、悬浮权限与后台运行","语音检测、引擎、单词例句连读与锁屏听词","分享备份、恢复撤回、教程与日语入门说明","版本信息、词库来源和许可说明"};
     private void settings() {
         if(settingsCategory<0||settingsCategory>=SETTING_NAMES.length){
             settingsCategory=-1;body.addView(Ui.heading(this,L.t("设置"),25,Ui.INK));Ui.gap(body,8);body.addView(Ui.prose(this,L.t("按类别调整，所有功能都在这里。"),13,Ui.MUTED));Ui.gap(body,16);
@@ -294,6 +294,8 @@ public final class MainActivity extends Activity {
         super.onBackPressed();
     }
     private void settings0() {
+        body.addView(Ui.button(this,L.t("App 内学习字号")+" · "+prefs.appWordSize()+" / "+prefs.appReadingSize()+" / "+prefs.appMeaningSize()+"  ›",false,v->FontPicker.showApp(this,prefs,this::render)));Ui.gap(body,12);
+
         body.addView(Ui.heading(this,"界面语言 / Language / 言語",15,Ui.INK));Ui.gap(body,8);
         String[] languageIds=UiLanguage.IDS;Spinner languages=new ChoiceSpinner(this);languages.setContentDescription(L.t("界面语言"));languages.setAdapter(new ArrayAdapter<>(this,android.R.layout.simple_spinner_dropdown_item,UiLanguage.NAMES));
         String selected=UiLanguage.resolve(prefs.data.getString("uiLanguage",null),android.content.res.Resources.getSystem().getConfiguration().getLocales().get(0));for(int i=0;i<languageIds.length;i++)if(languageIds[i].equals(selected))languages.setSelection(i,false);body.addView(languages);
@@ -389,6 +391,8 @@ public final class MainActivity extends Activity {
         }));
         Ui.gap(body,8);body.addView(Ui.prose(this,L.t("支持 0.1～3600 秒、最多三位小数。朗读尚未结束时，会等读完再切词。"),12,Ui.MUTED));Ui.gap(body,16);
         body.addView(Ui.button(this,L.t("文字大小 · ")+prefs.wordSize()+" / "+prefs.readingSize()+" / "+prefs.meaningSize()+"  ›",false,v->FontPicker.show(this,prefs,this::render)));Ui.gap(body,12);
+        slider(L.t("详情内容高度"),"detailHeight",100,420,10,prefs.detailHeight()," dp");
+        body.addView(Ui.prose(this,L.t("调整可滚动详情区的高度；屏幕不足时自动缩短，单词与底部操作保持可达。"),12,Ui.MUTED));Ui.gap(body,12);
         slider(L.t("窗口宽度"),"width",220,360,10,prefs.width()," dp");
         slider(L.t("释义显示行数"),"meaningLines",1,3,1,prefs.meaningLines(),L.t(" 行"));
         toggle(L.t("松手后自动贴边"),L.t("关闭时停在手指松开的位置"),"snapEdges",prefs.snapEdges());

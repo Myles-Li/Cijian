@@ -64,7 +64,7 @@ public final class FloatService extends Service implements android.content.Share
     private boolean initialRead=true,manualVoiceHinted,audioForeground;
     private static final class MarkUndo{Word word;String kind,scope,queue;boolean value,shuffled;long token;}
     private long due,lastScreenCheck;
-    private TextView countdown;
+    private TextView countdown,exampleAction;
     private final Runnable tick=new Runnable() {
         @Override public void run() {
             if(destroyed||stopping) return;
@@ -117,6 +117,7 @@ public final class FloatService extends Service implements android.content.Share
         audioWake.setReferenceCounted(false);
         speech.setOnChanged(()->{
             if(destroyed||stopping)return;
+            Ui.exampleActionState(exampleAction,speech.isSpeakingExample());
             if(running)notifyState();tryAutoRead();
             if(!focused&&!paused&&canPresent()&&(!activeScreen||collapsed)&&current()!=null&&!speech.isSpeakingSequence())readWord(current(),false);
             maintainWakeLock();
@@ -321,6 +322,7 @@ public final class FloatService extends Service implements android.content.Share
                 countdown.setOnClickListener(v->{if(undo!=null)undoMark();else requestNextGroup();});
             }
             Ui.weighted(header,countdown);
+            header.addView(new PositionLock(this,prefs.positionLocked(),v->prefs.put("positionLocked",!prefs.positionLocked())));
             header.addView(control(detail?L.t("简洁"):L.t("详情"),detail?L.t("收起详情"):L.t("打开词性说明和例句"),v->{detail=!detail;resetTimer();rebuild();},36));
             header.addView(control("●",L.t("收起为悬浮球"),v->collapse(),36));
             header.addView(closeButton(true));root.addView(header);
@@ -361,13 +363,12 @@ public final class FloatService extends Service implements android.content.Share
                     if(!w.example.isEmpty()) {
                         Ui.gap(extra,10);extra.addView(Ui.text(this,w.example,15,Ui.INK));
                         if(revealed) extra.addView(Ui.text(this,w.exampleMeaning,12,Ui.MUTED));
-                        extra.addView(control(L.t("朗读例句"),L.t("朗读例句"),v->{pendingAutoId="";if(prepareAudio())speech.speakExample(w,true);},100));
+                        Ui.gap(extra,8);exampleAction=Ui.exampleAction(this,speech::isSpeakingExample,v->{pendingAutoId="";if(speech.isSpeakingExample())speech.stop();else if(prepareAudio())speech.speakExample(w,true);});Ui.exampleActionState(exampleAction,speech.isSpeakingExample());extra.addView(exampleAction);
                     }
                     if(!w.note.isEmpty()) extra.addView(Ui.text(this,w.note,12,Ui.MUTED));
-                    Ui.gap(extra,8);LinearLayout options=Ui.row(this);Ui.weighted(options,detailButton(prefs.positionLocked()?L.t("解锁位置"):L.t("锁定位置"),prefs.positionLocked()?L.t("解锁悬浮窗位置"):L.t("锁定悬浮窗位置"),v->prefs.put("positionLocked",!prefs.positionLocked())));
-                    if(prefs.groupMode().equals("SIZE")){Space gap=new Space(this);options.addView(gap,new LinearLayout.LayoutParams(d(6),1));Ui.weighted(options,detailButton(L.t("换下一组"),L.t("换下一组"),v->requestNextGroup()));}extra.addView(options);
+                    if(prefs.groupMode().equals("SIZE")){Ui.gap(extra,8);extra.addView(detailButton(L.t("换下一组"),L.t("换下一组"),v->requestNextGroup()));}
                     scroll.addView(extra);
-                    root.addView(scroll,new LinearLayout.LayoutParams(-1,Math.min(d(190),Math.max(d(90),screenHeight()-d(310)))));
+                    root.addView(scroll,new LinearLayout.LayoutParams(-1,Math.min(d(prefs.detailHeight()),Math.max(d(90),screenHeight()-d(310)))));
                 }
                 LinearLayout actions=Ui.row(this);
                 addAction(actions,"‹",L.t("上一个单词"),v->advance(-1,true));
@@ -498,7 +499,7 @@ public final class FloatService extends Service implements android.content.Share
         if(destroyed||key==null)return;
         if(focused){if(reviewFlow!=null)reviewFlow.checkSettings();if(key.equals("theme")||key.equals("accent")||key.equals("customColor")){Ui.applyTheme(this);rebuild();}return;}
         if(key.equals("voiceEngine")||key.equals("voice.refresh")){speech.refresh();return;}
-        if(key.equals("scopeMemory")||key.equals("scopeMemoryMigrated"))return;
+        if(key.equals("scopeMemory")||key.equals("scopeMemoryMigrated")||key.startsWith("appWord")||key.startsWith("appReading")||key.startsWith("appMeaning"))return;
         if(key.equals("group.state")||key.equals("speechRate")||key.equals("speechGap")||key.equals("focusNewTarget")||key.equals("learningStyle")||key.equals("reverseRecall")||key.equals("dailyNewTarget")||key.equals("showFirstPass")||key.startsWith("deck.")||key.startsWith("backup."))return;
         if(key.endsWith("X")||key.endsWith("Y")||key.equals("currentId")||key.startsWith("queue.")||key.startsWith("boot.")||key.startsWith("session."))return;
         if(key.equals("theme")||key.equals("accent")||key.equals("customColor")){setTheme(Ui.themeResource(this));Ui.applyTheme(this);rebuild();return;}
@@ -531,6 +532,10 @@ public final class FloatService extends Service implements android.content.Share
     }
     private void collectControls(View view,org.json.JSONArray controls) throws org.json.JSONException{
         if(view.getVisibility()!=View.VISIBLE)return;
+        if(!(view instanceof TextView)&&view.isClickable()&&view.getContentDescription()!=null){
+            int[] point=new int[2];view.getLocationOnScreen(point);
+            controls.put(new org.json.JSONObject().put("text","").put("description",view.getContentDescription().toString()).put("bounds",new org.json.JSONArray().put(point[0]).put(point[1]).put(view.getWidth()).put(view.getHeight())));
+        }
         if(view instanceof TextView){
             TextView text=(TextView)view;int[] point=new int[2];view.getLocationOnScreen(point);
             org.json.JSONObject item=new org.json.JSONObject().put("text",text.getText().toString()).put("description",view.getContentDescription()==null?"":view.getContentDescription().toString())

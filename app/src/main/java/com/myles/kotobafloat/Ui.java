@@ -56,6 +56,14 @@ final class Ui {
         TextView t=bold(c,value,14,primary?ON_GREEN:GREEN);t.setGravity(Gravity.CENTER);t.setPadding(dp(c,12),dp(c,10),dp(c,12),dp(c,10));
         t.setBackground(shape(primary?GREEN:PALE,14,c));t.setMinHeight(dp(c,48));t.setOnClickListener(click);t.setFocusable(true);return t;
     }
+    // 例句操作使用内容宽度，保持44dp触控高度。 / Content-width example action retains a 44dp touch target.
+    static TextView exampleAction(Context c,java.util.function.BooleanSupplier speaking,View.OnClickListener click){
+        TextView t=button(c,"",false,click);t.setTextSize(12);t.setMinHeight(dp(c,44));t.setPadding(dp(c,12),dp(c,6),dp(c,12),dp(c,6));t.setBackground(shape(PALE,10,c));t.setLayoutParams(new LinearLayout.LayoutParams(-2,-2));exampleActionState(t,speaking.getAsBoolean());
+        // 仅已挂载按钮轮询状态；不触发语音回调或重建卡片。 / Poll only attached actions, without speech callbacks or card rebuilds.
+        Runnable[] pulse={null};pulse[0]=()->{if(t.isAttachedToWindow()){exampleActionState(t,speaking.getAsBoolean());t.postDelayed(pulse[0],250);}};
+        t.addOnAttachStateChangeListener(new View.OnAttachStateChangeListener(){public void onViewAttachedToWindow(View v){t.post(pulse[0]);}public void onViewDetachedFromWindow(View v){t.removeCallbacks(pulse[0]);}});return t;
+    }
+    static void exampleActionState(TextView view,boolean speaking){if(view==null)return;view.setText((speaking?"■  ":"▷  ")+L.t(speaking?"停止朗读":"朗读例句"));view.setContentDescription(L.t(speaking?"停止朗读":"朗读例句"));}
     static LinearLayout column(Context c){LinearLayout l=new LinearLayout(c);l.setOrientation(LinearLayout.VERTICAL);return l;}
     static LinearLayout row(Context c){LinearLayout l=new LinearLayout(c);l.setOrientation(LinearLayout.HORIZONTAL);l.setGravity(Gravity.CENTER_VERTICAL);return l;}
     static void gap(LinearLayout l,int dp){View v=new View(l.getContext());l.addView(v,new LinearLayout.LayoutParams(1,Ui.dp(l.getContext(),dp)));}

@@ -10,8 +10,8 @@ t=(D/'结构图模板.html').read_text(encoding='utf-8-sig')
 assert t.count('__ATLAS_DATA__')==1
 out=t.replace('__ATLAS_DATA__',json.dumps(data,ensure_ascii=False).replace('</','<\\/'))
 (D/'词间-完整结构图.html').write_text(out,encoding='utf-8')
-lines=['# 词间 1.9.5 功能全量清单','','> 与交互图共用结构数据；候选代码能力与验收结果分开记录。','']
-labels={'existing':'已有','proposal':'1.9.5 提案','inspect':'待审阅','missing':'未提供','boundary':'边界'}
+lines=['# 词间 '+data['baseline']+' 功能全量清单','','> 与交互图共用结构数据；候选代码能力与验收结果分开记录。','']
+labels={'existing':'已有','proposal':'后续提案','inspect':'待审阅','missing':'未提供','boundary':'边界'}
 for n in data['nodes']:
  lines+=['## '+n['title']+' · `'+n['id']+'`','','状态：'+labels[n['status']],'路径：'+n['path'],'',n['description'],'']
  if n['route']:lines+=['入口：'+n['route'],'']

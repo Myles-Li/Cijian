@@ -4,19 +4,27 @@
 
 一个轻量的安卓日语学习应用：既能在 App 内专注学习，也能用悬浮窗利用碎片时间反复遇见单词。
 
-**当前版本：1.9.5 / 构建14 · Android 8.0+ · Java 原生界面 · 持续更新中**
+**当前版本：1.10.0 / 构建15 · Android 8.0+ · Java 原生界面 · 持续更新中**
 
-在 **GPT-6.1 Sol** 辅助下开发，累计开发投入 **20 小时+（作者估算）**。需求、使用反馈和持续迭代由项目作者维护。[开发记录与时间口径](docs/开发记录.md)
+在 **GPT-6.1 Sol** 辅助下开发，累计开发投入 **25 小时+，开发跨度约两周（作者估算）**。需求、使用反馈和持续迭代由项目作者维护。[开发记录与时间口径](docs/开发记录.md)
 
-项目首个可核验版本形成于 **2026-10-27**；截至 **2026-11-03 的 1.9.5**，已迭代约一周，仍在持续更新。
+项目首个可核验版本形成于 **2026-10-27**；**1.10.0 更新于 2026-11-05**，持续更新中。
 
 Native Android app for learning Japanese through Chinese meanings. The interface supports 简体中文 / English / 日本語. Interface language changes do not translate the dictionary.
+
+## 一分钟了解词间
+
+[![悬浮学习实际演示](docs/demo/preview.gif)](https://github.com/Myles-Li/Cijian/releases/download/v1.10.0/cijian-demo-1.10.0.mp4)
+
+[观看／下载完整演示视频（MP4，一分钟以内）](https://github.com/Myles-Li/Cijian/releases/download/v1.10.0/cijian-demo-1.10.0.mp4)。重点展示跨应用悬浮、拖动与锁定、收球、例句收藏，以及App内浏览和正式回忆。实际Android模拟器录屏，使用演示数据；无声视频，配中英字幕。
+
+iPhone用户也可观看演示；本轮发布安卓版本，iOS移植暂缓。
 
 ## 下载
 
 **[下载最新 APK](https://github.com/Myles-Li/Cijian/releases/latest)** · [全部版本更新说明](CHANGELOG.md)
 
-下载页只提供最新版1.9.5 APK；历史更新说明保留，旧安装包不上传。升级前请在应用中备份，使用同签名官方APK覆盖安装，保留旧安装及其学习记录。
+当前最新版为1.10.0；1.9.5作为历史版本保留。升级前请在应用中备份，使用同签名官方APK覆盖安装，保留旧安装及其学习记录。
 
 ## 主要功能
 
@@ -46,6 +54,7 @@ Native Android app for learning Japanese through Chinese meanings. The interface
 
 | 版本 | 主要变化 |
 |---|---|
+| 1.10.0 | App内独立学习字号、词卡左右滑动、顶部位置锁、紧凑例句操作、详情高度调节和一分钟演示 |
 | 1.9.5 | 详情拖动与滚动、设置分类与间距、默认色网格、双学习入口、切换与跨日刷新修复 |
 | 1.9.0 | Cijian英文显示名、首启三语选择、默认黑白、自定义每批1～50及完整复习说明 |
 | 1.8.0 | 三语界面、学习／复习分层、连续撤销、快速操作与通知清理修复 |
@@ -74,7 +83,7 @@ macOS / Linux: sh ./gradlew :app:assembleDebug
 Logic checks:  python tools/test_logic.py
 ```
 
-源码采用普通debug开发签名，不含作者发布签名；自行构建的包与官方APK签名不同，建议使用专用模拟器开发。[验证与测试](docs/验证与测试.md) · [1.9.5最终验证记录](docs/VALIDATION.md)
+源码采用普通debug开发签名，不含作者发布签名；自行构建的包与官方APK签名不同，建议使用专用模拟器开发。[验证与测试](docs/验证与测试.md) · [1.10.0最终验证记录](docs/VALIDATION.md)
 
 原词库TSV、来源和转换工具随项目保留，可用 `python tools/prepare_deck.py` 重建仓库词库资产。该操作针对项目文件，不操作手机记录；转换会重建词条表。
 

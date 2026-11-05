@@ -1,14 +1,14 @@
 {
-  "baseline": "1.9.5",
-  "build": 14,
+  "baseline": "1.10.0",
+  "build": 15,
   "nextVersion": "待定",
-  "updated": "2026-11-03",
+  "updated": "2026-11-05",
   "nodes": [
     {
       "id": "app",
       "parent": null,
-      "title": "词间 1.9.5 · 已交付的实际结构",
-      "description": "本地日语学习，中文／英文／日文界面；词库仍为日语及中文。1.9.5改善手势分工、设置导航、双入口、间距与模式切换；最终验收另见VALIDATION.md。",
+      "title": "词间 1.10.0 · 实际代码结构",
+      "description": "本地日语学习，中文／英文／日文界面，词库为日语及中文。1.10.0加入App内独立字号、卡片滑动、顶部位置锁、紧凑例句操作和详情高度。实现能力与验收结论分开，具体见版本验证文档。",
       "route": "",
       "rules": [],
       "related": [],
@@ -21,7 +21,7 @@
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.9.5 · 已交付的实际结构"
+      "path": "词间 1.10.0 · 实际代码结构"
     },
     {
       "id": "home",
@@ -40,7 +40,7 @@
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.9.5 · 已交付的实际结构 / 学习首页"
+      "path": "词间 1.10.0 · 实际代码结构 / 学习首页"
     },
     {
       "id": "home.styles",
@@ -75,7 +75,7 @@
         "learningStyle"
       ],
       "status": "existing",
-      "path": "词间 1.9.5 · 已交付的实际结构 / 学习首页 / 浏览一遍 / 认真记忆"
+      "path": "词间 1.10.0 · 实际代码结构 / 学习首页 / 浏览一遍 / 认真记忆"
     },
     {
       "id": "home.stats",
@@ -92,7 +92,7 @@
       "sources": [
         {
           "file": "app/src/main/java/com/myles/kotobafloat/MainActivity.java",
-          "line": 558,
+          "line": 562,
           "anchor": "private void refreshHome"
         },
         {
@@ -103,7 +103,7 @@
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.9.5 · 已交付的实际结构 / 学习首页 / 全库今日遇见 / 手动熟悉 / 收藏"
+      "path": "词间 1.10.0 · 实际代码结构 / 学习首页 / 全库今日遇见 / 手动熟悉 / 收藏"
     },
     {
       "id": "home.progress",
@@ -129,7 +129,7 @@
         },
         {
           "file": "app/src/main/java/com/myles/kotobafloat/MainActivity.java",
-          "line": 569,
+          "line": 573,
           "anchor": "firstPassCard(){"
         }
       ],
@@ -138,7 +138,7 @@
         "showFirstPass"
       ],
       "status": "existing",
-      "path": "词间 1.9.5 · 已交付的实际结构 / 学习首页 / 浏览进度、今日初见和预计天数"
+      "path": "词间 1.10.0 · 实际代码结构 / 学习首页 / 浏览进度、今日初见和预计天数"
     },
     {
       "id": "home.overlay",
@@ -161,7 +161,7 @@
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.9.5 · 已交付的实际结构 / 学习首页 / 开启 / 关闭悬浮学习"
+      "path": "词间 1.10.0 · 实际代码结构 / 学习首页 / 开启 / 关闭悬浮学习"
     },
     {
       "id": "home.preview",
@@ -183,7 +183,7 @@
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.9.5 · 已交付的实际结构 / 学习首页 / 悬浮窗外观预览"
+      "path": "词间 1.10.0 · 实际代码结构 / 学习首页 / 悬浮窗外观预览"
     },
     {
       "id": "home.shortcuts",
@@ -207,7 +207,7 @@
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.9.5 · 已交付的实际结构 / 学习首页 / 范围、换组、复习、发音和五十音快捷入口"
+      "path": "词间 1.10.0 · 实际代码结构 / 学习首页 / 范围、换组、复习、发音和五十音快捷入口"
     },
     {
       "id": "library",
@@ -226,7 +226,7 @@
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.9.5 · 已交付的实际结构 / 词库与单词详情"
+      "path": "词间 1.10.0 · 实际代码结构 / 词库与单词详情"
     },
     {
       "id": "library.search",
@@ -250,7 +250,7 @@
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.9.5 · 已交付的实际结构 / 词库与单词详情 / 日语 / 假名 / 罗马字 / 中文搜索"
+      "path": "词间 1.10.0 · 实际代码结构 / 词库与单词详情 / 日语 / 假名 / 罗马字 / 中文搜索"
     },
     {
       "id": "library.filters",
@@ -272,7 +272,7 @@
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.9.5 · 已交付的实际结构 / 词库与单词详情 / 词库自己的等级、词频和来源筛选"
+      "path": "词间 1.10.0 · 实际代码结构 / 词库与单词详情 / 词库自己的等级、词频和来源筛选"
     },
     {
       "id": "library.detail",
@@ -299,7 +299,7 @@
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.9.5 · 已交付的实际结构 / 词库与单词详情 / 单词详情"
+      "path": "词间 1.10.0 · 实际代码结构 / 词库与单词详情 / 单词详情"
     },
     {
       "id": "library.marks",
@@ -321,7 +321,7 @@
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.9.5 · 已交付的实际结构 / 词库与单词详情 / 收藏 / 熟悉 / 移回学习列表 / 撤销"
+      "path": "词间 1.10.0 · 实际代码结构 / 词库与单词详情 / 收藏 / 熟悉 / 移回学习列表 / 撤销"
     },
     {
       "id": "review",
@@ -339,13 +339,13 @@
         },
         {
           "file": "app/src/main/java/com/myles/kotobafloat/MainActivity.java",
-          "line": 609,
+          "line": 613,
           "anchor": "private void reviewPage()"
         }
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.9.5 · 已交付的实际结构 / App 内回忆与复习"
+      "path": "词间 1.10.0 · 实际代码结构 / App 内回忆与复习"
     },
     {
       "id": "review.task",
@@ -371,7 +371,7 @@
         },
         {
           "file": "app/src/main/java/com/myles/kotobafloat/ReviewFlow.java",
-          "line": 49,
+          "line": 51,
           "anchor": "private void load()"
         }
       ],
@@ -379,7 +379,7 @@
         "focusNewTarget"
       ],
       "status": "existing",
-      "path": "词间 1.9.5 · 已交付的实际结构 / App 内回忆与复习 / 每日记忆任务"
+      "path": "词间 1.10.0 · 实际代码结构 / App 内回忆与复习 / 每日记忆任务"
     },
     {
       "id": "review.scope",
@@ -411,7 +411,7 @@
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.9.5 · 已交付的实际结构 / App 内回忆与复习 / 正式任务使用的范围"
+      "path": "词间 1.10.0 · 实际代码结构 / App 内回忆与复习 / 正式任务使用的范围"
     },
     {
       "id": "review.light",
@@ -424,18 +424,18 @@
       "sources": [
         {
           "file": "app/src/main/java/com/myles/kotobafloat/MainActivity.java",
-          "line": 597,
+          "line": 601,
           "anchor": "taskCard(boolean full)"
         },
         {
           "file": "app/src/main/java/com/myles/kotobafloat/ReviewFlow.java",
-          "line": 49,
+          "line": 51,
           "anchor": "private void load()"
         }
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.9.5 · 已交付的实际结构 / App 内回忆与复习 / 先复习 10 个"
+      "path": "词间 1.10.0 · 实际代码结构 / App 内回忆与复习 / 先复习 10 个"
     },
     {
       "id": "review.due",
@@ -448,7 +448,7 @@
       "sources": [
         {
           "file": "app/src/main/java/com/myles/kotobafloat/MainActivity.java",
-          "line": 597,
+          "line": 601,
           "anchor": "taskCard(boolean full)"
         },
         {
@@ -459,7 +459,7 @@
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.9.5 · 已交付的实际结构 / App 内回忆与复习 / 只复习到期词"
+      "path": "词间 1.10.0 · 实际代码结构 / App 内回忆与复习 / 只复习到期词"
     },
     {
       "id": "review.practice",
@@ -485,7 +485,7 @@
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.9.5 · 已交付的实际结构 / App 内回忆与复习 / 自由练习"
+      "path": "词间 1.10.0 · 实际代码结构 / App 内回忆与复习 / 自由练习"
     },
     {
       "id": "review.weak",
@@ -506,13 +506,13 @@
         },
         {
           "file": "app/src/main/java/com/myles/kotobafloat/MainActivity.java",
-          "line": 605,
+          "line": 609,
           "anchor": "private void weakCard"
         }
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.9.5 · 已交付的实际结构 / App 内回忆与复习 / 易忘词练习"
+      "path": "词间 1.10.0 · 实际代码结构 / App 内回忆与复习 / 易忘词练习"
     },
     {
       "id": "review.direction",
@@ -536,7 +536,7 @@
         "reverseRecall"
       ],
       "status": "existing",
-      "path": "词间 1.9.5 · 已交付的实际结构 / App 内回忆与复习 / 看日语想中文 / 看中文想日语"
+      "path": "词间 1.10.0 · 实际代码结构 / App 内回忆与复习 / 看日语想中文 / 看中文想日语"
     },
     {
       "id": "review.card",
@@ -551,13 +551,13 @@
       "sources": [
         {
           "file": "app/src/main/java/com/myles/kotobafloat/ReviewFlow.java",
-          "line": 71,
+          "line": 73,
           "anchor": "private void show("
         }
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.9.5 · 已交付的实际结构 / App 内回忆与复习 / 回忆 → 揭晓 → 评分 / 朗读 / 跳过"
+      "path": "词间 1.10.0 · 实际代码结构 / App 内回忆与复习 / 回忆 → 揭晓 → 评分 / 朗读 / 跳过"
     },
     {
       "id": "review.ratings",
@@ -590,7 +590,7 @@
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.9.5 · 已交付的实际结构 / App 内回忆与复习 / 没想起 / 模糊 / 记得"
+      "path": "词间 1.10.0 · 实际代码结构 / App 内回忆与复习 / 没想起 / 模糊 / 记得"
     },
     {
       "id": "review.resume",
@@ -621,7 +621,7 @@
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.9.5 · 已交付的实际结构 / App 内回忆与复习 / 退出、旋转、继续上轮、放弃重排"
+      "path": "词间 1.10.0 · 实际代码结构 / App 内回忆与复习 / 退出、旋转、继续上轮、放弃重排"
     },
     {
       "id": "review.results",
@@ -634,13 +634,13 @@
       "sources": [
         {
           "file": "app/src/main/java/com/myles/kotobafloat/ReviewFlow.java",
-          "line": 96,
+          "line": 98,
           "anchor": "private void complete()"
         }
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.9.5 · 已交付的实际结构 / App 内回忆与复习 / 本轮结果 / 下一轮 / 剩余任务"
+      "path": "词间 1.10.0 · 实际代码结构 / App 内回忆与复习 / 本轮结果 / 下一轮 / 剩余任务"
     },
     {
       "id": "review.evidence",
@@ -660,13 +660,13 @@
         },
         {
           "file": "app/src/main/java/com/myles/kotobafloat/MainActivity.java",
-          "line": 590,
+          "line": 594,
           "anchor": "private void evidenceCard()"
         }
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.9.5 · 已交付的实际结构 / App 内回忆与复习 / 已接触 / 手动熟悉 / 间隔回忆较稳"
+      "path": "词间 1.10.0 · 实际代码结构 / App 内回忆与复习 / 已接触 / 手动熟悉 / 间隔回忆较稳"
     },
     {
       "id": "review.week",
@@ -681,19 +681,19 @@
       "sources": [
         {
           "file": "app/src/main/java/com/myles/kotobafloat/MainActivity.java",
-          "line": 609,
+          "line": 613,
           "anchor": "private void reviewPage()"
         }
       ],
       "keys": [],
       "status": "boundary",
-      "path": "词间 1.9.5 · 已交付的实际结构 / App 内回忆与复习 / 七日回顾 · 1.9.5已移除"
+      "path": "词间 1.10.0 · 实际代码结构 / App 内回忆与复习 / 七日回顾 · 1.9.5已移除"
     },
     {
       "id": "float",
       "parent": "app",
       "title": "悬浮窗与悬浮球",
-      "description": "跨应用的连续浏览与语音学习；没有正式回忆评分和每日任务卡流程。",
+      "description": "跨应用连续浏览、语音与正式回忆。两种学习节奏均可在App内或悬浮窗使用，共用相应位置或正式草稿。",
       "route": "首页开启悬浮学习",
       "rules": [],
       "related": [
@@ -713,7 +713,7 @@
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.9.5 · 已交付的实际结构 / 悬浮窗与悬浮球"
+      "path": "词间 1.10.0 · 实际代码结构 / 悬浮窗与悬浮球"
     },
     {
       "id": "float.compact",
@@ -726,13 +726,13 @@
       "sources": [
         {
           "file": "app/src/main/java/com/myles/kotobafloat/FloatService.java",
-          "line": 275,
+          "line": 276,
           "anchor": "private void rebuild()"
         }
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.9.5 · 已交付的实际结构 / 悬浮窗与悬浮球 / 简洁卡片"
+      "path": "词间 1.10.0 · 实际代码结构 / 悬浮窗与悬浮球 / 简洁卡片"
     },
     {
       "id": "float.navigation",
@@ -749,18 +749,18 @@
       "sources": [
         {
           "file": "app/src/main/java/com/myles/kotobafloat/FloatService.java",
-          "line": 230,
+          "line": 231,
           "anchor": "private void advance("
         },
         {
           "file": "app/src/main/java/com/myles/kotobafloat/FloatService.java",
-          "line": 245,
+          "line": 246,
           "anchor": "private void togglePause()"
         }
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.9.5 · 已交付的实际结构 / 悬浮窗与悬浮球 / 上一词 / 下一词 / 暂停 / 继续"
+      "path": "词间 1.10.0 · 实际代码结构 / 悬浮窗与悬浮球 / 上一词 / 下一词 / 暂停 / 继续"
     },
     {
       "id": "float.marks",
@@ -779,28 +779,29 @@
       "sources": [
         {
           "file": "app/src/main/java/com/myles/kotobafloat/FloatService.java",
-          "line": 450,
+          "line": 451,
           "anchor": "private void markFamiliar()"
         },
         {
           "file": "app/src/main/java/com/myles/kotobafloat/FloatService.java",
-          "line": 443,
+          "line": 444,
           "anchor": "private void undoMark()"
         }
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.9.5 · 已交付的实际结构 / 悬浮窗与悬浮球 / 收藏 / 熟悉并切词 / 取消 / 撤销"
+      "path": "词间 1.10.0 · 实际代码结构 / 悬浮窗与悬浮球 / 收藏 / 熟悉并切词 / 取消 / 撤销"
     },
     {
       "id": "float.detail",
       "parent": "float",
       "title": "详情与返回 App",
-      "description": "紧凑的一行提供App内继续和返回主页；释义、词性、词频、例句、译文及备注仍可查看。位置锁定和换组放在详情内容内，熟悉和关闭由固定操作区提供，避免重复大按钮。",
+      "description": "一行提供App内继续和返回主页；词性、词频、例句、译文及备注可滚动查看。位置锁定在顶部详情／简洁左侧，换组按当前分组提供。详情区高度可调；熟悉和关闭由固定操作区提供。",
       "route": "",
       "rules": [
-        "解锁状态看详情会暂停自动切词；锁屏听词规则单独判断。",
-        "打开详情并不等于启动正式回忆任务。"
+        "查看详情时暂停自动切词；锁屏听词规则单独判断。",
+        "打开浏览详情并不等于启动正式回忆任务。",
+        "详情内容高度默认180dp，范围100～420dp；短屏自动缩短，保留单词与固定操作可达。"
       ],
       "related": [
         "review.card",
@@ -810,13 +811,13 @@
       "sources": [
         {
           "file": "app/src/main/java/com/myles/kotobafloat/FloatService.java",
-          "line": 354,
+          "line": 356,
           "anchor": "if(detail) {"
         }
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.9.5 · 已交付的实际结构 / 悬浮窗与悬浮球 / 详情与返回 App"
+      "path": "词间 1.10.0 · 实际代码结构 / 悬浮窗与悬浮球 / 详情与返回 App"
     },
     {
       "id": "float.ball",
@@ -832,13 +833,13 @@
       "sources": [
         {
           "file": "app/src/main/java/com/myles/kotobafloat/FloatService.java",
-          "line": 252,
+          "line": 253,
           "anchor": "private void collapse()"
         }
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.9.5 · 已交付的实际结构 / 悬浮窗与悬浮球 / 收成悬浮球 / 点球展开"
+      "path": "词间 1.10.0 · 实际代码结构 / 悬浮窗与悬浮球 / 收成悬浮球 / 点球展开"
     },
     {
       "id": "float.drag",
@@ -859,13 +860,13 @@
         },
         {
           "file": "app/src/main/java/com/myles/kotobafloat/FloatService.java",
-          "line": 482,
+          "line": 483,
           "anchor": "private void clampCoordinates"
         }
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.9.5 · 已交付的实际结构 / 悬浮窗与悬浮球 / 拖动 / 限定屏幕内 / 自动贴边 / 锁定"
+      "path": "词间 1.10.0 · 实际代码结构 / 悬浮窗与悬浮球 / 拖动 / 限定屏幕内 / 自动贴边 / 锁定"
     },
     {
       "id": "float.empty",
@@ -884,7 +885,7 @@
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.9.5 · 已交付的实际结构 / 悬浮窗与悬浮球 / 空范围、空组和加载失败"
+      "path": "词间 1.10.0 · 实际代码结构 / 悬浮窗与悬浮球 / 空范围、空组和加载失败"
     },
     {
       "id": "float.notification",
@@ -900,13 +901,13 @@
       "sources": [
         {
           "file": "app/src/main/java/com/myles/kotobafloat/FloatService.java",
-          "line": 158,
+          "line": 159,
           "anchor": "private Notification notification()"
         }
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.9.5 · 已交付的实际结构 / 悬浮窗与悬浮球 / 持续通知：返回 App / 暂停继续 / 关闭"
+      "path": "词间 1.10.0 · 实际代码结构 / 悬浮窗与悬浮球 / 持续通知：返回 App / 暂停继续 / 关闭"
     },
     {
       "id": "settings",
@@ -925,7 +926,7 @@
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.9.5 · 已交付的实际结构 / 设置总入口"
+      "path": "词间 1.10.0 · 实际代码结构 / 设置总入口"
     },
     {
       "id": "settings.search",
@@ -949,7 +950,7 @@
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.9.5 · 已交付的实际结构 / 设置总入口 / 搜索设置 / 教程直达"
+      "path": "词间 1.10.0 · 实际代码结构 / 设置总入口 / 搜索设置 / 教程直达"
     },
     {
       "id": "settings.reset",
@@ -976,12 +977,12 @@
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.9.5 · 已交付的实际结构 / 设置总入口 / 恢复本页默认设置"
+      "path": "词间 1.10.0 · 实际代码结构 / 设置总入口 / 恢复本页默认设置"
     },
     {
       "id": "settings.appearance",
       "parent": "settings",
-      "title": "外观",
+      "title": "语言与外观",
       "description": "对应 App 设置分类。",
       "route": "设置 → 语言与外观",
       "rules": [],
@@ -995,7 +996,7 @@
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.9.5 · 已交付的实际结构 / 设置总入口 / 外观"
+      "path": "词间 1.10.0 · 实际代码结构 / 设置总入口 / 语言与外观"
     },
     {
       "id": "settings.content",
@@ -1014,7 +1015,7 @@
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.9.5 · 已交付的实际结构 / 设置总入口 / 学习内容"
+      "path": "词间 1.10.0 · 实际代码结构 / 设置总入口 / 学习内容"
     },
     {
       "id": "settings.window",
@@ -1033,7 +1034,7 @@
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.9.5 · 已交付的实际结构 / 设置总入口 / 悬浮窗"
+      "path": "词间 1.10.0 · 实际代码结构 / 设置总入口 / 悬浮窗"
     },
     {
       "id": "settings.background",
@@ -1052,12 +1053,12 @@
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.9.5 · 已交付的实际结构 / 设置总入口 / 开机与后台"
+      "path": "词间 1.10.0 · 实际代码结构 / 设置总入口 / 开机与后台"
     },
     {
       "id": "settings.voice",
       "parent": "settings",
-      "title": "发音",
+      "title": "语音与朗读",
       "description": "对应 App 设置分类。",
       "route": "设置 → 语音与朗读",
       "rules": [],
@@ -1071,7 +1072,7 @@
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.9.5 · 已交付的实际结构 / 设置总入口 / 发音"
+      "path": "词间 1.10.0 · 实际代码结构 / 设置总入口 / 语音与朗读"
     },
     {
       "id": "settings.records",
@@ -1090,7 +1091,7 @@
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.9.5 · 已交付的实际结构 / 设置总入口 / 备份与帮助"
+      "path": "词间 1.10.0 · 实际代码结构 / 设置总入口 / 备份与帮助"
     },
     {
       "id": "settings.about",
@@ -1109,7 +1110,7 @@
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.9.5 · 已交付的实际结构 / 设置总入口 / 关于词间"
+      "path": "词间 1.10.0 · 实际代码结构 / 设置总入口 / 关于词间"
     },
     {
       "id": "settings.theme",
@@ -1137,7 +1138,7 @@
         "theme"
       ],
       "status": "existing",
-      "path": "词间 1.9.5 · 已交付的实际结构 / 设置总入口 / 外观 / 跟随系统 / 浅色 / 深色"
+      "path": "词间 1.10.0 · 实际代码结构 / 设置总入口 / 语言与外观 / 跟随系统 / 浅色 / 深色"
     },
     {
       "id": "settings.color",
@@ -1167,7 +1168,7 @@
         "customColor"
       ],
       "status": "existing",
-      "path": "词间 1.9.5 · 已交付的实际结构 / 设置总入口 / 外观 / 12 种主题色 / 自定义色号"
+      "path": "词间 1.10.0 · 实际代码结构 / 设置总入口 / 语言与外观 / 12 种主题色 / 自定义色号"
     },
     {
       "id": "settings.level",
@@ -1198,7 +1199,7 @@
         "level"
       ],
       "status": "existing",
-      "path": "词间 1.9.5 · 已交付的实际结构 / 设置总入口 / 学习内容 / 学习等级"
+      "path": "词间 1.10.0 · 实际代码结构 / 设置总入口 / 学习内容 / 学习等级"
     },
     {
       "id": "settings.frequency",
@@ -1221,7 +1222,7 @@
         "frequency"
       ],
       "status": "existing",
-      "path": "词间 1.9.5 · 已交付的实际结构 / 设置总入口 / 学习内容 / 词频范围"
+      "path": "词间 1.10.0 · 实际代码结构 / 设置总入口 / 学习内容 / 词频范围"
     },
     {
       "id": "settings.source",
@@ -1253,7 +1254,7 @@
         "favoritesOnly"
       ],
       "status": "existing",
-      "path": "词间 1.9.5 · 已交付的实际结构 / 设置总入口 / 学习内容 / 全部词 / 只看收藏 / 只复习熟悉词"
+      "path": "词间 1.10.0 · 实际代码结构 / 设置总入口 / 学习内容 / 全部词 / 只看收藏 / 只复习熟悉词"
     },
     {
       "id": "settings.goal",
@@ -1284,7 +1285,7 @@
         "dailyNewTarget"
       ],
       "status": "existing",
-      "path": "词间 1.9.5 · 已交付的实际结构 / 设置总入口 / 学习内容 / 每日新接触目标"
+      "path": "词间 1.10.0 · 实际代码结构 / 设置总入口 / 学习内容 / 每日新接触目标"
     },
     {
       "id": "settings.progress",
@@ -1314,7 +1315,7 @@
         "showFirstPass"
       ],
       "status": "existing",
-      "path": "词间 1.9.5 · 已交付的实际结构 / 设置总入口 / 学习内容 / 显示学习进度"
+      "path": "词间 1.10.0 · 实际代码结构 / 设置总入口 / 学习内容 / 显示学习进度"
     },
     {
       "id": "settings.shuffle",
@@ -1342,7 +1343,7 @@
         "shuffle"
       ],
       "status": "existing",
-      "path": "词间 1.9.5 · 已交付的实际结构 / 设置总入口 / 学习内容 / 随机顺序"
+      "path": "词间 1.10.0 · 实际代码结构 / 设置总入口 / 学习内容 / 随机顺序"
     },
     {
       "id": "settings.hide",
@@ -1373,7 +1374,7 @@
         "hideFamiliar"
       ],
       "status": "existing",
-      "path": "词间 1.9.5 · 已交付的实际结构 / 设置总入口 / 学习内容 / 跳过熟悉词"
+      "path": "词间 1.10.0 · 实际代码结构 / 设置总入口 / 学习内容 / 跳过熟悉词"
     },
     {
       "id": "settings.conceal",
@@ -1404,7 +1405,7 @@
         "conceal"
       ],
       "status": "existing",
-      "path": "词间 1.9.5 · 已交付的实际结构 / 设置总入口 / 学习内容 / 先回忆，再看答案"
+      "path": "词间 1.10.0 · 实际代码结构 / 设置总入口 / 学习内容 / 先回忆，再看答案"
     },
     {
       "id": "settings.traditional",
@@ -1432,7 +1433,7 @@
         "traditional"
       ],
       "status": "existing",
-      "path": "词间 1.9.5 · 已交付的实际结构 / 设置总入口 / 学习内容 / 繁体中文释义"
+      "path": "词间 1.10.0 · 实际代码结构 / 设置总入口 / 学习内容 / 繁体中文释义"
     },
     {
       "id": "settings.groups",
@@ -1462,7 +1463,7 @@
         },
         {
           "file": "app/src/main/java/com/myles/kotobafloat/MainActivity.java",
-          "line": 474,
+          "line": 478,
           "anchor": "private void groupSettings()"
         }
       ],
@@ -1473,7 +1474,7 @@
         "groupRevision"
       ],
       "status": "existing",
-      "path": "词间 1.9.5 · 已交付的实际结构 / 设置总入口 / 学习内容 / 不分组 / 固定词数 / 自选词循环"
+      "path": "词间 1.10.0 · 实际代码结构 / 设置总入口 / 学习内容 / 不分组 / 固定词数 / 自选词循环"
     },
     {
       "id": "settings.custom",
@@ -1491,7 +1492,7 @@
       "sources": [
         {
           "file": "app/src/main/java/com/myles/kotobafloat/MainActivity.java",
-          "line": 501,
+          "line": 505,
           "anchor": "private void customGroupPicker()"
         }
       ],
@@ -1499,7 +1500,7 @@
         "customWords"
       ],
       "status": "existing",
-      "path": "词间 1.9.5 · 已交付的实际结构 / 设置总入口 / 学习内容 / 编辑跨等级自选组"
+      "path": "词间 1.10.0 · 实际代码结构 / 设置总入口 / 学习内容 / 编辑跨等级自选组"
     },
     {
       "id": "settings.interval",
@@ -1528,7 +1529,7 @@
         "seconds"
       ],
       "status": "existing",
-      "path": "词间 1.9.5 · 已交付的实际结构 / 设置总入口 / 悬浮窗 / 自动切词间隔"
+      "path": "词间 1.10.0 · 实际代码结构 / 设置总入口 / 悬浮窗 / 自动切词间隔"
     },
     {
       "id": "settings.font",
@@ -1543,7 +1544,7 @@
       "sources": [
         {
           "file": "app/src/main/java/com/myles/kotobafloat/FontPicker.java",
-          "line": 7,
+          "line": 8,
           "anchor": "FontPicker"
         }
       ],
@@ -1553,7 +1554,7 @@
         "meaningSize"
       ],
       "status": "existing",
-      "path": "词间 1.9.5 · 已交付的实际结构 / 设置总入口 / 悬浮窗 / 词头 / 读音词性 / 释义字号"
+      "path": "词间 1.10.0 · 实际代码结构 / 设置总入口 / 悬浮窗 / 词头 / 读音词性 / 释义字号"
     },
     {
       "id": "settings.width",
@@ -1581,7 +1582,7 @@
         "width"
       ],
       "status": "existing",
-      "path": "词间 1.9.5 · 已交付的实际结构 / 设置总入口 / 悬浮窗 / 窗口宽度"
+      "path": "词间 1.10.0 · 实际代码结构 / 设置总入口 / 悬浮窗 / 窗口宽度"
     },
     {
       "id": "settings.lines",
@@ -1609,7 +1610,7 @@
         "meaningLines"
       ],
       "status": "existing",
-      "path": "词间 1.9.5 · 已交付的实际结构 / 设置总入口 / 悬浮窗 / 简洁模式释义行数"
+      "path": "词间 1.10.0 · 实际代码结构 / 设置总入口 / 悬浮窗 / 简洁模式释义行数"
     },
     {
       "id": "settings.alpha",
@@ -1637,13 +1638,13 @@
         "alpha"
       ],
       "status": "existing",
-      "path": "词间 1.9.5 · 已交付的实际结构 / 设置总入口 / 悬浮窗 / 窗口不透明度"
+      "path": "词间 1.10.0 · 实际代码结构 / 设置总入口 / 悬浮窗 / 窗口不透明度"
     },
     {
       "id": "settings.lock",
       "parent": "settings.window",
       "title": "锁定悬浮窗位置",
-      "description": "详情也能切换，锁定仍可点击翻词和滚动。",
+      "description": "顶部详情／简洁左侧的小锁和悬浮窗设置均可切换。锁定仍可点击、翻词和滚动；详情底部不再重复放锁定按钮。",
       "route": "",
       "rules": [
         "默认关闭。"
@@ -1661,13 +1662,18 @@
           "file": "app/src/main/java/com/myles/kotobafloat/MainActivity.java",
           "line": 18,
           "anchor": "MainActivity"
+        },
+        {
+          "file": "app/src/main/java/com/myles/kotobafloat/PositionLock.java",
+          "line": 10,
+          "anchor": "class PositionLock"
         }
       ],
       "keys": [
         "positionLocked"
       ],
       "status": "existing",
-      "path": "词间 1.9.5 · 已交付的实际结构 / 设置总入口 / 悬浮窗 / 锁定悬浮窗位置"
+      "path": "词间 1.10.0 · 实际代码结构 / 设置总入口 / 悬浮窗 / 锁定悬浮窗位置"
     },
     {
       "id": "settings.snap",
@@ -1701,7 +1707,7 @@
         "ballY"
       ],
       "status": "existing",
-      "path": "词间 1.9.5 · 已交付的实际结构 / 设置总入口 / 悬浮窗 / 松手后自动贴边"
+      "path": "词间 1.10.0 · 实际代码结构 / 设置总入口 / 悬浮窗 / 松手后自动贴边"
     },
     {
       "id": "settings.boot",
@@ -1732,7 +1738,7 @@
         "autoStart"
       ],
       "status": "existing",
-      "path": "词间 1.9.5 · 已交付的实际结构 / 设置总入口 / 开机与后台 / 开机自动开启悬浮窗"
+      "path": "词间 1.10.0 · 实际代码结构 / 设置总入口 / 开机与后台 / 开机自动开启悬浮窗"
     },
     {
       "id": "settings.diagnostics",
@@ -1756,7 +1762,7 @@
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.9.5 · 已交付的实际结构 / 设置总入口 / 开机与后台 / 运行状态检查 / 系统设置入口"
+      "path": "词间 1.10.0 · 实际代码结构 / 设置总入口 / 开机与后台 / 运行状态检查 / 系统设置入口"
     },
     {
       "id": "speech.flip",
@@ -1786,7 +1792,7 @@
         "speakOnFlip"
       ],
       "status": "existing",
-      "path": "词间 1.9.5 · 已交付的实际结构 / 设置总入口 / 发音 / 手动翻词时朗读"
+      "path": "词间 1.10.0 · 实际代码结构 / 设置总入口 / 语音与朗读 / 手动翻词时朗读"
     },
     {
       "id": "speech.auto",
@@ -1818,7 +1824,7 @@
         "autoSpeak"
       ],
       "status": "existing",
-      "path": "词间 1.9.5 · 已交付的实际结构 / 设置总入口 / 发音 / 自动轮换时朗读"
+      "path": "词间 1.10.0 · 实际代码结构 / 设置总入口 / 语音与朗读 / 自动轮换时朗读"
     },
     {
       "id": "speech.ball",
@@ -1849,7 +1855,7 @@
         "ballAudio"
       ],
       "status": "existing",
-      "path": "词间 1.9.5 · 已交付的实际结构 / 设置总入口 / 发音 / 收球后继续听"
+      "path": "词间 1.10.0 · 实际代码结构 / 设置总入口 / 语音与朗读 / 收球后继续听"
     },
     {
       "id": "speech.lock",
@@ -1880,7 +1886,7 @@
         "lockAudio"
       ],
       "status": "existing",
-      "path": "词间 1.9.5 · 已交付的实际结构 / 设置总入口 / 发音 / 锁屏后继续听"
+      "path": "词间 1.10.0 · 实际代码结构 / 设置总入口 / 语音与朗读 / 锁屏后继续听"
     },
     {
       "id": "speech.wordRepeats",
@@ -1903,7 +1909,7 @@
         "wordRepeats"
       ],
       "status": "existing",
-      "path": "词间 1.9.5 · 已交付的实际结构 / 设置总入口 / 发音 / 单词朗读次数"
+      "path": "词间 1.10.0 · 实际代码结构 / 设置总入口 / 语音与朗读 / 单词朗读次数"
     },
     {
       "id": "speech.example",
@@ -1929,7 +1935,7 @@
         "exampleRepeats"
       ],
       "status": "existing",
-      "path": "词间 1.9.5 · 已交付的实际结构 / 设置总入口 / 发音 / 单词后连读例句 / 例句次数"
+      "path": "词间 1.10.0 · 实际代码结构 / 设置总入口 / 语音与朗读 / 单词后连读例句 / 例句次数"
     },
     {
       "id": "speech.chinese",
@@ -1959,7 +1965,7 @@
         "readChinese"
       ],
       "status": "existing",
-      "path": "词间 1.9.5 · 已交付的实际结构 / 设置总入口 / 发音 / 朗读中文译文"
+      "path": "词间 1.10.0 · 实际代码结构 / 设置总入口 / 语音与朗读 / 朗读中文译文"
     },
     {
       "id": "speech.rate",
@@ -1983,7 +1989,7 @@
         "speechGap"
       ],
       "status": "existing",
-      "path": "词间 1.9.5 · 已交付的实际结构 / 设置总入口 / 发音 / 朗读语速 / 每段停顿"
+      "path": "词间 1.10.0 · 实际代码结构 / 设置总入口 / 语音与朗读 / 朗读语速 / 每段停顿"
     },
     {
       "id": "speech.sequence",
@@ -2006,7 +2012,7 @@
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.9.5 · 已交付的实际结构 / 设置总入口 / 发音 / 完整连读顺序"
+      "path": "词间 1.10.0 · 实际代码结构 / 设置总入口 / 语音与朗读 / 完整连读顺序"
     },
     {
       "id": "speech.engine",
@@ -2028,7 +2034,7 @@
         },
         {
           "file": "app/src/main/java/com/myles/kotobafloat/MainActivity.java",
-          "line": 406,
+          "line": 410,
           "anchor": "private void settings4()"
         }
       ],
@@ -2036,7 +2042,7 @@
         "voiceEngine"
       ],
       "status": "existing",
-      "path": "词间 1.9.5 · 已交付的实际结构 / 设置总入口 / 发音 / 高级发音：选择引擎 / 重新检测"
+      "path": "词间 1.10.0 · 实际代码结构 / 设置总入口 / 语音与朗读 / 高级发音：选择引擎 / 重新检测"
     },
     {
       "id": "speech.tests",
@@ -2056,13 +2062,13 @@
         },
         {
           "file": "app/src/main/java/com/myles/kotobafloat/MainActivity.java",
-          "line": 424,
+          "line": 428,
           "anchor": "试读日语"
         }
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.9.5 · 已交付的实际结构 / 设置总入口 / 发音 / 日语试读 / 中文试读 / 离线能力"
+      "path": "词间 1.10.0 · 实际代码结构 / 设置总入口 / 语音与朗读 / 日语试读 / 中文试读 / 离线能力"
     },
     {
       "id": "speech.guide",
@@ -2078,13 +2084,13 @@
       "sources": [
         {
           "file": "app/src/main/java/com/myles/kotobafloat/MainActivity.java",
-          "line": 714,
+          "line": 718,
           "anchor": "private void voiceGuide()"
         }
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.9.5 · 已交付的实际结构 / 设置总入口 / 发音 / 无 Google Play 的配置指引"
+      "path": "词间 1.10.0 · 实际代码结构 / 设置总入口 / 语音与朗读 / 无 Google Play 的配置指引"
     },
     {
       "id": "backup",
@@ -2108,7 +2114,7 @@
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.9.5 · 已交付的实际结构 / 设置总入口 / 备份与帮助 / 备份、恢复与撤回"
+      "path": "词间 1.10.0 · 实际代码结构 / 设置总入口 / 备份与帮助 / 备份、恢复与撤回"
     },
     {
       "id": "backup.export",
@@ -2139,13 +2145,13 @@
         },
         {
           "file": "app/src/main/java/com/myles/kotobafloat/MainActivity.java",
-          "line": 638,
+          "line": 642,
           "anchor": "private void backupOptions()"
         }
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.9.5 · 已交付的实际结构 / 设置总入口 / 备份与帮助 / 备份、恢复与撤回 / 分享 / 保存下载 / 自选保存位置"
+      "path": "词间 1.10.0 · 实际代码结构 / 设置总入口 / 备份与帮助 / 备份、恢复与撤回 / 分享 / 保存下载 / 自选保存位置"
     },
     {
       "id": "backup.content",
@@ -2175,7 +2181,7 @@
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.9.5 · 已交付的实际结构 / 设置总入口 / 备份与帮助 / 备份、恢复与撤回 / 文件包含什么、不包含什么"
+      "path": "词间 1.10.0 · 实际代码结构 / 设置总入口 / 备份与帮助 / 备份、恢复与撤回 / 文件包含什么、不包含什么"
     },
     {
       "id": "backup.restore",
@@ -2206,13 +2212,13 @@
         },
         {
           "file": "app/src/main/java/com/myles/kotobafloat/MainActivity.java",
-          "line": 683,
+          "line": 687,
           "anchor": "private void previewRestore"
         }
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.9.5 · 已交付的实际结构 / 设置总入口 / 备份与帮助 / 备份、恢复与撤回 / 选择文件 → 验证 → 只读预览 → 确认合并"
+      "path": "词间 1.10.0 · 实际代码结构 / 设置总入口 / 备份与帮助 / 备份、恢复与撤回 / 选择文件 → 验证 → 只读预览 → 确认合并"
     },
     {
       "id": "backup.undo",
@@ -2239,7 +2245,7 @@
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.9.5 · 已交付的实际结构 / 设置总入口 / 备份与帮助 / 备份、恢复与撤回 / 撤回上次导入 / 中断恢复"
+      "path": "词间 1.10.0 · 实际代码结构 / 设置总入口 / 备份与帮助 / 备份、恢复与撤回 / 撤回上次导入 / 中断恢复"
     },
     {
       "id": "help",
@@ -2258,7 +2264,7 @@
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.9.5 · 已交付的实际结构 / 设置总入口 / 备份与帮助 / 离线教程与日语基础说明"
+      "path": "词间 1.10.0 · 实际代码结构 / 设置总入口 / 备份与帮助 / 离线教程与日语基础说明"
     },
     {
       "id": "help.kana",
@@ -2279,7 +2285,7 @@
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.9.5 · 已交付的实际结构 / 设置总入口 / 备份与帮助 / 离线教程与日语基础说明 / 五十音图与入门读音"
+      "path": "词间 1.10.0 · 实际代码结构 / 设置总入口 / 备份与帮助 / 离线教程与日语基础说明 / 五十音图与入门读音"
     },
     {
       "id": "help.grammar",
@@ -2299,13 +2305,13 @@
         },
         {
           "file": "app/src/main/java/com/myles/kotobafloat/MainActivity.java",
-          "line": 664,
+          "line": 668,
           "anchor": "private void grammarGuide()"
         }
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.9.5 · 已交付的实际结构 / 设置总入口 / 备份与帮助 / 离线教程与日语基础说明 / 词性标记说明"
+      "path": "词间 1.10.0 · 实际代码结构 / 设置总入口 / 备份与帮助 / 离线教程与日语基础说明 / 词性标记说明"
     },
     {
       "id": "help.pitch",
@@ -2338,7 +2344,7 @@
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.9.5 · 已交付的实际结构 / 设置总入口 / 备份与帮助 / 离线教程与日语基础说明 / 音调标记说明与按词高低图"
+      "path": "词间 1.10.0 · 实际代码结构 / 设置总入口 / 备份与帮助 / 离线教程与日语基础说明 / 音调标记说明与按词高低图"
     },
     {
       "id": "help.tutorial",
@@ -2357,7 +2363,7 @@
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.9.5 · 已交付的实际结构 / 设置总入口 / 备份与帮助 / 离线教程与日语基础说明 / 九个按场景组织的教程"
+      "path": "词间 1.10.0 · 实际代码结构 / 设置总入口 / 备份与帮助 / 离线教程与日语基础说明 / 九个按场景组织的教程"
     },
     {
       "id": "help.topic1",
@@ -2376,7 +2382,7 @@
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.9.5 · 已交付的实际结构 / 设置总入口 / 备份与帮助 / 离线教程与日语基础说明 / 九个按场景组织的教程 / 第一次使用 · 三步开始"
+      "path": "词间 1.10.0 · 实际代码结构 / 设置总入口 / 备份与帮助 / 离线教程与日语基础说明 / 九个按场景组织的教程 / 第一次使用 · 三步开始"
     },
     {
       "id": "help.topic2",
@@ -2395,7 +2401,7 @@
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.9.5 · 已交付的实际结构 / 设置总入口 / 备份与帮助 / 离线教程与日语基础说明 / 九个按场景组织的教程 / 悬浮窗 · 移动、翻词与暂停"
+      "path": "词间 1.10.0 · 实际代码结构 / 设置总入口 / 备份与帮助 / 离线教程与日语基础说明 / 九个按场景组织的教程 / 悬浮窗 · 移动、翻词与暂停"
     },
     {
       "id": "help.topic3",
@@ -2414,7 +2420,7 @@
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.9.5 · 已交付的实际结构 / 设置总入口 / 备份与帮助 / 离线教程与日语基础说明 / 九个按场景组织的教程 / 浏览一遍与认真记忆怎么选"
+      "path": "词间 1.10.0 · 实际代码结构 / 设置总入口 / 备份与帮助 / 离线教程与日语基础说明 / 九个按场景组织的教程 / 浏览一遍与认真记忆怎么选"
     },
     {
       "id": "help.topic4",
@@ -2433,7 +2439,7 @@
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.9.5 · 已交付的实际结构 / 设置总入口 / 备份与帮助 / 离线教程与日语基础说明 / 九个按场景组织的教程 / 易忘词 · 为什么会进出名单"
+      "path": "词间 1.10.0 · 实际代码结构 / 设置总入口 / 备份与帮助 / 离线教程与日语基础说明 / 九个按场景组织的教程 / 易忘词 · 为什么会进出名单"
     },
     {
       "id": "help.topic5",
@@ -2452,7 +2458,7 @@
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.9.5 · 已交付的实际结构 / 设置总入口 / 备份与帮助 / 离线教程与日语基础说明 / 九个按场景组织的教程 / 搜索、词频与分组"
+      "path": "词间 1.10.0 · 实际代码结构 / 设置总入口 / 备份与帮助 / 离线教程与日语基础说明 / 九个按场景组织的教程 / 搜索、词频与分组"
     },
     {
       "id": "help.topic6",
@@ -2471,7 +2477,7 @@
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.9.5 · 已交付的实际结构 / 设置总入口 / 备份与帮助 / 离线教程与日语基础说明 / 九个按场景组织的教程 / 朗读与没有 Google Play 的手机"
+      "path": "词间 1.10.0 · 实际代码结构 / 设置总入口 / 备份与帮助 / 离线教程与日语基础说明 / 九个按场景组织的教程 / 朗读与没有 Google Play 的手机"
     },
     {
       "id": "help.topic7",
@@ -2490,7 +2496,7 @@
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.9.5 · 已交付的实际结构 / 设置总入口 / 备份与帮助 / 离线教程与日语基础说明 / 九个按场景组织的教程 / 锁屏、后台与运行状态"
+      "path": "词间 1.10.0 · 实际代码结构 / 设置总入口 / 备份与帮助 / 离线教程与日语基础说明 / 九个按场景组织的教程 / 锁屏、后台与运行状态"
     },
     {
       "id": "help.topic8",
@@ -2509,7 +2515,7 @@
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.9.5 · 已交付的实际结构 / 设置总入口 / 备份与帮助 / 离线教程与日语基础说明 / 九个按场景组织的教程 / 备份、换手机与恢复"
+      "path": "词间 1.10.0 · 实际代码结构 / 设置总入口 / 备份与帮助 / 离线教程与日语基础说明 / 九个按场景组织的教程 / 备份、换手机与恢复"
     },
     {
       "id": "help.topic9",
@@ -2528,7 +2534,7 @@
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.9.5 · 已交付的实际结构 / 设置总入口 / 备份与帮助 / 离线教程与日语基础说明 / 九个按场景组织的教程 / 外观与常见疑问"
+      "path": "词间 1.10.0 · 实际代码结构 / 设置总入口 / 备份与帮助 / 离线教程与日语基础说明 / 九个按场景组织的教程 / 外观与常见疑问"
     },
     {
       "id": "about",
@@ -2541,13 +2547,13 @@
       "sources": [
         {
           "file": "app/src/main/java/com/myles/kotobafloat/MainActivity.java",
-          "line": 463,
+          "line": 467,
           "anchor": "private void settings6()"
         }
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.9.5 · 已交付的实际结构 / 设置总入口 / 关于词间 / 版本 / 词库版本 / 更新状态 / 来源授权"
+      "path": "词间 1.10.0 · 实际代码结构 / 设置总入口 / 关于词间 / 版本 / 词库版本 / 更新状态 / 来源授权"
     },
     {
       "id": "runtime",
@@ -2566,7 +2572,7 @@
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.9.5 · 已交付的实际结构 / 跨页面的运行规则"
+      "path": "词间 1.10.0 · 实际代码结构 / 跨页面的运行规则"
     },
     {
       "id": "runtime.permissions",
@@ -2590,7 +2596,7 @@
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.9.5 · 已交付的实际结构 / 跨页面的运行规则 / 悬浮显示 / 通知 / 系统后台权限"
+      "path": "词间 1.10.0 · 实际代码结构 / 跨页面的运行规则 / 悬浮显示 / 通知 / 系统后台权限"
     },
     {
       "id": "runtime.boot",
@@ -2614,13 +2620,13 @@
         },
         {
           "file": "app/src/main/java/com/myles/kotobafloat/FloatService.java",
-          "line": 214,
+          "line": 215,
           "anchor": "private boolean prepareAudio()"
         }
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.9.5 · 已交付的实际结构 / 跨页面的运行规则 / 自动启动：先显示并暂停"
+      "path": "词间 1.10.0 · 实际代码结构 / 跨页面的运行规则 / 自动启动：先显示并暂停"
     },
     {
       "id": "runtime.rules",
@@ -2640,7 +2646,7 @@
       "sources": [
         {
           "file": "app/src/main/java/com/myles/kotobafloat/FloatService.java",
-          "line": 173,
+          "line": 174,
           "anchor": "private boolean canCycle()"
         },
         {
@@ -2651,7 +2657,7 @@
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.9.5 · 已交付的实际结构 / 跨页面的运行规则 / 自动切词的条件交集"
+      "path": "词间 1.10.0 · 实际代码结构 / 跨页面的运行规则 / 自动切词的条件交集"
     },
     {
       "id": "runtime.interrupt",
@@ -2675,7 +2681,7 @@
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.9.5 · 已交付的实际结构 / 跨页面的运行规则 / 耳机断开 / 音频抢占 / 合成失败 / 超时"
+      "path": "词间 1.10.0 · 实际代码结构 / 跨页面的运行规则 / 耳机断开 / 音频抢占 / 合成失败 / 超时"
     },
     {
       "id": "runtime.recovery",
@@ -2699,7 +2705,7 @@
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.9.5 · 已交付的实际结构 / 跨页面的运行规则 / 进程重建 / 解锁 / 旋转 / 用户停止"
+      "path": "词间 1.10.0 · 实际代码结构 / 跨页面的运行规则 / 进程重建 / 解锁 / 旋转 / 用户停止"
     },
     {
       "id": "data",
@@ -2733,7 +2739,7 @@
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.9.5 · 已交付的实际结构 / 共用数据与统计口径"
+      "path": "词间 1.10.0 · 实际代码结构 / 共用数据与统计口径"
     },
     {
       "id": "data.deck",
@@ -2757,7 +2763,7 @@
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.9.5 · 已交付的实际结构 / 共用数据与统计口径 / 内置 SQLite 词库"
+      "path": "词间 1.10.0 · 实际代码结构 / 共用数据与统计口径 / 内置 SQLite 词库"
     },
     {
       "id": "data.evidence",
@@ -2789,7 +2795,7 @@
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.9.5 · 已交付的实际结构 / 共用数据与统计口径 / 遇见、初见、正式新学和评分分别记录"
+      "path": "词间 1.10.0 · 实际代码结构 / 共用数据与统计口径 / 遇见、初见、正式新学和评分分别记录"
     },
     {
       "id": "data.marks",
@@ -2815,7 +2821,7 @@
         "mark_changes"
       ],
       "status": "existing",
-      "path": "词间 1.9.5 · 已交付的实际结构 / 共用数据与统计口径 / 收藏 / 手动熟悉及各自修改时间"
+      "path": "词间 1.10.0 · 实际代码结构 / 共用数据与统计口径 / 收藏 / 手动熟悉及各自修改时间"
     },
     {
       "id": "data.weak",
@@ -2839,7 +2845,7 @@
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.9.5 · 已交付的实际结构 / 共用数据与统计口径 / 易忘词的独立跨日证据"
+      "path": "词间 1.10.0 · 实际代码结构 / 共用数据与统计口径 / 易忘词的独立跨日证据"
     },
     {
       "id": "data.drafts",
@@ -2863,7 +2869,7 @@
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.9.5 · 已交付的实际结构 / 共用数据与统计口径 / 复习批次与原子评分"
+      "path": "词间 1.10.0 · 实际代码结构 / 共用数据与统计口径 / 复习批次与原子评分"
     },
     {
       "id": "data.scope",
@@ -2897,7 +2903,7 @@
         "currentId"
       ],
       "status": "existing",
-      "path": "词间 1.9.5 · 已交付的实际结构 / 共用数据与统计口径 / 按范围保存组号、顺序和随机位置"
+      "path": "词间 1.10.0 · 实际代码结构 / 共用数据与统计口径 / 按范围保存组号、顺序和随机位置"
     },
     {
       "id": "data.session",
@@ -2927,7 +2933,7 @@
         "session.collapsed"
       ],
       "status": "existing",
-      "path": "词间 1.9.5 · 已交付的实际结构 / 共用数据与统计口径 / 本地偏好与会话状态"
+      "path": "词间 1.10.0 · 实际代码结构 / 共用数据与统计口径 / 本地偏好与会话状态"
     },
     {
       "id": "data.update",
@@ -2948,7 +2954,7 @@
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.9.5 · 已交付的实际结构 / 共用数据与统计口径 / 安装包内词库更新及历史保留"
+      "path": "词间 1.10.0 · 实际代码结构 / 共用数据与统计口径 / 安装包内词库更新及历史保留"
     },
     {
       "id": "bounds",
@@ -2967,7 +2973,7 @@
       ],
       "keys": [],
       "status": "boundary",
-      "path": "词间 1.9.5 · 已交付的实际结构 / 当前未提供的能力"
+      "path": "词间 1.10.0 · 实际代码结构 / 当前未提供的能力"
     },
     {
       "id": "bounds.import",
@@ -2994,7 +3000,7 @@
       ],
       "keys": [],
       "status": "missing",
-      "path": "词间 1.9.5 · 已交付的实际结构 / 当前未提供的能力 / 用户导入 CSV / TSV 自建词库"
+      "path": "词间 1.10.0 · 实际代码结构 / 当前未提供的能力 / 用户导入 CSV / TSV 自建词库"
     },
     {
       "id": "bounds.grammar",
@@ -3018,7 +3024,7 @@
       ],
       "keys": [],
       "status": "missing",
-      "path": "词间 1.9.5 · 已交付的实际结构 / 当前未提供的能力 / 完整语法课程 / 活用练习"
+      "path": "词间 1.10.0 · 实际代码结构 / 当前未提供的能力 / 完整语法课程 / 活用练习"
     },
     {
       "id": "bounds.english",
@@ -3042,7 +3048,7 @@
       ],
       "keys": [],
       "status": "boundary",
-      "path": "词间 1.9.5 · 已交付的实际结构 / 当前未提供的能力 / 英文释义与英文学习词库"
+      "path": "词间 1.10.0 · 实际代码结构 / 当前未提供的能力 / 英文释义与英文学习词库"
     },
     {
       "id": "bounds.offline",
@@ -3066,7 +3072,7 @@
       ],
       "keys": [],
       "status": "boundary",
-      "path": "词间 1.9.5 · 已交付的实际结构 / 当前未提供的能力 / 内置真人录音 / 离线语音包"
+      "path": "词间 1.10.0 · 实际代码结构 / 当前未提供的能力 / 内置真人录音 / 离线语音包"
     },
     {
       "id": "bounds.sync",
@@ -3090,7 +3096,7 @@
       ],
       "keys": [],
       "status": "boundary",
-      "path": "词间 1.9.5 · 已交付的实际结构 / 当前未提供的能力 / 账号 / 自动云同步 / 社区"
+      "path": "词间 1.10.0 · 实际代码结构 / 当前未提供的能力 / 账号 / 自动云同步 / 社区"
     },
     {
       "id": "inspect",
@@ -3109,7 +3115,7 @@
       ],
       "keys": [],
       "status": "inspect",
-      "path": "词间 1.9.5 · 已交付的实际结构 / 需要一起审阅的结构问题"
+      "path": "词间 1.10.0 · 实际代码结构 / 需要一起审阅的结构问题"
     },
     {
       "id": "inspect.scope",
@@ -3136,7 +3142,7 @@
       ],
       "keys": [],
       "status": "inspect",
-      "path": "词间 1.9.5 · 已交付的实际结构 / 需要一起审阅的结构问题 / 浏览当前组与正式任务范围不一致"
+      "path": "词间 1.10.0 · 实际代码结构 / 需要一起审阅的结构问题 / 浏览当前组与正式任务范围不一致"
     },
     {
       "id": "inspect.evidence",
@@ -3168,7 +3174,7 @@
       ],
       "keys": [],
       "status": "inspect",
-      "path": "词间 1.9.5 · 已交付的实际结构 / 需要一起审阅的结构问题 / “看过一个词”在不同入口的统计不同"
+      "path": "词间 1.10.0 · 实际代码结构 / 需要一起审阅的结构问题 / “看过一个词”在不同入口的统计不同"
     },
     {
       "id": "inspect.import",
@@ -3194,7 +3200,7 @@
       ],
       "keys": [],
       "status": "inspect",
-      "path": "词间 1.9.5 · 已交付的实际结构 / 需要一起审阅的结构问题 / 历史讨论与实际交付边界需要对照"
+      "path": "词间 1.10.0 · 实际代码结构 / 需要一起审阅的结构问题 / 历史讨论与实际交付边界需要对照"
     },
     {
       "id": "plan",
@@ -3207,7 +3213,7 @@
       "sources": [],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.9.5 · 已交付的实际结构 / 1.7.5 本轮实施"
+      "path": "词间 1.10.0 · 实际代码结构 / 1.7.5 本轮实施"
     },
     {
       "id": "plan.dual",
@@ -3231,7 +3237,7 @@
       "sources": [],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.9.5 · 已交付的实际结构 / 1.7.5 本轮实施 / 两种节奏 × 两种界面"
+      "path": "词间 1.10.0 · 实际代码结构 / 1.7.5 本轮实施 / 两种节奏 × 两种界面"
     },
     {
       "id": "data.helpers",
@@ -3255,13 +3261,13 @@
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.9.5 · 已交付的实际结构 / 共用数据与统计口径 / 公共布局、基础组件与兼容实现"
+      "path": "词间 1.10.0 · 实际代码结构 / 共用数据与统计口径 / 公共布局、基础组件与兼容实现"
     },
     {
       "id": "browse.play",
       "parent": "home",
       "title": "App 内连续浏览",
-      "description": "无需悬浮权限，完整显示词头、词性、释义与例句；上一个／下一个、暂停、朗读、收藏熟悉及换组。",
+      "description": "无需悬浮权限，显示词头、词性、释义与例句；上一词／下一词按钮或词卡左右滑动、暂停、朗读、收藏熟悉及换组。Aa可就近调整App内学习字号。",
       "route": "App 内连续浏览",
       "rules": [],
       "related": [
@@ -3278,7 +3284,7 @@
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.9.5 · 已交付的实际结构 / 学习首页 / App 内连续浏览"
+      "path": "词间 1.10.0 · 实际代码结构 / 学习首页 / App 内连续浏览"
     },
     {
       "id": "review.overlay",
@@ -3302,7 +3308,7 @@
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.9.5 · 已交付的实际结构 / App 内回忆与复习 / 悬浮窗认真记忆"
+      "path": "词间 1.10.0 · 实际代码结构 / App 内回忆与复习 / 悬浮窗认真记忆"
     },
     {
       "id": "review.batch",
@@ -3330,7 +3336,7 @@
         },
         {
           "file": "app/src/main/java/com/myles/kotobafloat/MainActivity.java",
-          "line": 627,
+          "line": 631,
           "anchor": "private void batchDialog()"
         }
       ],
@@ -3338,7 +3344,7 @@
         "reviewBatch"
       ],
       "status": "existing",
-      "path": "词间 1.9.5 · 已交付的实际结构 / App 内回忆与复习 / 每批词数"
+      "path": "词间 1.10.0 · 实际代码结构 / App 内回忆与复习 / 每批词数"
     },
     {
       "id": "review.quiz",
@@ -3365,7 +3371,7 @@
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.9.5 · 已交付的实际结构 / App 内回忆与复习 / 四选一识义练习"
+      "path": "词间 1.10.0 · 实际代码结构 / App 内回忆与复习 / 四选一识义练习"
     },
     {
       "id": "speech.recall",
@@ -3386,7 +3392,7 @@
         "reviewAutoSpeak"
       ],
       "status": "existing",
-      "path": "词间 1.9.5 · 已交付的实际结构 / 设置总入口 / 发音 / 复习自动朗读"
+      "path": "词间 1.10.0 · 实际代码结构 / 设置总入口 / 语音与朗读 / 复习自动朗读"
     },
     {
       "id": "runtime.surface",
@@ -3410,7 +3416,7 @@
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.9.5 · 已交付的实际结构 / 跨页面的运行规则 / 交互学习界面互斥与状态更新"
+      "path": "词间 1.10.0 · 实际代码结构 / 跨页面的运行规则 / 交互学习界面互斥与状态更新"
     },
     {
       "id": "settings.language",
@@ -3440,7 +3446,7 @@
         "uiLanguage"
       ],
       "status": "existing",
-      "path": "词间 1.9.5 · 已交付的实际结构 / 设置总入口 / 界面语言"
+      "path": "词间 1.10.0 · 实际代码结构 / 设置总入口 / 界面语言"
     },
     {
       "id": "home.tools",
@@ -3459,7 +3465,7 @@
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.9.5 · 已交付的实际结构 / 学习首页 / 学习工具折叠区"
+      "path": "词间 1.10.0 · 实际代码结构 / 学习首页 / 学习工具折叠区"
     },
     {
       "id": "review.sections",
@@ -3472,13 +3478,13 @@
       "sources": [
         {
           "file": "app/src/main/java/com/myles/kotobafloat/MainActivity.java",
-          "line": 609,
+          "line": 613,
           "anchor": "private void reviewPage()"
         }
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.9.5 · 已交付的实际结构 / App 内回忆与复习 / 复习页面分层"
+      "path": "词间 1.10.0 · 实际代码结构 / App 内回忆与复习 / 复习页面分层"
     },
     {
       "id": "browse.timer",
@@ -3497,7 +3503,7 @@
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.9.5 · 已交付的实际结构 / 学习首页 / App 内连续浏览 / 倒计时与内容卡片"
+      "path": "词间 1.10.0 · 实际代码结构 / 学习首页 / App 内连续浏览 / 倒计时与内容卡片"
     },
     {
       "id": "runtime.loading",
@@ -3510,13 +3516,13 @@
       "sources": [
         {
           "file": "app/src/main/java/com/myles/kotobafloat/FloatService.java",
-          "line": 177,
+          "line": 178,
           "anchor": "private void reload(String preferredId,boolean manualTransition)"
         }
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.9.5 · 已交付的实际结构 / 跨页面的运行规则 / 异步加载取消与重试"
+      "path": "词间 1.10.0 · 实际代码结构 / 跨页面的运行规则 / 异步加载取消与重试"
     },
     {
       "id": "data.markhistory",
@@ -3535,7 +3541,7 @@
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.9.5 · 已交付的实际结构 / 共用数据与统计口径 / 短期连续撤销历史"
+      "path": "词间 1.10.0 · 实际代码结构 / 共用数据与统计口径 / 短期连续撤销历史"
     },
     {
       "rules": [
@@ -3562,7 +3568,7 @@
           "anchor": "final class ReviewGuide"
         }
       ],
-      "path": "词间 1.9.5 · 已交付的实际结构 / App 内回忆与复习 / 复习怎么用？"
+      "path": "词间 1.10.0 · 实际代码结构 / App 内回忆与复习 / 复习怎么用？"
     },
     {
       "rules": [
@@ -3579,16 +3585,115 @@
       "sources": [
         {
           "file": "app/src/main/java/com/myles/kotobafloat/MainActivity.java",
-          "line": 729,
+          "line": 733,
           "anchor": "private void prepareLanguagePrompt()"
         },
         {
           "file": "app/src/main/java/com/myles/kotobafloat/MainActivity.java",
-          "line": 734,
+          "line": 738,
           "anchor": "private void showLanguagePrompt()"
         }
       ],
-      "path": "词间 1.9.5 · 已交付的实际结构 / 设置总入口 / 界面语言 / 新用户首次选择语言"
+      "path": "词间 1.10.0 · 实际代码结构 / 设置总入口 / 界面语言 / 新用户首次选择语言"
+    },
+    {
+      "id": "settings.appfont",
+      "parent": "settings.appearance",
+      "title": "App 内学习字号",
+      "description": "词头、读音与词性、释义分别调整；影响App浏览、正式回忆、四选一及词库内容，与悬浮窗字号独立保存。",
+      "route": "设置 → 语言与外观；App浏览／回忆顶部 Aa",
+      "rules": [
+        "继续尊重系统字号；其他页面保留原有排版层级。",
+        "词头18～48、读音10～28、释义12～32；标准34／15／21。",
+        "实时预览不写学习记录；取消不保存，应用时一起提交三项。"
+      ],
+      "related": [
+        "browse.play",
+        "review.card",
+        "library.detail",
+        "settings.font"
+      ],
+      "sources": [
+        {
+          "file": "app/src/main/java/com/myles/kotobafloat/FontPicker.java",
+          "line": 10,
+          "anchor": "static void showApp"
+        },
+        {
+          "file": "app/src/main/java/com/myles/kotobafloat/Prefs.java",
+          "line": 65,
+          "anchor": "int appWordSize()"
+        }
+      ],
+      "keys": [
+        "appWordSize",
+        "appReadingSize",
+        "appMeaningSize"
+      ],
+      "status": "existing",
+      "path": "词间 1.10.0 · 实际代码结构 / 设置总入口 / 语言与外观 / App 内学习字号"
+    },
+    {
+      "id": "settings.detailHeight",
+      "parent": "settings.window",
+      "title": "详情内容高度",
+      "description": "调整可滚动详情区的高度；实际窗口还会包含固定词头与操作区，并受屏幕可用空间限制。",
+      "route": "设置 → 悬浮窗 → 详情内容高度",
+      "rules": [
+        "默认180dp，100～420dp，步长10dp。",
+        "短屏继续用统一滚动容器，顶部及操作区保持可达。"
+      ],
+      "related": [
+        "float.detail"
+      ],
+      "sources": [
+        {
+          "file": "app/src/main/java/com/myles/kotobafloat/Prefs.java",
+          "line": 69,
+          "anchor": "int detailHeight()"
+        },
+        {
+          "file": "app/src/main/java/com/myles/kotobafloat/FloatService.java",
+          "line": 371,
+          "anchor": "d(prefs.detailHeight())"
+        }
+      ],
+      "keys": [
+        "detailHeight"
+      ],
+      "status": "existing",
+      "path": "词间 1.10.0 · 实际代码结构 / 设置总入口 / 悬浮窗 / 详情内容高度"
+    },
+    {
+      "id": "browse.swipe",
+      "parent": "browse.play",
+      "title": "词卡左右滑动翻词",
+      "description": "左滑下一词、右滑上一词，复用按钮的浏览队列与手动翻词语音设置。",
+      "route": "App 内连续浏览 → 单词卡片",
+      "rules": [
+        "词头、非按钮文字和空白都能起手。",
+        "纵向滚动、小幅抖动、多指与取消不翻词；开始纵滑后不抢成横滑。",
+        "正式回忆仍需揭晓和评分，不用滑动绕过。"
+      ],
+      "related": [
+        "browse.timer",
+        "speech.flip"
+      ],
+      "sources": [
+        {
+          "file": "app/src/main/java/com/myles/kotobafloat/SwipeCardLayout.java",
+          "line": 9,
+          "anchor": "class SwipeCardLayout"
+        },
+        {
+          "file": "app/src/main/java/com/myles/kotobafloat/BrowseActivity.java",
+          "line": 69,
+          "anchor": "new SwipeCardLayout"
+        }
+      ],
+      "keys": [],
+      "status": "existing",
+      "path": "词间 1.10.0 · 实际代码结构 / 学习首页 / App 内连续浏览 / 词卡左右滑动翻词"
     }
   ],
   "edges": [

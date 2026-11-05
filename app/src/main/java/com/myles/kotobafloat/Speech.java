@@ -23,7 +23,7 @@ final class Speech {
     private final Handler handler=new Handler(Looper.getMainLooper());
     private final ArrayList<Engine> candidates=new ArrayList<>();
     private TextToSpeech tts;
-    private boolean ready,checking,closed,pendingExplicit,speaking,sequenceExplicit;
+    private boolean ready,checking,closed,pendingExplicit,speaking,sequenceExplicit,exampleSequence;
     private long serial;
     private String activeUtterance="";
     private List<SpeechPlan.Segment> activePlan=Collections.emptyList();
@@ -106,9 +106,10 @@ final class Speech {
             @Override public void onStop(String id,boolean interrupted){handler.post(()->{if(id!=null&&id.equals(activeUtterance))stop();});}
         });
         ready=true;checking=false;notifyChanged();
-        if(pending!=null){List<SpeechPlan.Segment> texts=pending;boolean explicit=pendingExplicit;pending=null;pendingExplicit=false;sequence(texts,explicit);}
+        if(pending!=null){List<SpeechPlan.Segment> texts=pending;boolean explicit=pendingExplicit,example=exampleSequence;pending=null;pendingExplicit=false;sequence(texts,explicit,example);}
     }
     boolean isSpeakingSequence(){return speaking||pending!=null;}
+    boolean isSpeakingExample(){return exampleSequence&&isSpeakingSequence();}
     void speak(String text,boolean explicit){sequence(Collections.singletonList(new SpeechPlan.Segment(text,"ja")),explicit);}
     void speakWord(Word word,boolean explicit){
         Prefs prefs=new Prefs(context);
@@ -117,11 +118,12 @@ final class Speech {
     }
     void speakExample(Word word,boolean explicit){
         Prefs prefs=new Prefs(context);
-        sequence(SpeechPlan.bilingual(word.example,word.exampleMeaning,"","",prefs.exampleRepeats(),1,false,prefs.readChinese()),explicit);
+        sequence(SpeechPlan.bilingual(word.example,word.exampleMeaning,"","",prefs.exampleRepeats(),1,false,prefs.readChinese()),explicit,true);
     }
-    private void sequence(List<SpeechPlan.Segment> texts,boolean explicit){
+    private void sequence(List<SpeechPlan.Segment> texts,boolean explicit){sequence(texts,explicit,false);}
+    private void sequence(List<SpeechPlan.Segment> texts,boolean explicit,boolean example){
         if(closed||texts.isEmpty())return;
-        stop();
+        stop();exampleSequence=example;
         if(ready&&tts!=null){
             if(!audio.acquire())return;
             speaking=true;sequenceExplicit=explicit;activePlan=new ArrayList<>(texts);segment=0;
@@ -170,6 +172,6 @@ final class Speech {
     }
     private void help(){if(unavailable!=null)unavailable.run();}
     private void notifyChanged(){if(changed!=null)changed.run();}
-    void stop(){audio.release();serial++;speaking=false;activeUtterance="";activePlan=Collections.emptyList();segment=0;pending=null;pendingExplicit=false;if(tts!=null)tts.stop();}
+    void stop(){audio.release();serial++;speaking=false;exampleSequence=false;activeUtterance="";activePlan=Collections.emptyList();segment=0;pending=null;pendingExplicit=false;if(tts!=null)tts.stop();}
     void close(){closed=true;generation++;handler.removeCallbacksAndMessages(null);stop();if(tts!=null)tts.shutdown();audio.close();}
 }
