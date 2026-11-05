@@ -10,13 +10,7 @@ Developed with assistance from **GPT-6.1 Sol**, with **25+ hours of effort over 
 
 **Important language scope:** menus and help support Simplified Chinese, English and Japanese. Dictionary meanings and example translations remain Chinese. Selecting English or Japanese does not translate the dictionary.
 
-## See Cijian in under a minute
-
-[![Floating-study walkthrough](docs/demo/preview.gif)](https://github.com/Myles-Li/Cijian/releases/download/v1.10.0/cijian-demo-1.10.0.mp4)
-
-[Watch or download the full MP4 walkthrough (under one minute)](https://github.com/Myles-Li/Cijian/releases/download/v1.10.0/cijian-demo-1.10.0.mp4). See cross-app floating study, movement and locking, the small bubble, examples and favourites, then in-app browsing and active recall. Recorded from the real app on an Android emulator using sample data. Silent video with English and Chinese captions.
-
-You can view the demonstration on an iPhone. This release is for Android; the iOS port is deferred.
+Currently Android only; the iOS port remains deferred.
 
 ## Download
 
@@ -52,7 +46,7 @@ Detailed guides and the map are currently in Chinese. Download the HTML and open
 
 | Version | Main changes |
 |---|---|
-| 1.10.0 | Independent in-app study text sizes, swipe navigation, header position lock, compact example action, adjustable detail height and a short walkthrough |
+| 1.10.0 | Independent in-app study text sizes, swipe navigation, header position lock, compact example action and adjustable detail height |
 | 1.9.5 | Detail drag/scroll handling, settings organisation and spacing, default-colour grid, equal study entry points, smoother mode changes and refresh recovery across key changes |
 | 1.9.0 | Cijian English display name, first-run language selection, default monochrome theme, custom batch size 1–50 and detailed review help |
 | 1.8.0 | Three UI languages, layered study/review navigation, sequential undo, rapid-operation and notification fixes |
