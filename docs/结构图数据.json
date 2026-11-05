@@ -1,27 +1,27 @@
 {
-  "baseline": "1.10.0",
-  "build": 15,
+  "baseline": "1.10.1",
+  "build": 16,
   "nextVersion": "待定",
   "updated": "2026-11-05",
   "nodes": [
     {
       "id": "app",
       "parent": null,
-      "title": "词间 1.10.0 · 实际代码结构",
-      "description": "本地日语学习，中文／英文／日文界面，词库为日语及中文。1.10.0加入App内独立字号、卡片滑动、顶部位置锁、紧凑例句操作和详情高度。实现能力与验收结论分开，具体见版本验证文档。",
+      "title": "词间 1.10.1 · 实际代码结构",
+      "description": "本地日语学习，三语界面、日语及中文词库。1.10.1完整更换为Cijian安装标识；与旧应用并存，需主动导出／导入JSON迁移记录。未完成批次重新安排，已提交评分保留。具体以迁移说明与验证记录为准。",
       "route": "",
       "rules": [],
       "related": [],
       "sources": [
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/MainActivity.java",
+          "file": "app/src/main/java/com/myles/cijian/MainActivity.java",
           "line": 18,
           "anchor": "MainActivity"
         }
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.10.0 · 实际代码结构"
+      "path": "词间 1.10.1 · 实际代码结构"
     },
     {
       "id": "home",
@@ -33,14 +33,14 @@
       "related": [],
       "sources": [
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/MainActivity.java",
+          "file": "app/src/main/java/com/myles/cijian/MainActivity.java",
           "line": 122,
           "anchor": "private void home()"
         }
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.10.0 · 实际代码结构 / 学习首页"
+      "path": "词间 1.10.1 · 实际代码结构 / 学习首页"
     },
     {
       "id": "home.styles",
@@ -61,12 +61,12 @@
       ],
       "sources": [
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/Prefs.java",
+          "file": "app/src/main/java/com/myles/cijian/Prefs.java",
           "line": 6,
           "anchor": "Prefs"
         },
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/MainActivity.java",
+          "file": "app/src/main/java/com/myles/cijian/MainActivity.java",
           "line": 122,
           "anchor": "private void home()"
         }
@@ -75,7 +75,7 @@
         "learningStyle"
       ],
       "status": "existing",
-      "path": "词间 1.10.0 · 实际代码结构 / 学习首页 / 浏览一遍 / 认真记忆"
+      "path": "词间 1.10.1 · 实际代码结构 / 学习首页 / 浏览一遍 / 认真记忆"
     },
     {
       "id": "home.stats",
@@ -91,19 +91,19 @@
       ],
       "sources": [
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/MainActivity.java",
+          "file": "app/src/main/java/com/myles/cijian/MainActivity.java",
           "line": 562,
           "anchor": "private void refreshHome"
         },
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/WordStore.java",
+          "file": "app/src/main/java/com/myles/cijian/WordStore.java",
           "line": 125,
           "anchor": "HomeProgress"
         }
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.10.0 · 实际代码结构 / 学习首页 / 全库今日遇见 / 手动熟悉 / 收藏"
+      "path": "词间 1.10.1 · 实际代码结构 / 学习首页 / 全库今日遇见 / 手动熟悉 / 收藏"
     },
     {
       "id": "home.progress",
@@ -123,12 +123,12 @@
       ],
       "sources": [
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/FirstPass.java",
+          "file": "app/src/main/java/com/myles/cijian/FirstPass.java",
           "line": 4,
           "anchor": "FirstPass"
         },
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/MainActivity.java",
+          "file": "app/src/main/java/com/myles/cijian/MainActivity.java",
           "line": 573,
           "anchor": "firstPassCard(){"
         }
@@ -138,7 +138,7 @@
         "showFirstPass"
       ],
       "status": "existing",
-      "path": "词间 1.10.0 · 实际代码结构 / 学习首页 / 浏览进度、今日初见和预计天数"
+      "path": "词间 1.10.1 · 实际代码结构 / 学习首页 / 浏览进度、今日初见和预计天数"
     },
     {
       "id": "home.overlay",
@@ -154,14 +154,14 @@
       ],
       "sources": [
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/MainActivity.java",
+          "file": "app/src/main/java/com/myles/cijian/MainActivity.java",
           "line": 144,
           "anchor": "private void beginOverlay"
         }
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.10.0 · 实际代码结构 / 学习首页 / 开启 / 关闭悬浮学习"
+      "path": "词间 1.10.1 · 实际代码结构 / 学习首页 / 开启 / 关闭悬浮学习"
     },
     {
       "id": "home.preview",
@@ -176,14 +176,14 @@
       ],
       "sources": [
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/MainActivity.java",
+          "file": "app/src/main/java/com/myles/cijian/MainActivity.java",
           "line": 134,
           "anchor": "private void overlayPreview()"
         }
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.10.0 · 实际代码结构 / 学习首页 / 悬浮窗外观预览"
+      "path": "词间 1.10.1 · 实际代码结构 / 学习首页 / 悬浮窗外观预览"
     },
     {
       "id": "home.shortcuts",
@@ -200,14 +200,14 @@
       ],
       "sources": [
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/MainActivity.java",
+          "file": "app/src/main/java/com/myles/cijian/MainActivity.java",
           "line": 122,
           "anchor": "private void home()"
         }
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.10.0 · 实际代码结构 / 学习首页 / 范围、换组、复习、发音和五十音快捷入口"
+      "path": "词间 1.10.1 · 实际代码结构 / 学习首页 / 范围、换组、复习、发音和五十音快捷入口"
     },
     {
       "id": "library",
@@ -219,14 +219,14 @@
       "related": [],
       "sources": [
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/MainActivity.java",
+          "file": "app/src/main/java/com/myles/cijian/MainActivity.java",
           "line": 169,
           "anchor": "private void library()"
         }
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.10.0 · 实际代码结构 / 词库与单词详情"
+      "path": "词间 1.10.1 · 实际代码结构 / 词库与单词详情"
     },
     {
       "id": "library.search",
@@ -238,19 +238,19 @@
       "related": [],
       "sources": [
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/TextSearch.java",
+          "file": "app/src/main/java/com/myles/cijian/TextSearch.java",
           "line": 7,
           "anchor": "TextSearch"
         },
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/MainActivity.java",
+          "file": "app/src/main/java/com/myles/cijian/MainActivity.java",
           "line": 215,
           "anchor": "private void loadLibrary"
         }
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.10.0 · 实际代码结构 / 词库与单词详情 / 日语 / 假名 / 罗马字 / 中文搜索"
+      "path": "词间 1.10.1 · 实际代码结构 / 词库与单词详情 / 日语 / 假名 / 罗马字 / 中文搜索"
     },
     {
       "id": "library.filters",
@@ -265,14 +265,14 @@
       ],
       "sources": [
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/MainActivity.java",
+          "file": "app/src/main/java/com/myles/cijian/MainActivity.java",
           "line": 169,
           "anchor": "private void library()"
         }
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.10.0 · 实际代码结构 / 词库与单词详情 / 词库自己的等级、词频和来源筛选"
+      "path": "词间 1.10.1 · 实际代码结构 / 词库与单词详情 / 词库自己的等级、词频和来源筛选"
     },
     {
       "id": "library.detail",
@@ -292,14 +292,14 @@
       ],
       "sources": [
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/MainActivity.java",
+          "file": "app/src/main/java/com/myles/cijian/MainActivity.java",
           "line": 234,
           "anchor": "private void wordDialog"
         }
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.10.0 · 实际代码结构 / 词库与单词详情 / 单词详情"
+      "path": "词间 1.10.1 · 实际代码结构 / 词库与单词详情 / 单词详情"
     },
     {
       "id": "library.marks",
@@ -314,14 +314,14 @@
       ],
       "sources": [
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/MainActivity.java",
+          "file": "app/src/main/java/com/myles/cijian/MainActivity.java",
           "line": 234,
           "anchor": "private void wordDialog"
         }
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.10.0 · 实际代码结构 / 词库与单词详情 / 收藏 / 熟悉 / 移回学习列表 / 撤销"
+      "path": "词间 1.10.1 · 实际代码结构 / 词库与单词详情 / 收藏 / 熟悉 / 移回学习列表 / 撤销"
     },
     {
       "id": "review",
@@ -333,19 +333,19 @@
       "related": [],
       "sources": [
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/ReviewActivity.java",
+          "file": "app/src/main/java/com/myles/cijian/ReviewActivity.java",
           "line": 10,
           "anchor": "ReviewActivity"
         },
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/MainActivity.java",
+          "file": "app/src/main/java/com/myles/cijian/MainActivity.java",
           "line": 613,
           "anchor": "private void reviewPage()"
         }
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.10.0 · 实际代码结构 / App 内回忆与复习"
+      "path": "词间 1.10.1 · 实际代码结构 / App 内回忆与复习"
     },
     {
       "id": "review.task",
@@ -365,12 +365,12 @@
       ],
       "sources": [
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/StudyTasks.java",
+          "file": "app/src/main/java/com/myles/cijian/StudyTasks.java",
           "line": 5,
           "anchor": "StudyTasks"
         },
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/ReviewFlow.java",
+          "file": "app/src/main/java/com/myles/cijian/ReviewFlow.java",
           "line": 51,
           "anchor": "private void load()"
         }
@@ -379,7 +379,7 @@
         "focusNewTarget"
       ],
       "status": "existing",
-      "path": "词间 1.10.0 · 实际代码结构 / App 内回忆与复习 / 每日记忆任务"
+      "path": "词间 1.10.1 · 实际代码结构 / App 内回忆与复习 / 每日记忆任务"
     },
     {
       "id": "review.scope",
@@ -399,19 +399,19 @@
       ],
       "sources": [
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/StudySession.java",
+          "file": "app/src/main/java/com/myles/cijian/StudySession.java",
           "line": 40,
           "anchor": "static List<Word> range"
         },
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/ReviewFlow.java",
+          "file": "app/src/main/java/com/myles/cijian/ReviewFlow.java",
           "line": 9,
           "anchor": "class ReviewFlow"
         }
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.10.0 · 实际代码结构 / App 内回忆与复习 / 正式任务使用的范围"
+      "path": "词间 1.10.1 · 实际代码结构 / App 内回忆与复习 / 正式任务使用的范围"
     },
     {
       "id": "review.light",
@@ -423,19 +423,19 @@
       "related": [],
       "sources": [
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/MainActivity.java",
+          "file": "app/src/main/java/com/myles/cijian/MainActivity.java",
           "line": 601,
           "anchor": "taskCard(boolean full)"
         },
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/ReviewFlow.java",
+          "file": "app/src/main/java/com/myles/cijian/ReviewFlow.java",
           "line": 51,
           "anchor": "private void load()"
         }
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.10.0 · 实际代码结构 / App 内回忆与复习 / 先复习 10 个"
+      "path": "词间 1.10.1 · 实际代码结构 / App 内回忆与复习 / 先复习 10 个"
     },
     {
       "id": "review.due",
@@ -447,19 +447,19 @@
       "related": [],
       "sources": [
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/MainActivity.java",
+          "file": "app/src/main/java/com/myles/cijian/MainActivity.java",
           "line": 601,
           "anchor": "taskCard(boolean full)"
         },
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/StudyTasks.java",
+          "file": "app/src/main/java/com/myles/cijian/StudyTasks.java",
           "line": 5,
           "anchor": "StudyTasks"
         }
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.10.0 · 实际代码结构 / App 内回忆与复习 / 只复习到期词"
+      "path": "词间 1.10.1 · 实际代码结构 / App 内回忆与复习 / 只复习到期词"
     },
     {
       "id": "review.practice",
@@ -473,19 +473,19 @@
       ],
       "sources": [
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/WordStore.java",
+          "file": "app/src/main/java/com/myles/cijian/WordStore.java",
           "line": 183,
           "anchor": "practice("
         },
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/WordStore.java",
+          "file": "app/src/main/java/com/myles/cijian/WordStore.java",
           "line": 166,
           "anchor": "synchronized ReviewDraft saveDraft"
         }
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.10.0 · 实际代码结构 / App 内回忆与复习 / 自由练习"
+      "path": "词间 1.10.1 · 实际代码结构 / App 内回忆与复习 / 自由练习"
     },
     {
       "id": "review.weak",
@@ -500,19 +500,19 @@
       "related": [],
       "sources": [
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/WeakWords.java",
+          "file": "app/src/main/java/com/myles/cijian/WeakWords.java",
           "line": 6,
           "anchor": "WeakWords"
         },
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/MainActivity.java",
+          "file": "app/src/main/java/com/myles/cijian/MainActivity.java",
           "line": 609,
           "anchor": "private void weakCard"
         }
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.10.0 · 实际代码结构 / App 内回忆与复习 / 易忘词练习"
+      "path": "词间 1.10.1 · 实际代码结构 / App 内回忆与复习 / 易忘词练习"
     },
     {
       "id": "review.direction",
@@ -527,7 +527,7 @@
       "related": [],
       "sources": [
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/ReviewFlow.java",
+          "file": "app/src/main/java/com/myles/cijian/ReviewFlow.java",
           "line": 9,
           "anchor": "class ReviewFlow"
         }
@@ -536,7 +536,7 @@
         "reverseRecall"
       ],
       "status": "existing",
-      "path": "词间 1.10.0 · 实际代码结构 / App 内回忆与复习 / 看日语想中文 / 看中文想日语"
+      "path": "词间 1.10.1 · 实际代码结构 / App 内回忆与复习 / 看日语想中文 / 看中文想日语"
     },
     {
       "id": "review.card",
@@ -550,14 +550,14 @@
       ],
       "sources": [
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/ReviewFlow.java",
+          "file": "app/src/main/java/com/myles/cijian/ReviewFlow.java",
           "line": 73,
           "anchor": "private void show("
         }
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.10.0 · 实际代码结构 / App 内回忆与复习 / 回忆 → 揭晓 → 评分 / 朗读 / 跳过"
+      "path": "词间 1.10.1 · 实际代码结构 / App 内回忆与复习 / 回忆 → 揭晓 → 评分 / 朗读 / 跳过"
     },
     {
       "id": "review.ratings",
@@ -573,24 +573,24 @@
       "related": [],
       "sources": [
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/ReviewPlan.java",
+          "file": "app/src/main/java/com/myles/cijian/ReviewPlan.java",
           "line": 4,
           "anchor": "ReviewPlan"
         },
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/ReviewSession.java",
+          "file": "app/src/main/java/com/myles/cijian/ReviewSession.java",
           "line": 5,
           "anchor": "ReviewSession"
         },
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/WordStore.java",
+          "file": "app/src/main/java/com/myles/cijian/WordStore.java",
           "line": 194,
           "anchor": "synchronized void rate("
         }
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.10.0 · 实际代码结构 / App 内回忆与复习 / 没想起 / 模糊 / 记得"
+      "path": "词间 1.10.1 · 实际代码结构 / App 内回忆与复习 / 没想起 / 模糊 / 记得"
     },
     {
       "id": "review.resume",
@@ -609,19 +609,19 @@
       ],
       "sources": [
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/ReviewDraft.java",
+          "file": "app/src/main/java/com/myles/cijian/ReviewDraft.java",
           "line": 7,
           "anchor": "ReviewDraft"
         },
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/ReviewFlow.java",
+          "file": "app/src/main/java/com/myles/cijian/ReviewFlow.java",
           "line": 9,
           "anchor": "class ReviewFlow"
         }
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.10.0 · 实际代码结构 / App 内回忆与复习 / 退出、旋转、继续上轮、放弃重排"
+      "path": "词间 1.10.1 · 实际代码结构 / App 内回忆与复习 / 退出、旋转、继续上轮、放弃重排"
     },
     {
       "id": "review.results",
@@ -633,14 +633,14 @@
       "related": [],
       "sources": [
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/ReviewFlow.java",
+          "file": "app/src/main/java/com/myles/cijian/ReviewFlow.java",
           "line": 98,
           "anchor": "private void complete()"
         }
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.10.0 · 实际代码结构 / App 内回忆与复习 / 本轮结果 / 下一轮 / 剩余任务"
+      "path": "词间 1.10.1 · 实际代码结构 / App 内回忆与复习 / 本轮结果 / 下一轮 / 剩余任务"
     },
     {
       "id": "review.evidence",
@@ -654,19 +654,19 @@
       ],
       "sources": [
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/StudyTasks.java",
+          "file": "app/src/main/java/com/myles/cijian/StudyTasks.java",
           "line": 5,
           "anchor": "StudyTasks"
         },
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/MainActivity.java",
+          "file": "app/src/main/java/com/myles/cijian/MainActivity.java",
           "line": 594,
           "anchor": "private void evidenceCard()"
         }
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.10.0 · 实际代码结构 / App 内回忆与复习 / 已接触 / 手动熟悉 / 间隔回忆较稳"
+      "path": "词间 1.10.1 · 实际代码结构 / App 内回忆与复习 / 已接触 / 手动熟悉 / 间隔回忆较稳"
     },
     {
       "id": "review.week",
@@ -680,14 +680,14 @@
       "related": [],
       "sources": [
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/MainActivity.java",
+          "file": "app/src/main/java/com/myles/cijian/MainActivity.java",
           "line": 613,
           "anchor": "private void reviewPage()"
         }
       ],
       "keys": [],
       "status": "boundary",
-      "path": "词间 1.10.0 · 实际代码结构 / App 内回忆与复习 / 七日回顾 · 1.9.5已移除"
+      "path": "词间 1.10.1 · 实际代码结构 / App 内回忆与复习 / 七日回顾 · 1.9.5已移除"
     },
     {
       "id": "float",
@@ -701,19 +701,19 @@
       ],
       "sources": [
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/FloatService.java",
+          "file": "app/src/main/java/com/myles/cijian/FloatService.java",
           "line": 19,
           "anchor": "FloatService"
         },
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/DragLayout.java",
+          "file": "app/src/main/java/com/myles/cijian/DragLayout.java",
           "line": 11,
           "anchor": "DragLayout"
         }
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.10.0 · 实际代码结构 / 悬浮窗与悬浮球"
+      "path": "词间 1.10.1 · 实际代码结构 / 悬浮窗与悬浮球"
     },
     {
       "id": "float.compact",
@@ -725,14 +725,14 @@
       "related": [],
       "sources": [
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/FloatService.java",
+          "file": "app/src/main/java/com/myles/cijian/FloatService.java",
           "line": 276,
           "anchor": "private void rebuild()"
         }
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.10.0 · 实际代码结构 / 悬浮窗与悬浮球 / 简洁卡片"
+      "path": "词间 1.10.1 · 实际代码结构 / 悬浮窗与悬浮球 / 简洁卡片"
     },
     {
       "id": "float.navigation",
@@ -748,19 +748,19 @@
       ],
       "sources": [
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/FloatService.java",
+          "file": "app/src/main/java/com/myles/cijian/FloatService.java",
           "line": 231,
           "anchor": "private void advance("
         },
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/FloatService.java",
+          "file": "app/src/main/java/com/myles/cijian/FloatService.java",
           "line": 246,
           "anchor": "private void togglePause()"
         }
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.10.0 · 实际代码结构 / 悬浮窗与悬浮球 / 上一词 / 下一词 / 暂停 / 继续"
+      "path": "词间 1.10.1 · 实际代码结构 / 悬浮窗与悬浮球 / 上一词 / 下一词 / 暂停 / 继续"
     },
     {
       "id": "float.marks",
@@ -778,19 +778,19 @@
       ],
       "sources": [
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/FloatService.java",
+          "file": "app/src/main/java/com/myles/cijian/FloatService.java",
           "line": 451,
           "anchor": "private void markFamiliar()"
         },
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/FloatService.java",
+          "file": "app/src/main/java/com/myles/cijian/FloatService.java",
           "line": 444,
           "anchor": "private void undoMark()"
         }
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.10.0 · 实际代码结构 / 悬浮窗与悬浮球 / 收藏 / 熟悉并切词 / 取消 / 撤销"
+      "path": "词间 1.10.1 · 实际代码结构 / 悬浮窗与悬浮球 / 收藏 / 熟悉并切词 / 取消 / 撤销"
     },
     {
       "id": "float.detail",
@@ -810,14 +810,14 @@
       ],
       "sources": [
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/FloatService.java",
+          "file": "app/src/main/java/com/myles/cijian/FloatService.java",
           "line": 356,
           "anchor": "if(detail) {"
         }
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.10.0 · 实际代码结构 / 悬浮窗与悬浮球 / 详情与返回 App"
+      "path": "词间 1.10.1 · 实际代码结构 / 悬浮窗与悬浮球 / 详情与返回 App"
     },
     {
       "id": "float.ball",
@@ -832,14 +832,14 @@
       ],
       "sources": [
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/FloatService.java",
+          "file": "app/src/main/java/com/myles/cijian/FloatService.java",
           "line": 253,
           "anchor": "private void collapse()"
         }
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.10.0 · 实际代码结构 / 悬浮窗与悬浮球 / 收成悬浮球 / 点球展开"
+      "path": "词间 1.10.1 · 实际代码结构 / 悬浮窗与悬浮球 / 收成悬浮球 / 点球展开"
     },
     {
       "id": "float.drag",
@@ -854,19 +854,19 @@
       ],
       "sources": [
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/DragLayout.java",
+          "file": "app/src/main/java/com/myles/cijian/DragLayout.java",
           "line": 11,
           "anchor": "DragLayout"
         },
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/FloatService.java",
+          "file": "app/src/main/java/com/myles/cijian/FloatService.java",
           "line": 483,
           "anchor": "private void clampCoordinates"
         }
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.10.0 · 实际代码结构 / 悬浮窗与悬浮球 / 拖动 / 限定屏幕内 / 自动贴边 / 锁定"
+      "path": "词间 1.10.1 · 实际代码结构 / 悬浮窗与悬浮球 / 拖动 / 限定屏幕内 / 自动贴边 / 锁定"
     },
     {
       "id": "float.empty",
@@ -878,14 +878,14 @@
       "related": [],
       "sources": [
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/FloatService.java",
+          "file": "app/src/main/java/com/myles/cijian/FloatService.java",
           "line": 33,
           "anchor": "words.isEmpty()"
         }
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.10.0 · 实际代码结构 / 悬浮窗与悬浮球 / 空范围、空组和加载失败"
+      "path": "词间 1.10.1 · 实际代码结构 / 悬浮窗与悬浮球 / 空范围、空组和加载失败"
     },
     {
       "id": "float.notification",
@@ -900,14 +900,14 @@
       ],
       "sources": [
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/FloatService.java",
+          "file": "app/src/main/java/com/myles/cijian/FloatService.java",
           "line": 159,
           "anchor": "private Notification notification()"
         }
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.10.0 · 实际代码结构 / 悬浮窗与悬浮球 / 持续通知：返回 App / 暂停继续 / 关闭"
+      "path": "词间 1.10.1 · 实际代码结构 / 悬浮窗与悬浮球 / 持续通知：返回 App / 暂停继续 / 关闭"
     },
     {
       "id": "settings",
@@ -919,14 +919,14 @@
       "related": [],
       "sources": [
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/SettingIndex.java",
+          "file": "app/src/main/java/com/myles/cijian/SettingIndex.java",
           "line": 3,
           "anchor": "SettingIndex"
         }
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.10.0 · 实际代码结构 / 设置总入口"
+      "path": "词间 1.10.1 · 实际代码结构 / 设置总入口"
     },
     {
       "id": "settings.search",
@@ -938,19 +938,19 @@
       "related": [],
       "sources": [
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/SettingIndex.java",
+          "file": "app/src/main/java/com/myles/cijian/SettingIndex.java",
           "line": 3,
           "anchor": "SettingIndex"
         },
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/MainActivity.java",
+          "file": "app/src/main/java/com/myles/cijian/MainActivity.java",
           "line": 290,
           "anchor": "private void scrollToSetting"
         }
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.10.0 · 实际代码结构 / 设置总入口 / 搜索设置 / 教程直达"
+      "path": "词间 1.10.1 · 实际代码结构 / 设置总入口 / 搜索设置 / 教程直达"
     },
     {
       "id": "settings.reset",
@@ -965,19 +965,19 @@
       "related": [],
       "sources": [
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/SettingIndex.java",
+          "file": "app/src/main/java/com/myles/cijian/SettingIndex.java",
           "line": 3,
           "anchor": "SettingIndex"
         },
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/MainActivity.java",
+          "file": "app/src/main/java/com/myles/cijian/MainActivity.java",
           "line": 286,
           "anchor": "恢复本页默认设置？"
         }
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.10.0 · 实际代码结构 / 设置总入口 / 恢复本页默认设置"
+      "path": "词间 1.10.1 · 实际代码结构 / 设置总入口 / 恢复本页默认设置"
     },
     {
       "id": "settings.appearance",
@@ -989,14 +989,14 @@
       "related": [],
       "sources": [
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/MainActivity.java",
+          "file": "app/src/main/java/com/myles/cijian/MainActivity.java",
           "line": 18,
           "anchor": "MainActivity"
         }
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.10.0 · 实际代码结构 / 设置总入口 / 语言与外观"
+      "path": "词间 1.10.1 · 实际代码结构 / 设置总入口 / 语言与外观"
     },
     {
       "id": "settings.content",
@@ -1008,14 +1008,14 @@
       "related": [],
       "sources": [
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/MainActivity.java",
+          "file": "app/src/main/java/com/myles/cijian/MainActivity.java",
           "line": 18,
           "anchor": "MainActivity"
         }
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.10.0 · 实际代码结构 / 设置总入口 / 学习内容"
+      "path": "词间 1.10.1 · 实际代码结构 / 设置总入口 / 学习内容"
     },
     {
       "id": "settings.window",
@@ -1027,14 +1027,14 @@
       "related": [],
       "sources": [
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/MainActivity.java",
+          "file": "app/src/main/java/com/myles/cijian/MainActivity.java",
           "line": 18,
           "anchor": "MainActivity"
         }
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.10.0 · 实际代码结构 / 设置总入口 / 悬浮窗"
+      "path": "词间 1.10.1 · 实际代码结构 / 设置总入口 / 悬浮窗"
     },
     {
       "id": "settings.background",
@@ -1046,14 +1046,14 @@
       "related": [],
       "sources": [
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/MainActivity.java",
+          "file": "app/src/main/java/com/myles/cijian/MainActivity.java",
           "line": 18,
           "anchor": "MainActivity"
         }
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.10.0 · 实际代码结构 / 设置总入口 / 开机与后台"
+      "path": "词间 1.10.1 · 实际代码结构 / 设置总入口 / 开机与后台"
     },
     {
       "id": "settings.voice",
@@ -1065,14 +1065,14 @@
       "related": [],
       "sources": [
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/MainActivity.java",
+          "file": "app/src/main/java/com/myles/cijian/MainActivity.java",
           "line": 18,
           "anchor": "MainActivity"
         }
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.10.0 · 实际代码结构 / 设置总入口 / 语音与朗读"
+      "path": "词间 1.10.1 · 实际代码结构 / 设置总入口 / 语音与朗读"
     },
     {
       "id": "settings.records",
@@ -1084,14 +1084,14 @@
       "related": [],
       "sources": [
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/MainActivity.java",
+          "file": "app/src/main/java/com/myles/cijian/MainActivity.java",
           "line": 18,
           "anchor": "MainActivity"
         }
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.10.0 · 实际代码结构 / 设置总入口 / 备份与帮助"
+      "path": "词间 1.10.1 · 实际代码结构 / 设置总入口 / 备份与帮助"
     },
     {
       "id": "settings.about",
@@ -1103,14 +1103,14 @@
       "related": [],
       "sources": [
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/MainActivity.java",
+          "file": "app/src/main/java/com/myles/cijian/MainActivity.java",
           "line": 18,
           "anchor": "MainActivity"
         }
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.10.0 · 实际代码结构 / 设置总入口 / 关于词间"
+      "path": "词间 1.10.1 · 实际代码结构 / 设置总入口 / 关于词间"
     },
     {
       "id": "settings.theme",
@@ -1124,12 +1124,12 @@
       "related": [],
       "sources": [
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/Prefs.java",
+          "file": "app/src/main/java/com/myles/cijian/Prefs.java",
           "line": 6,
           "anchor": "Prefs"
         },
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/MainActivity.java",
+          "file": "app/src/main/java/com/myles/cijian/MainActivity.java",
           "line": 18,
           "anchor": "MainActivity"
         }
@@ -1138,7 +1138,7 @@
         "theme"
       ],
       "status": "existing",
-      "path": "词间 1.10.0 · 实际代码结构 / 设置总入口 / 语言与外观 / 跟随系统 / 浅色 / 深色"
+      "path": "词间 1.10.1 · 实际代码结构 / 设置总入口 / 语言与外观 / 跟随系统 / 浅色 / 深色"
     },
     {
       "id": "settings.color",
@@ -1153,12 +1153,12 @@
       "related": [],
       "sources": [
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/Accent.java",
+          "file": "app/src/main/java/com/myles/cijian/Accent.java",
           "line": 3,
           "anchor": "Accent"
         },
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/ThemePicker.java",
+          "file": "app/src/main/java/com/myles/cijian/ThemePicker.java",
           "line": 9,
           "anchor": "ThemePicker"
         }
@@ -1168,7 +1168,7 @@
         "customColor"
       ],
       "status": "existing",
-      "path": "词间 1.10.0 · 实际代码结构 / 设置总入口 / 语言与外观 / 12 种主题色 / 自定义色号"
+      "path": "词间 1.10.1 · 实际代码结构 / 设置总入口 / 语言与外观 / 12 种主题色 / 自定义色号"
     },
     {
       "id": "settings.level",
@@ -1185,12 +1185,12 @@
       ],
       "sources": [
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/Prefs.java",
+          "file": "app/src/main/java/com/myles/cijian/Prefs.java",
           "line": 6,
           "anchor": "Prefs"
         },
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/MainActivity.java",
+          "file": "app/src/main/java/com/myles/cijian/MainActivity.java",
           "line": 18,
           "anchor": "MainActivity"
         }
@@ -1199,7 +1199,7 @@
         "level"
       ],
       "status": "existing",
-      "path": "词间 1.10.0 · 实际代码结构 / 设置总入口 / 学习内容 / 学习等级"
+      "path": "词间 1.10.1 · 实际代码结构 / 设置总入口 / 学习内容 / 学习等级"
     },
     {
       "id": "settings.frequency",
@@ -1213,7 +1213,7 @@
       "related": [],
       "sources": [
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/Frequency.java",
+          "file": "app/src/main/java/com/myles/cijian/Frequency.java",
           "line": 3,
           "anchor": "Frequency"
         }
@@ -1222,7 +1222,7 @@
         "frequency"
       ],
       "status": "existing",
-      "path": "词间 1.10.0 · 实际代码结构 / 设置总入口 / 学习内容 / 词频范围"
+      "path": "词间 1.10.1 · 实际代码结构 / 设置总入口 / 学习内容 / 词频范围"
     },
     {
       "id": "settings.source",
@@ -1239,12 +1239,12 @@
       ],
       "sources": [
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/Prefs.java",
+          "file": "app/src/main/java/com/myles/cijian/Prefs.java",
           "line": 6,
           "anchor": "Prefs"
         },
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/MainActivity.java",
+          "file": "app/src/main/java/com/myles/cijian/MainActivity.java",
           "line": 18,
           "anchor": "MainActivity"
         }
@@ -1254,7 +1254,7 @@
         "favoritesOnly"
       ],
       "status": "existing",
-      "path": "词间 1.10.0 · 实际代码结构 / 设置总入口 / 学习内容 / 全部词 / 只看收藏 / 只复习熟悉词"
+      "path": "词间 1.10.1 · 实际代码结构 / 设置总入口 / 学习内容 / 全部词 / 只看收藏 / 只复习熟悉词"
     },
     {
       "id": "settings.goal",
@@ -1271,12 +1271,12 @@
       ],
       "sources": [
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/Prefs.java",
+          "file": "app/src/main/java/com/myles/cijian/Prefs.java",
           "line": 6,
           "anchor": "Prefs"
         },
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/MainActivity.java",
+          "file": "app/src/main/java/com/myles/cijian/MainActivity.java",
           "line": 18,
           "anchor": "MainActivity"
         }
@@ -1285,7 +1285,7 @@
         "dailyNewTarget"
       ],
       "status": "existing",
-      "path": "词间 1.10.0 · 实际代码结构 / 设置总入口 / 学习内容 / 每日新接触目标"
+      "path": "词间 1.10.1 · 实际代码结构 / 设置总入口 / 学习内容 / 每日新接触目标"
     },
     {
       "id": "settings.progress",
@@ -1301,12 +1301,12 @@
       ],
       "sources": [
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/Prefs.java",
+          "file": "app/src/main/java/com/myles/cijian/Prefs.java",
           "line": 6,
           "anchor": "Prefs"
         },
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/MainActivity.java",
+          "file": "app/src/main/java/com/myles/cijian/MainActivity.java",
           "line": 18,
           "anchor": "MainActivity"
         }
@@ -1315,7 +1315,7 @@
         "showFirstPass"
       ],
       "status": "existing",
-      "path": "词间 1.10.0 · 实际代码结构 / 设置总入口 / 学习内容 / 显示学习进度"
+      "path": "词间 1.10.1 · 实际代码结构 / 设置总入口 / 学习内容 / 显示学习进度"
     },
     {
       "id": "settings.shuffle",
@@ -1329,12 +1329,12 @@
       "related": [],
       "sources": [
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/ShuffleDeck.java",
+          "file": "app/src/main/java/com/myles/cijian/ShuffleDeck.java",
           "line": 7,
           "anchor": "ShuffleDeck"
         },
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/ScopeMemory.java",
+          "file": "app/src/main/java/com/myles/cijian/ScopeMemory.java",
           "line": 6,
           "anchor": "ScopeMemory"
         }
@@ -1343,7 +1343,7 @@
         "shuffle"
       ],
       "status": "existing",
-      "path": "词间 1.10.0 · 实际代码结构 / 设置总入口 / 学习内容 / 随机顺序"
+      "path": "词间 1.10.1 · 实际代码结构 / 设置总入口 / 学习内容 / 随机顺序"
     },
     {
       "id": "settings.hide",
@@ -1360,12 +1360,12 @@
       ],
       "sources": [
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/Prefs.java",
+          "file": "app/src/main/java/com/myles/cijian/Prefs.java",
           "line": 6,
           "anchor": "Prefs"
         },
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/MainActivity.java",
+          "file": "app/src/main/java/com/myles/cijian/MainActivity.java",
           "line": 18,
           "anchor": "MainActivity"
         }
@@ -1374,7 +1374,7 @@
         "hideFamiliar"
       ],
       "status": "existing",
-      "path": "词间 1.10.0 · 实际代码结构 / 设置总入口 / 学习内容 / 跳过熟悉词"
+      "path": "词间 1.10.1 · 实际代码结构 / 设置总入口 / 学习内容 / 跳过熟悉词"
     },
     {
       "id": "settings.conceal",
@@ -1391,12 +1391,12 @@
       ],
       "sources": [
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/Prefs.java",
+          "file": "app/src/main/java/com/myles/cijian/Prefs.java",
           "line": 6,
           "anchor": "Prefs"
         },
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/MainActivity.java",
+          "file": "app/src/main/java/com/myles/cijian/MainActivity.java",
           "line": 18,
           "anchor": "MainActivity"
         }
@@ -1405,7 +1405,7 @@
         "conceal"
       ],
       "status": "existing",
-      "path": "词间 1.10.0 · 实际代码结构 / 设置总入口 / 学习内容 / 先回忆，再看答案"
+      "path": "词间 1.10.1 · 实际代码结构 / 设置总入口 / 学习内容 / 先回忆，再看答案"
     },
     {
       "id": "settings.traditional",
@@ -1419,12 +1419,12 @@
       "related": [],
       "sources": [
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/Prefs.java",
+          "file": "app/src/main/java/com/myles/cijian/Prefs.java",
           "line": 6,
           "anchor": "Prefs"
         },
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/MainActivity.java",
+          "file": "app/src/main/java/com/myles/cijian/MainActivity.java",
           "line": 18,
           "anchor": "MainActivity"
         }
@@ -1433,7 +1433,7 @@
         "traditional"
       ],
       "status": "existing",
-      "path": "词间 1.10.0 · 实际代码结构 / 设置总入口 / 学习内容 / 繁体中文释义"
+      "path": "词间 1.10.1 · 实际代码结构 / 设置总入口 / 学习内容 / 繁体中文释义"
     },
     {
       "id": "settings.groups",
@@ -1452,17 +1452,17 @@
       ],
       "sources": [
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/StudyGroup.java",
+          "file": "app/src/main/java/com/myles/cijian/StudyGroup.java",
           "line": 6,
           "anchor": "StudyGroup"
         },
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/StudySession.java",
+          "file": "app/src/main/java/com/myles/cijian/StudySession.java",
           "line": 5,
           "anchor": "StudySession"
         },
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/MainActivity.java",
+          "file": "app/src/main/java/com/myles/cijian/MainActivity.java",
           "line": 478,
           "anchor": "private void groupSettings()"
         }
@@ -1474,7 +1474,7 @@
         "groupRevision"
       ],
       "status": "existing",
-      "path": "词间 1.10.0 · 实际代码结构 / 设置总入口 / 学习内容 / 不分组 / 固定词数 / 自选词循环"
+      "path": "词间 1.10.1 · 实际代码结构 / 设置总入口 / 学习内容 / 不分组 / 固定词数 / 自选词循环"
     },
     {
       "id": "settings.custom",
@@ -1491,7 +1491,7 @@
       ],
       "sources": [
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/MainActivity.java",
+          "file": "app/src/main/java/com/myles/cijian/MainActivity.java",
           "line": 505,
           "anchor": "private void customGroupPicker()"
         }
@@ -1500,7 +1500,7 @@
         "customWords"
       ],
       "status": "existing",
-      "path": "词间 1.10.0 · 实际代码结构 / 设置总入口 / 学习内容 / 编辑跨等级自选组"
+      "path": "词间 1.10.1 · 实际代码结构 / 设置总入口 / 学习内容 / 编辑跨等级自选组"
     },
     {
       "id": "settings.interval",
@@ -1514,12 +1514,12 @@
       "related": [],
       "sources": [
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/Interval.java",
+          "file": "app/src/main/java/com/myles/cijian/Interval.java",
           "line": 5,
           "anchor": "Interval"
         },
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/FloatService.java",
+          "file": "app/src/main/java/com/myles/cijian/FloatService.java",
           "line": 19,
           "anchor": "FloatService"
         }
@@ -1529,7 +1529,7 @@
         "seconds"
       ],
       "status": "existing",
-      "path": "词间 1.10.0 · 实际代码结构 / 设置总入口 / 悬浮窗 / 自动切词间隔"
+      "path": "词间 1.10.1 · 实际代码结构 / 设置总入口 / 悬浮窗 / 自动切词间隔"
     },
     {
       "id": "settings.font",
@@ -1543,7 +1543,7 @@
       "related": [],
       "sources": [
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/FontPicker.java",
+          "file": "app/src/main/java/com/myles/cijian/FontPicker.java",
           "line": 8,
           "anchor": "FontPicker"
         }
@@ -1554,7 +1554,7 @@
         "meaningSize"
       ],
       "status": "existing",
-      "path": "词间 1.10.0 · 实际代码结构 / 设置总入口 / 悬浮窗 / 词头 / 读音词性 / 释义字号"
+      "path": "词间 1.10.1 · 实际代码结构 / 设置总入口 / 悬浮窗 / 词头 / 读音词性 / 释义字号"
     },
     {
       "id": "settings.width",
@@ -1568,12 +1568,12 @@
       "related": [],
       "sources": [
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/Prefs.java",
+          "file": "app/src/main/java/com/myles/cijian/Prefs.java",
           "line": 6,
           "anchor": "Prefs"
         },
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/MainActivity.java",
+          "file": "app/src/main/java/com/myles/cijian/MainActivity.java",
           "line": 18,
           "anchor": "MainActivity"
         }
@@ -1582,7 +1582,7 @@
         "width"
       ],
       "status": "existing",
-      "path": "词间 1.10.0 · 实际代码结构 / 设置总入口 / 悬浮窗 / 窗口宽度"
+      "path": "词间 1.10.1 · 实际代码结构 / 设置总入口 / 悬浮窗 / 窗口宽度"
     },
     {
       "id": "settings.lines",
@@ -1596,12 +1596,12 @@
       "related": [],
       "sources": [
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/Prefs.java",
+          "file": "app/src/main/java/com/myles/cijian/Prefs.java",
           "line": 6,
           "anchor": "Prefs"
         },
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/MainActivity.java",
+          "file": "app/src/main/java/com/myles/cijian/MainActivity.java",
           "line": 18,
           "anchor": "MainActivity"
         }
@@ -1610,7 +1610,7 @@
         "meaningLines"
       ],
       "status": "existing",
-      "path": "词间 1.10.0 · 实际代码结构 / 设置总入口 / 悬浮窗 / 简洁模式释义行数"
+      "path": "词间 1.10.1 · 实际代码结构 / 设置总入口 / 悬浮窗 / 简洁模式释义行数"
     },
     {
       "id": "settings.alpha",
@@ -1624,12 +1624,12 @@
       "related": [],
       "sources": [
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/Prefs.java",
+          "file": "app/src/main/java/com/myles/cijian/Prefs.java",
           "line": 6,
           "anchor": "Prefs"
         },
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/MainActivity.java",
+          "file": "app/src/main/java/com/myles/cijian/MainActivity.java",
           "line": 18,
           "anchor": "MainActivity"
         }
@@ -1638,7 +1638,7 @@
         "alpha"
       ],
       "status": "existing",
-      "path": "词间 1.10.0 · 实际代码结构 / 设置总入口 / 悬浮窗 / 窗口不透明度"
+      "path": "词间 1.10.1 · 实际代码结构 / 设置总入口 / 悬浮窗 / 窗口不透明度"
     },
     {
       "id": "settings.lock",
@@ -1654,17 +1654,17 @@
       ],
       "sources": [
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/Prefs.java",
+          "file": "app/src/main/java/com/myles/cijian/Prefs.java",
           "line": 6,
           "anchor": "Prefs"
         },
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/MainActivity.java",
+          "file": "app/src/main/java/com/myles/cijian/MainActivity.java",
           "line": 18,
           "anchor": "MainActivity"
         },
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/PositionLock.java",
+          "file": "app/src/main/java/com/myles/cijian/PositionLock.java",
           "line": 10,
           "anchor": "class PositionLock"
         }
@@ -1673,7 +1673,7 @@
         "positionLocked"
       ],
       "status": "existing",
-      "path": "词间 1.10.0 · 实际代码结构 / 设置总入口 / 悬浮窗 / 锁定悬浮窗位置"
+      "path": "词间 1.10.1 · 实际代码结构 / 设置总入口 / 悬浮窗 / 锁定悬浮窗位置"
     },
     {
       "id": "settings.snap",
@@ -1689,12 +1689,12 @@
       ],
       "sources": [
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/Prefs.java",
+          "file": "app/src/main/java/com/myles/cijian/Prefs.java",
           "line": 6,
           "anchor": "Prefs"
         },
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/MainActivity.java",
+          "file": "app/src/main/java/com/myles/cijian/MainActivity.java",
           "line": 18,
           "anchor": "MainActivity"
         }
@@ -1707,7 +1707,7 @@
         "ballY"
       ],
       "status": "existing",
-      "path": "词间 1.10.0 · 实际代码结构 / 设置总入口 / 悬浮窗 / 松手后自动贴边"
+      "path": "词间 1.10.1 · 实际代码结构 / 设置总入口 / 悬浮窗 / 松手后自动贴边"
     },
     {
       "id": "settings.boot",
@@ -1724,12 +1724,12 @@
       ],
       "sources": [
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/BootReceiver.java",
+          "file": "app/src/main/java/com/myles/cijian/BootReceiver.java",
           "line": 11,
           "anchor": "BootReceiver"
         },
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/FloatService.java",
+          "file": "app/src/main/java/com/myles/cijian/FloatService.java",
           "line": 19,
           "anchor": "FloatService"
         }
@@ -1738,7 +1738,7 @@
         "autoStart"
       ],
       "status": "existing",
-      "path": "词间 1.10.0 · 实际代码结构 / 设置总入口 / 开机与后台 / 开机自动开启悬浮窗"
+      "path": "词间 1.10.1 · 实际代码结构 / 设置总入口 / 开机与后台 / 开机自动开启悬浮窗"
     },
     {
       "id": "settings.diagnostics",
@@ -1755,14 +1755,14 @@
       ],
       "sources": [
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/Diagnostics.java",
+          "file": "app/src/main/java/com/myles/cijian/Diagnostics.java",
           "line": 10,
           "anchor": "Diagnostics"
         }
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.10.0 · 实际代码结构 / 设置总入口 / 开机与后台 / 运行状态检查 / 系统设置入口"
+      "path": "词间 1.10.1 · 实际代码结构 / 设置总入口 / 开机与后台 / 运行状态检查 / 系统设置入口"
     },
     {
       "id": "speech.flip",
@@ -1778,12 +1778,12 @@
       ],
       "sources": [
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/Prefs.java",
+          "file": "app/src/main/java/com/myles/cijian/Prefs.java",
           "line": 6,
           "anchor": "Prefs"
         },
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/MainActivity.java",
+          "file": "app/src/main/java/com/myles/cijian/MainActivity.java",
           "line": 18,
           "anchor": "MainActivity"
         }
@@ -1792,7 +1792,7 @@
         "speakOnFlip"
       ],
       "status": "existing",
-      "path": "词间 1.10.0 · 实际代码结构 / 设置总入口 / 语音与朗读 / 手动翻词时朗读"
+      "path": "词间 1.10.1 · 实际代码结构 / 设置总入口 / 语音与朗读 / 手动翻词时朗读"
     },
     {
       "id": "speech.auto",
@@ -1810,12 +1810,12 @@
       ],
       "sources": [
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/Prefs.java",
+          "file": "app/src/main/java/com/myles/cijian/Prefs.java",
           "line": 6,
           "anchor": "Prefs"
         },
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/MainActivity.java",
+          "file": "app/src/main/java/com/myles/cijian/MainActivity.java",
           "line": 18,
           "anchor": "MainActivity"
         }
@@ -1824,7 +1824,7 @@
         "autoSpeak"
       ],
       "status": "existing",
-      "path": "词间 1.10.0 · 实际代码结构 / 设置总入口 / 语音与朗读 / 自动轮换时朗读"
+      "path": "词间 1.10.1 · 实际代码结构 / 设置总入口 / 语音与朗读 / 自动轮换时朗读"
     },
     {
       "id": "speech.ball",
@@ -1841,12 +1841,12 @@
       ],
       "sources": [
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/Prefs.java",
+          "file": "app/src/main/java/com/myles/cijian/Prefs.java",
           "line": 6,
           "anchor": "Prefs"
         },
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/MainActivity.java",
+          "file": "app/src/main/java/com/myles/cijian/MainActivity.java",
           "line": 18,
           "anchor": "MainActivity"
         }
@@ -1855,7 +1855,7 @@
         "ballAudio"
       ],
       "status": "existing",
-      "path": "词间 1.10.0 · 实际代码结构 / 设置总入口 / 语音与朗读 / 收球后继续听"
+      "path": "词间 1.10.1 · 实际代码结构 / 设置总入口 / 语音与朗读 / 收球后继续听"
     },
     {
       "id": "speech.lock",
@@ -1872,12 +1872,12 @@
       ],
       "sources": [
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/Prefs.java",
+          "file": "app/src/main/java/com/myles/cijian/Prefs.java",
           "line": 6,
           "anchor": "Prefs"
         },
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/MainActivity.java",
+          "file": "app/src/main/java/com/myles/cijian/MainActivity.java",
           "line": 18,
           "anchor": "MainActivity"
         }
@@ -1886,7 +1886,7 @@
         "lockAudio"
       ],
       "status": "existing",
-      "path": "词间 1.10.0 · 实际代码结构 / 设置总入口 / 语音与朗读 / 锁屏后继续听"
+      "path": "词间 1.10.1 · 实际代码结构 / 设置总入口 / 语音与朗读 / 锁屏后继续听"
     },
     {
       "id": "speech.wordRepeats",
@@ -1900,7 +1900,7 @@
       "related": [],
       "sources": [
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/SpeechPlan.java",
+          "file": "app/src/main/java/com/myles/cijian/SpeechPlan.java",
           "line": 6,
           "anchor": "SpeechPlan"
         }
@@ -1909,7 +1909,7 @@
         "wordRepeats"
       ],
       "status": "existing",
-      "path": "词间 1.10.0 · 实际代码结构 / 设置总入口 / 语音与朗读 / 单词朗读次数"
+      "path": "词间 1.10.1 · 实际代码结构 / 设置总入口 / 语音与朗读 / 单词朗读次数"
     },
     {
       "id": "speech.example",
@@ -1925,7 +1925,7 @@
       ],
       "sources": [
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/SpeechPlan.java",
+          "file": "app/src/main/java/com/myles/cijian/SpeechPlan.java",
           "line": 6,
           "anchor": "SpeechPlan"
         }
@@ -1935,7 +1935,7 @@
         "exampleRepeats"
       ],
       "status": "existing",
-      "path": "词间 1.10.0 · 实际代码结构 / 设置总入口 / 语音与朗读 / 单词后连读例句 / 例句次数"
+      "path": "词间 1.10.1 · 实际代码结构 / 设置总入口 / 语音与朗读 / 单词后连读例句 / 例句次数"
     },
     {
       "id": "speech.chinese",
@@ -1951,12 +1951,12 @@
       ],
       "sources": [
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/SpeechPlan.java",
+          "file": "app/src/main/java/com/myles/cijian/SpeechPlan.java",
           "line": 6,
           "anchor": "SpeechPlan"
         },
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/Speech.java",
+          "file": "app/src/main/java/com/myles/cijian/Speech.java",
           "line": 9,
           "anchor": "Speech"
         }
@@ -1965,7 +1965,7 @@
         "readChinese"
       ],
       "status": "existing",
-      "path": "词间 1.10.0 · 实际代码结构 / 设置总入口 / 语音与朗读 / 朗读中文译文"
+      "path": "词间 1.10.1 · 实际代码结构 / 设置总入口 / 语音与朗读 / 朗读中文译文"
     },
     {
       "id": "speech.rate",
@@ -1979,7 +1979,7 @@
       "related": [],
       "sources": [
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/Speech.java",
+          "file": "app/src/main/java/com/myles/cijian/Speech.java",
           "line": 9,
           "anchor": "Speech"
         }
@@ -1989,7 +1989,7 @@
         "speechGap"
       ],
       "status": "existing",
-      "path": "词间 1.10.0 · 实际代码结构 / 设置总入口 / 语音与朗读 / 朗读语速 / 每段停顿"
+      "path": "词间 1.10.1 · 实际代码结构 / 设置总入口 / 语音与朗读 / 朗读语速 / 每段停顿"
     },
     {
       "id": "speech.sequence",
@@ -2005,14 +2005,14 @@
       ],
       "sources": [
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/SpeechPlan.java",
+          "file": "app/src/main/java/com/myles/cijian/SpeechPlan.java",
           "line": 6,
           "anchor": "SpeechPlan"
         }
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.10.0 · 实际代码结构 / 设置总入口 / 语音与朗读 / 完整连读顺序"
+      "path": "词间 1.10.1 · 实际代码结构 / 设置总入口 / 语音与朗读 / 完整连读顺序"
     },
     {
       "id": "speech.engine",
@@ -2028,12 +2028,12 @@
       ],
       "sources": [
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/Speech.java",
+          "file": "app/src/main/java/com/myles/cijian/Speech.java",
           "line": 9,
           "anchor": "Speech"
         },
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/MainActivity.java",
+          "file": "app/src/main/java/com/myles/cijian/MainActivity.java",
           "line": 410,
           "anchor": "private void settings4()"
         }
@@ -2042,7 +2042,7 @@
         "voiceEngine"
       ],
       "status": "existing",
-      "path": "词间 1.10.0 · 实际代码结构 / 设置总入口 / 语音与朗读 / 高级发音：选择引擎 / 重新检测"
+      "path": "词间 1.10.1 · 实际代码结构 / 设置总入口 / 语音与朗读 / 高级发音：选择引擎 / 重新检测"
     },
     {
       "id": "speech.tests",
@@ -2056,19 +2056,19 @@
       ],
       "sources": [
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/Speech.java",
+          "file": "app/src/main/java/com/myles/cijian/Speech.java",
           "line": 9,
           "anchor": "Speech"
         },
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/MainActivity.java",
+          "file": "app/src/main/java/com/myles/cijian/MainActivity.java",
           "line": 428,
           "anchor": "试读日语"
         }
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.10.0 · 实际代码结构 / 设置总入口 / 语音与朗读 / 日语试读 / 中文试读 / 离线能力"
+      "path": "词间 1.10.1 · 实际代码结构 / 设置总入口 / 语音与朗读 / 日语试读 / 中文试读 / 离线能力"
     },
     {
       "id": "speech.guide",
@@ -2083,14 +2083,14 @@
       "related": [],
       "sources": [
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/MainActivity.java",
+          "file": "app/src/main/java/com/myles/cijian/MainActivity.java",
           "line": 718,
           "anchor": "private void voiceGuide()"
         }
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.10.0 · 实际代码结构 / 设置总入口 / 语音与朗读 / 无 Google Play 的配置指引"
+      "path": "词间 1.10.1 · 实际代码结构 / 设置总入口 / 语音与朗读 / 无 Google Play 的配置指引"
     },
     {
       "id": "backup",
@@ -2102,19 +2102,19 @@
       "related": [],
       "sources": [
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/BackupPreview.java",
+          "file": "app/src/main/java/com/myles/cijian/BackupPreview.java",
           "line": 9,
           "anchor": "BackupPreview"
         },
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/BackupSettings.java",
+          "file": "app/src/main/java/com/myles/cijian/BackupSettings.java",
           "line": 7,
           "anchor": "BackupSettings"
         }
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.10.0 · 实际代码结构 / 设置总入口 / 备份与帮助 / 备份、恢复与撤回"
+      "path": "词间 1.10.1 · 实际代码结构 / 设置总入口 / 备份与帮助 / 备份、恢复与撤回"
     },
     {
       "id": "backup.export",
@@ -2129,29 +2129,29 @@
       "related": [],
       "sources": [
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/BackupFiles.java",
+          "file": "app/src/main/java/com/myles/cijian/BackupFiles.java",
           "line": 11,
           "anchor": "BackupFiles"
         },
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/BackupProvider.java",
+          "file": "app/src/main/java/com/myles/cijian/BackupProvider.java",
           "line": 10,
           "anchor": "BackupProvider"
         },
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/BackupReminder.java",
+          "file": "app/src/main/java/com/myles/cijian/BackupReminder.java",
           "line": 3,
           "anchor": "BackupReminder"
         },
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/MainActivity.java",
+          "file": "app/src/main/java/com/myles/cijian/MainActivity.java",
           "line": 642,
           "anchor": "private void backupOptions()"
         }
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.10.0 · 实际代码结构 / 设置总入口 / 备份与帮助 / 备份、恢复与撤回 / 分享 / 保存下载 / 自选保存位置"
+      "path": "词间 1.10.1 · 实际代码结构 / 设置总入口 / 备份与帮助 / 备份、恢复与撤回 / 分享 / 保存下载 / 自选保存位置"
     },
     {
       "id": "backup.content",
@@ -2169,19 +2169,19 @@
       ],
       "sources": [
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/BackupSettings.java",
+          "file": "app/src/main/java/com/myles/cijian/BackupSettings.java",
           "line": 7,
           "anchor": "BackupSettings"
         },
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/WordStore.java",
+          "file": "app/src/main/java/com/myles/cijian/WordStore.java",
           "line": 209,
           "anchor": "synchronized String backup()"
         }
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.10.0 · 实际代码结构 / 设置总入口 / 备份与帮助 / 备份、恢复与撤回 / 文件包含什么、不包含什么"
+      "path": "词间 1.10.1 · 实际代码结构 / 设置总入口 / 备份与帮助 / 备份、恢复与撤回 / 文件包含什么、不包含什么"
     },
     {
       "id": "backup.restore",
@@ -2192,7 +2192,8 @@
       "rules": [
         "带时间标记采用较新状态；旧标记可保留本机或合并已选项。",
         "次数取较大值不相加，每日去重；初见取较早，复习／易忘取较新。",
-        "停止悬浮学习，作废未完成批次；已评分保留。"
+        "停止悬浮学习，作废未完成批次；已评分保留。",
+        "1.10.1是独立新应用，接受cijian-progress-v2及旧kotoba-float-progress-v1/v2；旧应用不读取新格式。迁移不包括未完成批次或系统权限。"
       ],
       "related": [
         "backup.undo",
@@ -2201,24 +2202,29 @@
       ],
       "sources": [
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/BackupPreview.java",
+          "file": "app/src/main/java/com/myles/cijian/BackupPreview.java",
           "line": 9,
           "anchor": "BackupPreview"
         },
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/RestoreSafety.java",
+          "file": "app/src/main/java/com/myles/cijian/RestoreSafety.java",
           "line": 11,
           "anchor": "RestoreSafety"
         },
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/MainActivity.java",
+          "file": "app/src/main/java/com/myles/cijian/MainActivity.java",
           "line": 687,
           "anchor": "private void previewRestore"
+        },
+        {
+          "file": "app/src/main/java/com/myles/cijian/BackupFormat.java",
+          "line": 4,
+          "anchor": "BackupFormat"
         }
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.10.0 · 实际代码结构 / 设置总入口 / 备份与帮助 / 备份、恢复与撤回 / 选择文件 → 验证 → 只读预览 → 确认合并"
+      "path": "词间 1.10.1 · 实际代码结构 / 设置总入口 / 备份与帮助 / 备份、恢复与撤回 / 选择文件 → 验证 → 只读预览 → 确认合并"
     },
     {
       "id": "backup.undo",
@@ -2233,19 +2239,19 @@
       "related": [],
       "sources": [
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/RestoreSafety.java",
+          "file": "app/src/main/java/com/myles/cijian/RestoreSafety.java",
           "line": 11,
           "anchor": "RestoreSafety"
         },
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/WordStore.java",
+          "file": "app/src/main/java/com/myles/cijian/WordStore.java",
           "line": 288,
           "anchor": "localSnapshot"
         }
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.10.0 · 实际代码结构 / 设置总入口 / 备份与帮助 / 备份、恢复与撤回 / 撤回上次导入 / 中断恢复"
+      "path": "词间 1.10.1 · 实际代码结构 / 设置总入口 / 备份与帮助 / 备份、恢复与撤回 / 撤回上次导入 / 中断恢复"
     },
     {
       "id": "help",
@@ -2257,14 +2263,14 @@
       "related": [],
       "sources": [
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/Tutorial.java",
+          "file": "app/src/main/java/com/myles/cijian/Tutorial.java",
           "line": 7,
           "anchor": "Tutorial"
         }
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.10.0 · 实际代码结构 / 设置总入口 / 备份与帮助 / 离线教程与日语基础说明"
+      "path": "词间 1.10.1 · 实际代码结构 / 设置总入口 / 备份与帮助 / 离线教程与日语基础说明"
     },
     {
       "id": "help.kana",
@@ -2278,14 +2284,14 @@
       "related": [],
       "sources": [
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/KanaGuide.java",
+          "file": "app/src/main/java/com/myles/cijian/KanaGuide.java",
           "line": 8,
           "anchor": "KanaGuide"
         }
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.10.0 · 实际代码结构 / 设置总入口 / 备份与帮助 / 离线教程与日语基础说明 / 五十音图与入门读音"
+      "path": "词间 1.10.1 · 实际代码结构 / 设置总入口 / 备份与帮助 / 离线教程与日语基础说明 / 五十音图与入门读音"
     },
     {
       "id": "help.grammar",
@@ -2299,19 +2305,19 @@
       "related": [],
       "sources": [
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/Grammar.java",
+          "file": "app/src/main/java/com/myles/cijian/Grammar.java",
           "line": 3,
           "anchor": "Grammar"
         },
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/MainActivity.java",
+          "file": "app/src/main/java/com/myles/cijian/MainActivity.java",
           "line": 668,
           "anchor": "private void grammarGuide()"
         }
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.10.0 · 实际代码结构 / 设置总入口 / 备份与帮助 / 离线教程与日语基础说明 / 词性标记说明"
+      "path": "词间 1.10.1 · 实际代码结构 / 设置总入口 / 备份与帮助 / 离线教程与日语基础说明 / 词性标记说明"
     },
     {
       "id": "help.pitch",
@@ -2327,24 +2333,24 @@
       "related": [],
       "sources": [
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/PitchGuide.java",
+          "file": "app/src/main/java/com/myles/cijian/PitchGuide.java",
           "line": 10,
           "anchor": "PitchGuide"
         },
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/PitchPattern.java",
+          "file": "app/src/main/java/com/myles/cijian/PitchPattern.java",
           "line": 6,
           "anchor": "PitchPattern"
         },
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/Pronunciation.java",
+          "file": "app/src/main/java/com/myles/cijian/Pronunciation.java",
           "line": 4,
           "anchor": "Pronunciation"
         }
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.10.0 · 实际代码结构 / 设置总入口 / 备份与帮助 / 离线教程与日语基础说明 / 音调标记说明与按词高低图"
+      "path": "词间 1.10.1 · 实际代码结构 / 设置总入口 / 备份与帮助 / 离线教程与日语基础说明 / 音调标记说明与按词高低图"
     },
     {
       "id": "help.tutorial",
@@ -2356,14 +2362,14 @@
       "related": [],
       "sources": [
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/Tutorial.java",
+          "file": "app/src/main/java/com/myles/cijian/Tutorial.java",
           "line": 7,
           "anchor": "Tutorial"
         }
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.10.0 · 实际代码结构 / 设置总入口 / 备份与帮助 / 离线教程与日语基础说明 / 九个按场景组织的教程"
+      "path": "词间 1.10.1 · 实际代码结构 / 设置总入口 / 备份与帮助 / 离线教程与日语基础说明 / 九个按场景组织的教程"
     },
     {
       "id": "help.topic1",
@@ -2375,14 +2381,14 @@
       "related": [],
       "sources": [
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/Tutorial.java",
+          "file": "app/src/main/java/com/myles/cijian/Tutorial.java",
           "line": 9,
           "anchor": "第一次使用 · 三步开始"
         }
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.10.0 · 实际代码结构 / 设置总入口 / 备份与帮助 / 离线教程与日语基础说明 / 九个按场景组织的教程 / 第一次使用 · 三步开始"
+      "path": "词间 1.10.1 · 实际代码结构 / 设置总入口 / 备份与帮助 / 离线教程与日语基础说明 / 九个按场景组织的教程 / 第一次使用 · 三步开始"
     },
     {
       "id": "help.topic2",
@@ -2394,14 +2400,14 @@
       "related": [],
       "sources": [
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/Tutorial.java",
+          "file": "app/src/main/java/com/myles/cijian/Tutorial.java",
           "line": 10,
           "anchor": "悬浮窗 · 移动、翻词与暂停"
         }
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.10.0 · 实际代码结构 / 设置总入口 / 备份与帮助 / 离线教程与日语基础说明 / 九个按场景组织的教程 / 悬浮窗 · 移动、翻词与暂停"
+      "path": "词间 1.10.1 · 实际代码结构 / 设置总入口 / 备份与帮助 / 离线教程与日语基础说明 / 九个按场景组织的教程 / 悬浮窗 · 移动、翻词与暂停"
     },
     {
       "id": "help.topic3",
@@ -2413,14 +2419,14 @@
       "related": [],
       "sources": [
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/Tutorial.java",
+          "file": "app/src/main/java/com/myles/cijian/Tutorial.java",
           "line": 11,
           "anchor": "浏览一遍与认真记忆怎么选"
         }
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.10.0 · 实际代码结构 / 设置总入口 / 备份与帮助 / 离线教程与日语基础说明 / 九个按场景组织的教程 / 浏览一遍与认真记忆怎么选"
+      "path": "词间 1.10.1 · 实际代码结构 / 设置总入口 / 备份与帮助 / 离线教程与日语基础说明 / 九个按场景组织的教程 / 浏览一遍与认真记忆怎么选"
     },
     {
       "id": "help.topic4",
@@ -2432,14 +2438,14 @@
       "related": [],
       "sources": [
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/Tutorial.java",
+          "file": "app/src/main/java/com/myles/cijian/Tutorial.java",
           "line": 12,
           "anchor": "易忘词 · 为什么会进出名单"
         }
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.10.0 · 实际代码结构 / 设置总入口 / 备份与帮助 / 离线教程与日语基础说明 / 九个按场景组织的教程 / 易忘词 · 为什么会进出名单"
+      "path": "词间 1.10.1 · 实际代码结构 / 设置总入口 / 备份与帮助 / 离线教程与日语基础说明 / 九个按场景组织的教程 / 易忘词 · 为什么会进出名单"
     },
     {
       "id": "help.topic5",
@@ -2451,14 +2457,14 @@
       "related": [],
       "sources": [
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/Tutorial.java",
+          "file": "app/src/main/java/com/myles/cijian/Tutorial.java",
           "line": 13,
           "anchor": "搜索、词频与分组"
         }
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.10.0 · 实际代码结构 / 设置总入口 / 备份与帮助 / 离线教程与日语基础说明 / 九个按场景组织的教程 / 搜索、词频与分组"
+      "path": "词间 1.10.1 · 实际代码结构 / 设置总入口 / 备份与帮助 / 离线教程与日语基础说明 / 九个按场景组织的教程 / 搜索、词频与分组"
     },
     {
       "id": "help.topic6",
@@ -2470,14 +2476,14 @@
       "related": [],
       "sources": [
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/Tutorial.java",
+          "file": "app/src/main/java/com/myles/cijian/Tutorial.java",
           "line": 14,
           "anchor": "朗读与没有 Google Play 的手机"
         }
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.10.0 · 实际代码结构 / 设置总入口 / 备份与帮助 / 离线教程与日语基础说明 / 九个按场景组织的教程 / 朗读与没有 Google Play 的手机"
+      "path": "词间 1.10.1 · 实际代码结构 / 设置总入口 / 备份与帮助 / 离线教程与日语基础说明 / 九个按场景组织的教程 / 朗读与没有 Google Play 的手机"
     },
     {
       "id": "help.topic7",
@@ -2489,14 +2495,14 @@
       "related": [],
       "sources": [
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/Tutorial.java",
+          "file": "app/src/main/java/com/myles/cijian/Tutorial.java",
           "line": 15,
           "anchor": "锁屏、后台与运行状态"
         }
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.10.0 · 实际代码结构 / 设置总入口 / 备份与帮助 / 离线教程与日语基础说明 / 九个按场景组织的教程 / 锁屏、后台与运行状态"
+      "path": "词间 1.10.1 · 实际代码结构 / 设置总入口 / 备份与帮助 / 离线教程与日语基础说明 / 九个按场景组织的教程 / 锁屏、后台与运行状态"
     },
     {
       "id": "help.topic8",
@@ -2508,14 +2514,14 @@
       "related": [],
       "sources": [
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/Tutorial.java",
+          "file": "app/src/main/java/com/myles/cijian/Tutorial.java",
           "line": 16,
           "anchor": "备份、换手机与恢复"
         }
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.10.0 · 实际代码结构 / 设置总入口 / 备份与帮助 / 离线教程与日语基础说明 / 九个按场景组织的教程 / 备份、换手机与恢复"
+      "path": "词间 1.10.1 · 实际代码结构 / 设置总入口 / 备份与帮助 / 离线教程与日语基础说明 / 九个按场景组织的教程 / 备份、换手机与恢复"
     },
     {
       "id": "help.topic9",
@@ -2527,14 +2533,14 @@
       "related": [],
       "sources": [
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/Tutorial.java",
+          "file": "app/src/main/java/com/myles/cijian/Tutorial.java",
           "line": 17,
           "anchor": "外观与常见疑问"
         }
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.10.0 · 实际代码结构 / 设置总入口 / 备份与帮助 / 离线教程与日语基础说明 / 九个按场景组织的教程 / 外观与常见疑问"
+      "path": "词间 1.10.1 · 实际代码结构 / 设置总入口 / 备份与帮助 / 离线教程与日语基础说明 / 九个按场景组织的教程 / 外观与常见疑问"
     },
     {
       "id": "about",
@@ -2546,14 +2552,14 @@
       "related": [],
       "sources": [
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/MainActivity.java",
+          "file": "app/src/main/java/com/myles/cijian/MainActivity.java",
           "line": 467,
           "anchor": "private void settings6()"
         }
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.10.0 · 实际代码结构 / 设置总入口 / 关于词间 / 版本 / 词库版本 / 更新状态 / 来源授权"
+      "path": "词间 1.10.1 · 实际代码结构 / 设置总入口 / 关于词间 / 版本 / 词库版本 / 更新状态 / 来源授权"
     },
     {
       "id": "runtime",
@@ -2565,14 +2571,14 @@
       "related": [],
       "sources": [
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/FloatService.java",
+          "file": "app/src/main/java/com/myles/cijian/FloatService.java",
           "line": 19,
           "anchor": "FloatService"
         }
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.10.0 · 实际代码结构 / 跨页面的运行规则"
+      "path": "词间 1.10.1 · 实际代码结构 / 跨页面的运行规则"
     },
     {
       "id": "runtime.permissions",
@@ -2584,19 +2590,19 @@
       "related": [],
       "sources": [
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/Diagnostics.java",
+          "file": "app/src/main/java/com/myles/cijian/Diagnostics.java",
           "line": 10,
           "anchor": "Diagnostics"
         },
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/BootReceiver.java",
+          "file": "app/src/main/java/com/myles/cijian/BootReceiver.java",
           "line": 11,
           "anchor": "BootReceiver"
         }
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.10.0 · 实际代码结构 / 跨页面的运行规则 / 悬浮显示 / 通知 / 系统后台权限"
+      "path": "词间 1.10.1 · 实际代码结构 / 跨页面的运行规则 / 悬浮显示 / 通知 / 系统后台权限"
     },
     {
       "id": "runtime.boot",
@@ -2614,19 +2620,19 @@
       ],
       "sources": [
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/BootReceiver.java",
+          "file": "app/src/main/java/com/myles/cijian/BootReceiver.java",
           "line": 11,
           "anchor": "BootReceiver"
         },
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/FloatService.java",
+          "file": "app/src/main/java/com/myles/cijian/FloatService.java",
           "line": 215,
           "anchor": "private boolean prepareAudio()"
         }
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.10.0 · 实际代码结构 / 跨页面的运行规则 / 自动启动：先显示并暂停"
+      "path": "词间 1.10.1 · 实际代码结构 / 跨页面的运行规则 / 自动启动：先显示并暂停"
     },
     {
       "id": "runtime.rules",
@@ -2645,19 +2651,19 @@
       ],
       "sources": [
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/FloatService.java",
+          "file": "app/src/main/java/com/myles/cijian/FloatService.java",
           "line": 174,
           "anchor": "private boolean canCycle()"
         },
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/FloatService.java",
+          "file": "app/src/main/java/com/myles/cijian/FloatService.java",
           "line": 86,
           "anchor": "private boolean canPresent()"
         }
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.10.0 · 实际代码结构 / 跨页面的运行规则 / 自动切词的条件交集"
+      "path": "词间 1.10.1 · 实际代码结构 / 跨页面的运行规则 / 自动切词的条件交集"
     },
     {
       "id": "runtime.interrupt",
@@ -2669,19 +2675,19 @@
       "related": [],
       "sources": [
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/AudioGuard.java",
+          "file": "app/src/main/java/com/myles/cijian/AudioGuard.java",
           "line": 9,
           "anchor": "AudioGuard"
         },
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/Speech.java",
+          "file": "app/src/main/java/com/myles/cijian/Speech.java",
           "line": 9,
           "anchor": "Speech"
         }
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.10.0 · 实际代码结构 / 跨页面的运行规则 / 耳机断开 / 音频抢占 / 合成失败 / 超时"
+      "path": "词间 1.10.1 · 实际代码结构 / 跨页面的运行规则 / 耳机断开 / 音频抢占 / 合成失败 / 超时"
     },
     {
       "id": "runtime.recovery",
@@ -2693,19 +2699,19 @@
       "related": [],
       "sources": [
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/FloatService.java",
+          "file": "app/src/main/java/com/myles/cijian/FloatService.java",
           "line": 19,
           "anchor": "FloatService"
         },
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/ReviewActivity.java",
+          "file": "app/src/main/java/com/myles/cijian/ReviewActivity.java",
           "line": 10,
           "anchor": "ReviewActivity"
         }
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.10.0 · 实际代码结构 / 跨页面的运行规则 / 进程重建 / 解锁 / 旋转 / 用户停止"
+      "path": "词间 1.10.1 · 实际代码结构 / 跨页面的运行规则 / 进程重建 / 解锁 / 旋转 / 用户停止"
     },
     {
       "id": "data",
@@ -2717,29 +2723,29 @@
       "related": [],
       "sources": [
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/WordStore.java",
+          "file": "app/src/main/java/com/myles/cijian/WordStore.java",
           "line": 14,
           "anchor": "WordStore"
         },
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/Word.java",
+          "file": "app/src/main/java/com/myles/cijian/Word.java",
           "line": 5,
           "anchor": "Word"
         },
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/Prefs.java",
+          "file": "app/src/main/java/com/myles/cijian/Prefs.java",
           "line": 6,
           "anchor": "Prefs"
         },
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/Async.java",
+          "file": "app/src/main/java/com/myles/cijian/Async.java",
           "line": 8,
           "anchor": "Async"
         }
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.10.0 · 实际代码结构 / 共用数据与统计口径"
+      "path": "词间 1.10.1 · 实际代码结构 / 共用数据与统计口径"
     },
     {
       "id": "data.deck",
@@ -2751,19 +2757,19 @@
       "related": [],
       "sources": [
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/Word.java",
+          "file": "app/src/main/java/com/myles/cijian/Word.java",
           "line": 5,
           "anchor": "Word"
         },
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/Frequency.java",
+          "file": "app/src/main/java/com/myles/cijian/Frequency.java",
           "line": 3,
           "anchor": "Frequency"
         }
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.10.0 · 实际代码结构 / 共用数据与统计口径 / 内置 SQLite 词库"
+      "path": "词间 1.10.1 · 实际代码结构 / 共用数据与统计口径 / 内置 SQLite 词库"
     },
     {
       "id": "data.evidence",
@@ -2783,19 +2789,19 @@
       ],
       "sources": [
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/WordStore.java",
+          "file": "app/src/main/java/com/myles/cijian/WordStore.java",
           "line": 93,
           "anchor": "synchronized void seen("
         },
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/WordStore.java",
+          "file": "app/src/main/java/com/myles/cijian/WordStore.java",
           "line": 194,
           "anchor": "synchronized void rate("
         }
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.10.0 · 实际代码结构 / 共用数据与统计口径 / 遇见、初见、正式新学和评分分别记录"
+      "path": "词间 1.10.1 · 实际代码结构 / 共用数据与统计口径 / 遇见、初见、正式新学和评分分别记录"
     },
     {
       "id": "data.marks",
@@ -2807,12 +2813,12 @@
       "related": [],
       "sources": [
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/WordStore.java",
+          "file": "app/src/main/java/com/myles/cijian/WordStore.java",
           "line": 51,
           "anchor": "mark_changes"
         },
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/RestoreSafety.java",
+          "file": "app/src/main/java/com/myles/cijian/RestoreSafety.java",
           "line": 11,
           "anchor": "RestoreSafety"
         }
@@ -2821,7 +2827,7 @@
         "mark_changes"
       ],
       "status": "existing",
-      "path": "词间 1.10.0 · 实际代码结构 / 共用数据与统计口径 / 收藏 / 手动熟悉及各自修改时间"
+      "path": "词间 1.10.1 · 实际代码结构 / 共用数据与统计口径 / 收藏 / 手动熟悉及各自修改时间"
     },
     {
       "id": "data.weak",
@@ -2833,19 +2839,19 @@
       "related": [],
       "sources": [
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/WeakWords.java",
+          "file": "app/src/main/java/com/myles/cijian/WeakWords.java",
           "line": 6,
           "anchor": "WeakWords"
         },
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/WordStore.java",
+          "file": "app/src/main/java/com/myles/cijian/WordStore.java",
           "line": 14,
           "anchor": "WordStore"
         }
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.10.0 · 实际代码结构 / 共用数据与统计口径 / 易忘词的独立跨日证据"
+      "path": "词间 1.10.1 · 实际代码结构 / 共用数据与统计口径 / 易忘词的独立跨日证据"
     },
     {
       "id": "data.drafts",
@@ -2857,19 +2863,19 @@
       "related": [],
       "sources": [
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/ReviewDraft.java",
+          "file": "app/src/main/java/com/myles/cijian/ReviewDraft.java",
           "line": 7,
           "anchor": "ReviewDraft"
         },
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/WordStore.java",
+          "file": "app/src/main/java/com/myles/cijian/WordStore.java",
           "line": 166,
           "anchor": "saveDraft"
         }
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.10.0 · 实际代码结构 / 共用数据与统计口径 / 复习批次与原子评分"
+      "path": "词间 1.10.1 · 实际代码结构 / 共用数据与统计口径 / 复习批次与原子评分"
     },
     {
       "id": "data.scope",
@@ -2881,17 +2887,17 @@
       "related": [],
       "sources": [
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/ScopeMemory.java",
+          "file": "app/src/main/java/com/myles/cijian/ScopeMemory.java",
           "line": 6,
           "anchor": "ScopeMemory"
         },
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/ShuffleDeck.java",
+          "file": "app/src/main/java/com/myles/cijian/ShuffleDeck.java",
           "line": 7,
           "anchor": "ShuffleDeck"
         },
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/StudySession.java",
+          "file": "app/src/main/java/com/myles/cijian/StudySession.java",
           "line": 5,
           "anchor": "StudySession"
         }
@@ -2903,7 +2909,7 @@
         "currentId"
       ],
       "status": "existing",
-      "path": "词间 1.10.0 · 实际代码结构 / 共用数据与统计口径 / 按范围保存组号、顺序和随机位置"
+      "path": "词间 1.10.1 · 实际代码结构 / 共用数据与统计口径 / 按范围保存组号、顺序和随机位置"
     },
     {
       "id": "data.session",
@@ -2917,12 +2923,12 @@
       "related": [],
       "sources": [
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/Prefs.java",
+          "file": "app/src/main/java/com/myles/cijian/Prefs.java",
           "line": 6,
           "anchor": "Prefs"
         },
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/BackupSettings.java",
+          "file": "app/src/main/java/com/myles/cijian/BackupSettings.java",
           "line": 7,
           "anchor": "BackupSettings"
         }
@@ -2933,7 +2939,7 @@
         "session.collapsed"
       ],
       "status": "existing",
-      "path": "词间 1.10.0 · 实际代码结构 / 共用数据与统计口径 / 本地偏好与会话状态"
+      "path": "词间 1.10.1 · 实际代码结构 / 共用数据与统计口径 / 本地偏好与会话状态"
     },
     {
       "id": "data.update",
@@ -2947,14 +2953,14 @@
       "related": [],
       "sources": [
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/DeckUpdater.java",
+          "file": "app/src/main/java/com/myles/cijian/DeckUpdater.java",
           "line": 10,
           "anchor": "DeckUpdater"
         }
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.10.0 · 实际代码结构 / 共用数据与统计口径 / 安装包内词库更新及历史保留"
+      "path": "词间 1.10.1 · 实际代码结构 / 共用数据与统计口径 / 安装包内词库更新及历史保留"
     },
     {
       "id": "bounds",
@@ -2966,14 +2972,14 @@
       "related": [],
       "sources": [
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/MainActivity.java",
+          "file": "app/src/main/java/com/myles/cijian/MainActivity.java",
           "line": 18,
           "anchor": "MainActivity"
         }
       ],
       "keys": [],
       "status": "boundary",
-      "path": "词间 1.10.0 · 实际代码结构 / 当前未提供的能力"
+      "path": "词间 1.10.1 · 实际代码结构 / 当前未提供的能力"
     },
     {
       "id": "bounds.import",
@@ -2988,19 +2994,19 @@
       ],
       "sources": [
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/MainActivity.java",
+          "file": "app/src/main/java/com/myles/cijian/MainActivity.java",
           "line": 18,
           "anchor": "MainActivity"
         },
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/DeckUpdater.java",
+          "file": "app/src/main/java/com/myles/cijian/DeckUpdater.java",
           "line": 10,
           "anchor": "DeckUpdater"
         }
       ],
       "keys": [],
       "status": "missing",
-      "path": "词间 1.10.0 · 实际代码结构 / 当前未提供的能力 / 用户导入 CSV / TSV 自建词库"
+      "path": "词间 1.10.1 · 实际代码结构 / 当前未提供的能力 / 用户导入 CSV / TSV 自建词库"
     },
     {
       "id": "bounds.grammar",
@@ -3012,19 +3018,19 @@
       "related": [],
       "sources": [
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/Grammar.java",
+          "file": "app/src/main/java/com/myles/cijian/Grammar.java",
           "line": 3,
           "anchor": "Grammar"
         },
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/MainActivity.java",
+          "file": "app/src/main/java/com/myles/cijian/MainActivity.java",
           "line": 18,
           "anchor": "MainActivity"
         }
       ],
       "keys": [],
       "status": "missing",
-      "path": "词间 1.10.0 · 实际代码结构 / 当前未提供的能力 / 完整语法课程 / 活用练习"
+      "path": "词间 1.10.1 · 实际代码结构 / 当前未提供的能力 / 完整语法课程 / 活用练习"
     },
     {
       "id": "bounds.english",
@@ -3036,19 +3042,19 @@
       "related": [],
       "sources": [
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/Prefs.java",
+          "file": "app/src/main/java/com/myles/cijian/Prefs.java",
           "line": 6,
           "anchor": "Prefs"
         },
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/MainActivity.java",
+          "file": "app/src/main/java/com/myles/cijian/MainActivity.java",
           "line": 18,
           "anchor": "MainActivity"
         }
       ],
       "keys": [],
       "status": "boundary",
-      "path": "词间 1.10.0 · 实际代码结构 / 当前未提供的能力 / 英文释义与英文学习词库"
+      "path": "词间 1.10.1 · 实际代码结构 / 当前未提供的能力 / 英文释义与英文学习词库"
     },
     {
       "id": "bounds.offline",
@@ -3060,19 +3066,19 @@
       "related": [],
       "sources": [
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/Speech.java",
+          "file": "app/src/main/java/com/myles/cijian/Speech.java",
           "line": 9,
           "anchor": "Speech"
         },
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/MainActivity.java",
+          "file": "app/src/main/java/com/myles/cijian/MainActivity.java",
           "line": 18,
           "anchor": "MainActivity"
         }
       ],
       "keys": [],
       "status": "boundary",
-      "path": "词间 1.10.0 · 实际代码结构 / 当前未提供的能力 / 内置真人录音 / 离线语音包"
+      "path": "词间 1.10.1 · 实际代码结构 / 当前未提供的能力 / 内置真人录音 / 离线语音包"
     },
     {
       "id": "bounds.sync",
@@ -3084,19 +3090,19 @@
       "related": [],
       "sources": [
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/BackupFiles.java",
+          "file": "app/src/main/java/com/myles/cijian/BackupFiles.java",
           "line": 11,
           "anchor": "BackupFiles"
         },
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/MainActivity.java",
+          "file": "app/src/main/java/com/myles/cijian/MainActivity.java",
           "line": 18,
           "anchor": "MainActivity"
         }
       ],
       "keys": [],
       "status": "boundary",
-      "path": "词间 1.10.0 · 实际代码结构 / 当前未提供的能力 / 账号 / 自动云同步 / 社区"
+      "path": "词间 1.10.1 · 实际代码结构 / 当前未提供的能力 / 账号 / 自动云同步 / 社区"
     },
     {
       "id": "inspect",
@@ -3108,14 +3114,14 @@
       "related": [],
       "sources": [
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/MainActivity.java",
+          "file": "app/src/main/java/com/myles/cijian/MainActivity.java",
           "line": 18,
           "anchor": "MainActivity"
         }
       ],
       "keys": [],
       "status": "inspect",
-      "path": "词间 1.10.0 · 实际代码结构 / 需要一起审阅的结构问题"
+      "path": "词间 1.10.1 · 实际代码结构 / 需要一起审阅的结构问题"
     },
     {
       "id": "inspect.scope",
@@ -3130,19 +3136,19 @@
       ],
       "sources": [
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/StudySession.java",
+          "file": "app/src/main/java/com/myles/cijian/StudySession.java",
           "line": 5,
           "anchor": "StudySession"
         },
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/StudyTasks.java",
+          "file": "app/src/main/java/com/myles/cijian/StudyTasks.java",
           "line": 5,
           "anchor": "StudyTasks"
         }
       ],
       "keys": [],
       "status": "inspect",
-      "path": "词间 1.10.0 · 实际代码结构 / 需要一起审阅的结构问题 / 浏览当前组与正式任务范围不一致"
+      "path": "词间 1.10.1 · 实际代码结构 / 需要一起审阅的结构问题 / 浏览当前组与正式任务范围不一致"
     },
     {
       "id": "inspect.evidence",
@@ -3157,24 +3163,24 @@
       ],
       "sources": [
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/MainActivity.java",
+          "file": "app/src/main/java/com/myles/cijian/MainActivity.java",
           "line": 18,
           "anchor": "MainActivity"
         },
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/ReviewActivity.java",
+          "file": "app/src/main/java/com/myles/cijian/ReviewActivity.java",
           "line": 10,
           "anchor": "ReviewActivity"
         },
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/FloatService.java",
+          "file": "app/src/main/java/com/myles/cijian/FloatService.java",
           "line": 19,
           "anchor": "FloatService"
         }
       ],
       "keys": [],
       "status": "inspect",
-      "path": "词间 1.10.0 · 实际代码结构 / 需要一起审阅的结构问题 / “看过一个词”在不同入口的统计不同"
+      "path": "词间 1.10.1 · 实际代码结构 / 需要一起审阅的结构问题 / “看过一个词”在不同入口的统计不同"
     },
     {
       "id": "inspect.import",
@@ -3188,19 +3194,19 @@
       ],
       "sources": [
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/MainActivity.java",
+          "file": "app/src/main/java/com/myles/cijian/MainActivity.java",
           "line": 18,
           "anchor": "MainActivity"
         },
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/DeckUpdater.java",
+          "file": "app/src/main/java/com/myles/cijian/DeckUpdater.java",
           "line": 10,
           "anchor": "DeckUpdater"
         }
       ],
       "keys": [],
       "status": "inspect",
-      "path": "词间 1.10.0 · 实际代码结构 / 需要一起审阅的结构问题 / 历史讨论与实际交付边界需要对照"
+      "path": "词间 1.10.1 · 实际代码结构 / 需要一起审阅的结构问题 / 历史讨论与实际交付边界需要对照"
     },
     {
       "id": "plan",
@@ -3213,7 +3219,7 @@
       "sources": [],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.10.0 · 实际代码结构 / 1.7.5 本轮实施"
+      "path": "词间 1.10.1 · 实际代码结构 / 1.7.5 本轮实施"
     },
     {
       "id": "plan.dual",
@@ -3237,7 +3243,7 @@
       "sources": [],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.10.0 · 实际代码结构 / 1.7.5 本轮实施 / 两种节奏 × 两种界面"
+      "path": "词间 1.10.1 · 实际代码结构 / 1.7.5 本轮实施 / 两种节奏 × 两种界面"
     },
     {
       "id": "data.helpers",
@@ -3249,19 +3255,19 @@
       "related": [],
       "sources": [
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/ChoiceSpinner.java",
+          "file": "app/src/main/java/com/myles/cijian/ChoiceSpinner.java",
           "line": 11,
           "anchor": "ChoiceSpinner"
         },
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/Ui.java",
+          "file": "app/src/main/java/com/myles/cijian/Ui.java",
           "line": 13,
           "anchor": "Ui"
         }
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.10.0 · 实际代码结构 / 共用数据与统计口径 / 公共布局、基础组件与兼容实现"
+      "path": "词间 1.10.1 · 实际代码结构 / 共用数据与统计口径 / 公共布局、基础组件与兼容实现"
     },
     {
       "id": "browse.play",
@@ -3277,14 +3283,14 @@
       ],
       "sources": [
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/BrowseActivity.java",
+          "file": "app/src/main/java/com/myles/cijian/BrowseActivity.java",
           "line": 12,
           "anchor": "class BrowseActivity"
         }
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.10.0 · 实际代码结构 / 学习首页 / App 内连续浏览"
+      "path": "词间 1.10.1 · 实际代码结构 / 学习首页 / App 内连续浏览"
     },
     {
       "id": "review.overlay",
@@ -3301,14 +3307,14 @@
       ],
       "sources": [
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/ReviewFlow.java",
+          "file": "app/src/main/java/com/myles/cijian/ReviewFlow.java",
           "line": 9,
           "anchor": "class ReviewFlow"
         }
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.10.0 · 实际代码结构 / App 内回忆与复习 / 悬浮窗认真记忆"
+      "path": "词间 1.10.1 · 实际代码结构 / App 内回忆与复习 / 悬浮窗认真记忆"
     },
     {
       "id": "review.batch",
@@ -3325,17 +3331,17 @@
       "related": [],
       "sources": [
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/Prefs.java",
+          "file": "app/src/main/java/com/myles/cijian/Prefs.java",
           "line": 6,
           "anchor": "class Prefs"
         },
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/ReviewBatch.java",
+          "file": "app/src/main/java/com/myles/cijian/ReviewBatch.java",
           "line": 3,
           "anchor": "final class ReviewBatch"
         },
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/MainActivity.java",
+          "file": "app/src/main/java/com/myles/cijian/MainActivity.java",
           "line": 631,
           "anchor": "private void batchDialog()"
         }
@@ -3344,7 +3350,7 @@
         "reviewBatch"
       ],
       "status": "existing",
-      "path": "词间 1.10.0 · 实际代码结构 / App 内回忆与复习 / 每批词数"
+      "path": "词间 1.10.1 · 实际代码结构 / App 内回忆与复习 / 每批词数"
     },
     {
       "id": "review.quiz",
@@ -3359,19 +3365,19 @@
       ],
       "sources": [
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/QuizActivity.java",
+          "file": "app/src/main/java/com/myles/cijian/QuizActivity.java",
           "line": 10,
           "anchor": "class QuizActivity"
         },
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/QuizOptions.java",
+          "file": "app/src/main/java/com/myles/cijian/QuizOptions.java",
           "line": 6,
           "anchor": "class QuizOptions"
         }
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.10.0 · 实际代码结构 / App 内回忆与复习 / 四选一识义练习"
+      "path": "词间 1.10.1 · 实际代码结构 / App 内回忆与复习 / 四选一识义练习"
     },
     {
       "id": "speech.recall",
@@ -3383,7 +3389,7 @@
       "related": [],
       "sources": [
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/ReviewFlow.java",
+          "file": "app/src/main/java/com/myles/cijian/ReviewFlow.java",
           "line": 9,
           "anchor": "class ReviewFlow"
         }
@@ -3392,7 +3398,7 @@
         "reviewAutoSpeak"
       ],
       "status": "existing",
-      "path": "词间 1.10.0 · 实际代码结构 / 设置总入口 / 语音与朗读 / 复习自动朗读"
+      "path": "词间 1.10.1 · 实际代码结构 / 设置总入口 / 语音与朗读 / 复习自动朗读"
     },
     {
       "id": "runtime.surface",
@@ -3404,19 +3410,19 @@
       "related": [],
       "sources": [
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/StudySurface.java",
+          "file": "app/src/main/java/com/myles/cijian/StudySurface.java",
           "line": 4,
           "anchor": "class StudySurface"
         },
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/ThemedDialog.java",
+          "file": "app/src/main/java/com/myles/cijian/ThemedDialog.java",
           "line": 9,
           "anchor": "class ThemedDialog"
         }
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.10.0 · 实际代码结构 / 跨页面的运行规则 / 交互学习界面互斥与状态更新"
+      "path": "词间 1.10.1 · 实际代码结构 / 跨页面的运行规则 / 交互学习界面互斥与状态更新"
     },
     {
       "id": "settings.language",
@@ -3432,12 +3438,12 @@
       "related": [],
       "sources": [
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/L.java",
+          "file": "app/src/main/java/com/myles/cijian/L.java",
           "line": 10,
           "anchor": "final class L"
         },
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/UiLanguage.java",
+          "file": "app/src/main/java/com/myles/cijian/UiLanguage.java",
           "line": 4,
           "anchor": "final class UiLanguage"
         }
@@ -3446,7 +3452,7 @@
         "uiLanguage"
       ],
       "status": "existing",
-      "path": "词间 1.10.0 · 实际代码结构 / 设置总入口 / 界面语言"
+      "path": "词间 1.10.1 · 实际代码结构 / 设置总入口 / 界面语言"
     },
     {
       "id": "home.tools",
@@ -3458,14 +3464,14 @@
       "related": [],
       "sources": [
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/MainActivity.java",
+          "file": "app/src/main/java/com/myles/cijian/MainActivity.java",
           "line": 105,
           "anchor": "private void fold("
         }
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.10.0 · 实际代码结构 / 学习首页 / 学习工具折叠区"
+      "path": "词间 1.10.1 · 实际代码结构 / 学习首页 / 学习工具折叠区"
     },
     {
       "id": "review.sections",
@@ -3477,14 +3483,14 @@
       "related": [],
       "sources": [
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/MainActivity.java",
+          "file": "app/src/main/java/com/myles/cijian/MainActivity.java",
           "line": 613,
           "anchor": "private void reviewPage()"
         }
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.10.0 · 实际代码结构 / App 内回忆与复习 / 复习页面分层"
+      "path": "词间 1.10.1 · 实际代码结构 / App 内回忆与复习 / 复习页面分层"
     },
     {
       "id": "browse.timer",
@@ -3496,14 +3502,14 @@
       "related": [],
       "sources": [
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/BrowseActivity.java",
+          "file": "app/src/main/java/com/myles/cijian/BrowseActivity.java",
           "line": 32,
           "anchor": "private void updateClock()"
         }
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.10.0 · 实际代码结构 / 学习首页 / App 内连续浏览 / 倒计时与内容卡片"
+      "path": "词间 1.10.1 · 实际代码结构 / 学习首页 / App 内连续浏览 / 倒计时与内容卡片"
     },
     {
       "id": "runtime.loading",
@@ -3515,14 +3521,14 @@
       "related": [],
       "sources": [
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/FloatService.java",
+          "file": "app/src/main/java/com/myles/cijian/FloatService.java",
           "line": 178,
           "anchor": "private void reload(String preferredId,boolean manualTransition)"
         }
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.10.0 · 实际代码结构 / 跨页面的运行规则 / 异步加载取消与重试"
+      "path": "词间 1.10.1 · 实际代码结构 / 跨页面的运行规则 / 异步加载取消与重试"
     },
     {
       "id": "data.markhistory",
@@ -3534,14 +3540,14 @@
       "related": [],
       "sources": [
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/MarkHistory.java",
+          "file": "app/src/main/java/com/myles/cijian/MarkHistory.java",
           "line": 6,
           "anchor": "final class MarkHistory"
         }
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.10.0 · 实际代码结构 / 共用数据与统计口径 / 短期连续撤销历史"
+      "path": "词间 1.10.1 · 实际代码结构 / 共用数据与统计口径 / 短期连续撤销历史"
     },
     {
       "rules": [
@@ -3563,12 +3569,12 @@
       "route": "复习 → 复习怎么用？；回忆页标题ⓘ；教程",
       "sources": [
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/ReviewGuide.java",
+          "file": "app/src/main/java/com/myles/cijian/ReviewGuide.java",
           "line": 6,
           "anchor": "final class ReviewGuide"
         }
       ],
-      "path": "词间 1.10.0 · 实际代码结构 / App 内回忆与复习 / 复习怎么用？"
+      "path": "词间 1.10.1 · 实际代码结构 / App 内回忆与复习 / 复习怎么用？"
     },
     {
       "rules": [
@@ -3584,17 +3590,17 @@
       "route": "新用户首次打开",
       "sources": [
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/MainActivity.java",
+          "file": "app/src/main/java/com/myles/cijian/MainActivity.java",
           "line": 733,
           "anchor": "private void prepareLanguagePrompt()"
         },
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/MainActivity.java",
+          "file": "app/src/main/java/com/myles/cijian/MainActivity.java",
           "line": 738,
           "anchor": "private void showLanguagePrompt()"
         }
       ],
-      "path": "词间 1.10.0 · 实际代码结构 / 设置总入口 / 界面语言 / 新用户首次选择语言"
+      "path": "词间 1.10.1 · 实际代码结构 / 设置总入口 / 界面语言 / 新用户首次选择语言"
     },
     {
       "id": "settings.appfont",
@@ -3615,12 +3621,12 @@
       ],
       "sources": [
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/FontPicker.java",
+          "file": "app/src/main/java/com/myles/cijian/FontPicker.java",
           "line": 10,
           "anchor": "static void showApp"
         },
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/Prefs.java",
+          "file": "app/src/main/java/com/myles/cijian/Prefs.java",
           "line": 65,
           "anchor": "int appWordSize()"
         }
@@ -3631,7 +3637,7 @@
         "appMeaningSize"
       ],
       "status": "existing",
-      "path": "词间 1.10.0 · 实际代码结构 / 设置总入口 / 语言与外观 / App 内学习字号"
+      "path": "词间 1.10.1 · 实际代码结构 / 设置总入口 / 语言与外观 / App 内学习字号"
     },
     {
       "id": "settings.detailHeight",
@@ -3648,12 +3654,12 @@
       ],
       "sources": [
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/Prefs.java",
+          "file": "app/src/main/java/com/myles/cijian/Prefs.java",
           "line": 69,
           "anchor": "int detailHeight()"
         },
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/FloatService.java",
+          "file": "app/src/main/java/com/myles/cijian/FloatService.java",
           "line": 371,
           "anchor": "d(prefs.detailHeight())"
         }
@@ -3662,7 +3668,7 @@
         "detailHeight"
       ],
       "status": "existing",
-      "path": "词间 1.10.0 · 实际代码结构 / 设置总入口 / 悬浮窗 / 详情内容高度"
+      "path": "词间 1.10.1 · 实际代码结构 / 设置总入口 / 悬浮窗 / 详情内容高度"
     },
     {
       "id": "browse.swipe",
@@ -3681,19 +3687,19 @@
       ],
       "sources": [
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/SwipeCardLayout.java",
+          "file": "app/src/main/java/com/myles/cijian/SwipeCardLayout.java",
           "line": 9,
           "anchor": "class SwipeCardLayout"
         },
         {
-          "file": "app/src/main/java/com/myles/kotobafloat/BrowseActivity.java",
+          "file": "app/src/main/java/com/myles/cijian/BrowseActivity.java",
           "line": 69,
           "anchor": "new SwipeCardLayout"
         }
       ],
       "keys": [],
       "status": "existing",
-      "path": "词间 1.10.0 · 实际代码结构 / 学习首页 / App 内连续浏览 / 词卡左右滑动翻词"
+      "path": "词间 1.10.1 · 实际代码结构 / 学习首页 / App 内连续浏览 / 词卡左右滑动翻词"
     }
   ],
   "edges": [

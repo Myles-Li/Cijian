@@ -1,0 +1,3 @@
+package com.myles.cijian;
+import android.content.Context;import android.widget.EditText;
+final class EditTextFixture {static void verify(Context c){Prefs p=new Prefs(c);String oldTheme=p.theme(),oldAccent=p.accent();p.put("theme","DARK");p.put("accent","BLUE");Ui.applyTheme(c);EditText input=new EditText(c);input.setBackground(Ui.shape(Ui.SURFACE,14,c));input.setHint("搜索单词、假名或中文");Ui.tint(input);if(input.getBackgroundTintList()!=null||input.getCurrentHintTextColor()!=Ui.MUTED||input.getCurrentTextColor()!=Ui.INK)throw new AssertionError("Input tint regression");p.put("theme",oldTheme);p.put("accent",oldAccent);Ui.applyTheme(c);}}

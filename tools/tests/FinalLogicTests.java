@@ -1,4 +1,4 @@
-package com.myles.kotobafloat;
+package com.myles.cijian;
 import java.util.*;
 public final class FinalLogicTests {
  static int checks;static void check(boolean ok,String why){if(!ok)throw new AssertionError(why);checks++;}

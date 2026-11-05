@@ -1,4 +1,4 @@
-package com.myles.kotobafloat;
+package com.myles.cijian;
 
 public final class FeatureLogicTests {
     static int checks;static void check(boolean ok,String label){checks++;if(!ok)throw new AssertionError(label);}

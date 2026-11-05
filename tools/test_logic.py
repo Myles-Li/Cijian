@@ -10,7 +10,7 @@ def binary(name):
 javac,java=binary('javac'),binary('java')
 if not javac or not java:raise SystemExit('Install JDK 17 or newer and set JAVA_HOME.')
 names=['BackupReminder','StudyTasks','ReviewPlan','ReviewSession','FirstPass','StudyGroup','ShuffleDeck','SpeechPlan','Interval','Accent','TextSearch','WeakWords','PitchPattern','Pronunciation']
-sources=[R/'app/src/main/java/com/myles/kotobafloat'/(n+'.java') for n in names]+list((R/'tools/tests').glob('*.java'))
+sources=[R/'app/src/main/java/com/myles/cijian'/(n+'.java') for n in names]+list((R/'tools/tests').glob('*.java'))
 with tempfile.TemporaryDirectory(prefix='cijian-logic-') as out:
  subprocess.run([javac,'--release','17','-encoding','UTF-8','-d',out,*map(str,sources)],check=True)
- for cls in ['LogicTests','FeatureLogicTests','FinalLogicTests']:subprocess.run([java,'-cp',out,'com.myles.kotobafloat.'+cls],check=True)
+ for cls in ['LogicTests','FeatureLogicTests','FinalLogicTests']:subprocess.run([java,'-cp',out,'com.myles.cijian.'+cls],check=True)

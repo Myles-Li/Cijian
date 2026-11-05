@@ -1,0 +1,5 @@
+package com.myles.cijian;
+import android.app.Activity;import android.os.Bundle;import android.content.Intent;import android.net.Uri;import java.io.*;import java.nio.charset.StandardCharsets;import org.json.JSONObject;
+public final class BackupCaptureActivity extends Activity {
+ @Override public void onCreate(Bundle state){super.onCreate(state);try{Uri uri=getIntent().getParcelableExtra(Intent.EXTRA_STREAM);int bytes=0;try(InputStream in=getContentResolver().openInputStream(uri)){byte[] b=new byte[8192];int n;while((n=in.read(b))!=-1)bytes+=n;}JSONObject result=new JSONObject().put("bytes",bytes).put("readGrant",(getIntent().getFlags()&Intent.FLAG_GRANT_READ_URI_PERMISSION)!=0).put("uri",uri.toString());try(FileOutputStream out=openFileOutput("backup-capture.json",MODE_PRIVATE)){out.write(result.toString().getBytes(StandardCharsets.UTF_8));}}catch(Exception e){try(FileOutputStream out=openFileOutput("backup-capture.json",MODE_PRIVATE)){out.write(("ERROR:"+e).getBytes(StandardCharsets.UTF_8));}catch(Exception ignored){}}finish();}
+}

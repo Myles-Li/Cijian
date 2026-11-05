@@ -4,11 +4,11 @@
 
 一个轻量的安卓日语学习应用：既能在 App 内专注学习，也能用悬浮窗利用碎片时间反复遇见单词。
 
-**当前版本：1.10.0 / 构建15 · Android 8.0+ · Java 原生界面 · 持续更新中**
+**当前版本：1.10.1 / 构建16 · Android 8.0+ · Java 原生界面 · 持续更新中**
 
 在 **GPT-6.1 Sol** 辅助下开发，累计开发投入 **25 小时+，开发跨度约两周（作者估算）**。需求、使用反馈和持续迭代由项目作者维护。[开发记录与时间口径](docs/开发记录.md)
 
-项目首个可核验版本形成于 **2026-10-27**；**1.10.0 更新于 2026-11-05**，持续更新中。
+项目首个可核验版本形成于 **2026-10-27**；**1.10.1 更新于 2026-11-05**，持续更新中。
 
 Native Android app for learning Japanese through Chinese meanings. The interface supports 简体中文 / English / 日本語. Interface language changes do not translate the dictionary.
 
@@ -18,7 +18,7 @@ Native Android app for learning Japanese through Chinese meanings. The interface
 
 **[下载最新 APK](https://github.com/Myles-Li/Cijian/releases/latest)** · [全部版本更新说明](CHANGELOG.md)
 
-当前最新版为1.10.0；1.9.5作为历史版本保留。升级前请在应用中备份，使用同签名官方APK覆盖安装，保留旧安装及其学习记录。
+**1.10.1使用新的安装标识，会与旧版并存。** 先在旧版导出JSON备份，再安装新应用并恢复核对；确认前不要卸载旧版。未完成批次重新安排，系统权限需要重新允许。[迁移步骤](docs/从旧版迁移.md)。1.10.0和1.9.5保留为历史Release。
 
 ## 主要功能
 
@@ -48,6 +48,7 @@ Native Android app for learning Japanese through Chinese meanings. The interface
 
 | 版本 | 主要变化 |
 |---|---|
+| 1.10.1 | 完整更换为Cijian安装标识、源码与新备份命名；旧JSON仍可导入，新旧应用独立并存 |
 | 1.10.0 | App内独立学习字号、词卡左右滑动、顶部位置锁、紧凑例句操作、详情高度调节 |
 | 1.9.5 | 详情拖动与滚动、设置分类与间距、默认色网格、双学习入口、切换与跨日刷新修复 |
 | 1.9.0 | Cijian英文显示名、首启三语选择、默认黑白、自定义每批1～50及完整复习说明 |
@@ -77,13 +78,13 @@ macOS / Linux: sh ./gradlew :app:assembleDebug
 Logic checks:  python tools/test_logic.py
 ```
 
-源码采用普通debug开发签名，不含作者发布签名；自行构建的包与官方APK签名不同，建议使用专用模拟器开发。[验证与测试](docs/验证与测试.md) · [1.10.0最终验证记录](docs/VALIDATION.md)
+源码采用普通debug开发签名，不含作者发布签名；自行构建的包与官方APK签名不同，建议使用专用模拟器开发。[验证与测试](docs/验证与测试.md) · [1.10.1最终验证记录](docs/VALIDATION.md)
 
 原词库TSV、来源和转换工具随项目保留，可用 `python tools/prepare_deck.py` 重建仓库词库资产。该操作针对项目文件，不操作手机记录；转换会重建词条表。
 
 ## 名称、许可与数据来源
 
-当前统一名称为 **词间 · Cijian**。内部包名、数据库和现有备份路径中的Kotoba用于升级及记录兼容，详见 [名称与兼容标识](docs/命名与兼容.md)。
+当前统一名称为 **词间 · Cijian**。1.10.1源码包、目录与安装标识均为 `com.myles.cijian`，数据库和新备份名称使用Cijian；旧JSON备份v1/v2仍可导入。它是新应用，记录须手动迁移，详见[名称与迁移标识](docs/命名与兼容.md)。
 
 **应用代码暂不授予开源许可，仅公开展示。** 查看和fork遵循GitHub服务条款；其他代码使用、修改或分发授权请联系作者。见 [代码许可状态](COPYRIGHT.md)。
 
