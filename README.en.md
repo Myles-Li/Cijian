@@ -4,9 +4,9 @@
 
 A lightweight Android app for learning Japanese through Chinese meanings, either inside the app or in a floating window over other apps.
 
-**Current release: 1.10.1 / build 16 · Android 8.0+ · Native Java UI · Actively maintained**
+**Current release: 1.10.5 / build 17 · Android 8.0+ · Native Java UI · Actively maintained**
 
-Developed with assistance from **GPT-6.1 Sol**, with **25+ hours of effort over roughly two weeks (author estimates)**. The project author maintains the requirements, usage feedback and ongoing iteration. The earliest verifiable release is dated **2026-10-27**; **1.10.1 is dated 2026-11-05**. [Development record, Chinese](docs/开发记录.md)
+Developed with assistance from **GPT-6.1 Sol**, with **25+ hours of effort over roughly two weeks (author estimates)**. The project author maintains the requirements, usage feedback and ongoing iteration. The earliest verifiable release is dated **2026-10-27**; **1.10.5 is dated 2026-11-07**. [Development record, Chinese](docs/开发记录.md)
 
 **Important language scope:** menus and help support Simplified Chinese, English and Japanese. Dictionary meanings and example translations remain Chinese. Selecting English or Japanese does not translate the dictionary.
 
@@ -16,7 +16,7 @@ Currently Android only; the iOS port remains deferred.
 
 **[Download the latest APK](https://github.com/Myles-Li/Cijian/releases/latest)** · [Full version history, in Chinese](CHANGELOG.md)
 
-**1.10.1 uses a new Android application ID and installs alongside older versions.** Export a JSON backup in the old app, install the new app, then restore and verify your records before uninstalling the old app. Unfinished batches are replanned; system permissions must be granted again. [Migration steps, Chinese](docs/从旧版迁移.md). Releases 1.10.0 and 1.9.5 remain available.
+**Already using 1.10.1? Install the official 1.10.5 APK over it without uninstalling to retain records and unfinished batches.** Users on 1.10.0 or earlier must export JSON and restore it in Cijian before removing the old app. [Upgrade and migration steps, Chinese](docs/从旧版迁移.md). Historical releases remain available.
 
 ## Features
 
@@ -36,7 +36,13 @@ Dictionary access, study and records work locally. The app has no INTERNET permi
 
 ## Screens and structure
 
-<img src="docs/screenshots/home.png" alt="Cijian study home, Chinese UI" width="260"> <img src="docs/screenshots/palette.png" alt="Theme palette, Chinese UI" width="260">
+All screenshots below come from the final 1.10.5 APK on a dedicated Android emulator with demo data. Floating study is shown over the Clock app. TEST ONLY voice in the review screenshot is an emulator test engine, not part of the official APK.
+
+<img src="docs/screenshots/home.png" alt="Study home" width="280"> <img src="docs/screenshots/browse.png" alt="In-app browsing" width="280">
+
+<img src="docs/screenshots/floating.png" alt="Floating study over another app" width="280"> <img src="docs/screenshots/floating-details.png" alt="Expanded floating details" width="280">
+
+<img src="docs/screenshots/review.png" alt="Active recall" width="280"> <img src="docs/screenshots/palette.png" alt="Theme palette" width="280">
 
 [Offline interactive structure map](docs/词间-完整结构图.html) · [Architecture and statistics](docs/结构审阅.md) · [How review works](docs/复习怎样运作.md)
 
@@ -46,6 +52,7 @@ Detailed guides and the map are currently in Chinese. Download the HTML and open
 
 | Version | Main changes |
 |---|---|
+| 1.10.5 | Full-screen browsing swipes, spaced actions, brief voice status and settings return, readable notes and updated screenshots |
 | 1.10.1 | New Cijian application ID, source and backup names; legacy JSON imports and independent old/new installations |
 | 1.10.0 | Independent in-app study text sizes, swipe navigation, header position lock, compact example action and adjustable detail height |
 | 1.9.5 | Detail drag/scroll handling, settings organisation and spacing, default-colour grid, equal study entry points, smoother mode changes and refresh recovery across key changes |
@@ -76,13 +83,13 @@ macOS / Linux: sh ./gradlew :app:assembleDebug
 Logic checks:  python tools/test_logic.py
 ```
 
-The public project uses a normal local debug signature and contains no private release-signing configuration. A locally built APK has a different signature from the official APK; use a dedicated emulator for development. [Build and test scope, Chinese](docs/验证与测试.md) · [Final 1.10.1 validation record, Chinese](docs/VALIDATION.md)
+The public project uses a normal local debug signature and contains no private release-signing configuration. A locally built APK has a different signature from the official APK; use a dedicated emulator for development. [Build and test scope, Chinese](docs/验证与测试.md) · [Final 1.10.5 validation record, Chinese](docs/VALIDATION.md)
 
 The original pinned TSV, provenance and conversion script are included. `python tools/prepare_deck.py` rebuilds the repository vocabulary asset; it rebuilds its word table and does not operate on phone learning records.
 
 ## Name, code rights and data sources
 
-The product name is **词间 · Cijian**. In 1.10.1 the source package, folders and Android application ID use `com.myles.cijian`. New database and backup names use Cijian. Legacy v1/v2 JSON backups can still be imported. This is a separate app; records require manual export and import. See [naming and migration, Chinese](docs/命名与兼容.md).
+The product name is **词间 · Cijian**. In 1.10.1 the source package, folders and Android application ID use `com.myles.cijian`. New database and backup names use Cijian. Legacy v1/v2 JSON backups can still be imported. Version 1.10.5 keeps this identity and updates 1.10.1 in place. Users on 1.10.0 or earlier need manual export and import. See [naming and migration, Chinese](docs/命名与兼容.md).
 
 **Application code is publicly viewable, with no open-source licence or additional code-reuse permission granted at present.** Viewing and forking on GitHub follow GitHub's terms; contact the author for other code-use, modification or distribution permissions. See [code rights, Chinese](COPYRIGHT.md). This does not prevent personal noncommercial Japanese study with the official APK.
 

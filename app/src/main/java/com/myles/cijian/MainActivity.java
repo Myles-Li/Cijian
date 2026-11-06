@@ -43,6 +43,7 @@ public final class MainActivity extends Activity {
         speech.setOnChanged(()->{if(alive&&voiceStatus!=null)voiceStatus.setText(speech.status());Ui.exampleActionState(exampleAction,speech.isSpeakingExample());});
         voiceGuidePending=getIntent().getBooleanExtra("voiceHelp",false);pitchPending=getIntent().getStringExtra("pitchWord");if(pitchPending==null)pitchPending="";
         if(getIntent().getBooleanExtra("openReview",false))tab=2;
+        if(getIntent().getBooleanExtra("openVoiceSettings",false)){tab=3;settingsCategory=4;}
         if(state!=null) {java.util.ArrayList<String> folds=state.getStringArrayList("openFolds");if(folds!=null)openFolds.addAll(folds);voiceAdvanced=state.getBoolean("voiceAdvanced");settingsCategory=state.getInt("settingsCategory",-1);tab=state.getInt("tab");query=state.getString("query","");libraryMode=state.getString("libraryMode","all");pendingStart=state.getBoolean("pendingStart");libraryLevel=state.getString("libraryLevel","ALL");libraryFrequency=state.getString("libraryFrequency","ALL");}
         root=Ui.column(this);root.setBackgroundColor(Ui.BG);
         root.setOnApplyWindowInsetsListener((v,insets)->{
@@ -272,7 +273,7 @@ public final class MainActivity extends Activity {
             }
             return;
         }
-        TextView back=Ui.text(this,L.t("‹ 全部设置"),14,Ui.GREEN);back.setPadding(0,d(8),0,d(8));back.setMinHeight(d(36));back.setFocusable(true);back.setOnClickListener(v->{settingsCategory=-1;render();});body.addView(back);Ui.gap(body,8);
+        boolean returnToStudy=getIntent().getBooleanExtra("openVoiceSettings",false)&&settingsCategory==4;TextView back=Ui.text(this,L.t(returnToStudy?"‹ 返回学习":"‹ 全部设置"),14,Ui.GREEN);back.setPadding(0,d(8),0,d(8));back.setMinHeight(d(36));back.setFocusable(true);back.setOnClickListener(v->{if(returnToStudy)finish();else{settingsCategory=-1;render();}});body.addView(back);Ui.gap(body,8);
         title(L.t("设置"),L.t(SETTING_NAMES[settingsCategory]),L.t(SETTING_HINTS[settingsCategory]));
         switch(settingsCategory){
             case 0:settings0();break;
@@ -290,6 +291,7 @@ public final class MainActivity extends Activity {
     private void scrollToSetting(){if(settingsAnchor.isEmpty())return;String anchor=settingsAnchor;settingsAnchor="";scroll.post(()->{View target=findSetting(body,anchor);if(target!=null){android.graphics.Rect bounds=new android.graphics.Rect();target.getDrawingRect(bounds);scroll.offsetDescendantRectToMyCoords(target,bounds);scroll.smoothScrollTo(0,Math.max(0,bounds.top-d(12)));}});}
     private View findSetting(View view,String anchor){if(view instanceof TextView&&((TextView)view).getText().toString().contains(anchor))return view;if(view.getContentDescription()!=null&&view.getContentDescription().toString().contains(anchor))return view;if(view instanceof android.view.ViewGroup){android.view.ViewGroup group=(android.view.ViewGroup)view;for(int i=0;i<group.getChildCount();i++){View found=findSetting(group.getChildAt(i),anchor);if(found!=null)return found;}}return null;}
     @Override public void onBackPressed(){
+        if(getIntent().getBooleanExtra("openVoiceSettings",false)&&tab==3&&settingsCategory==4){finish();return;}
         if(tab==3&&settingsCategory>=0){settingsCategory=-1;render();return;}
         super.onBackPressed();
     }
@@ -407,6 +409,7 @@ public final class MainActivity extends Activity {
         String bootStatus=L.status(prefs.status("boot.status"));
         if(!bootStatus.isEmpty()){Ui.gap(body,8);body.addView(Ui.text(this,bootStatus,11,Ui.MUTED));}
     }
+    private void voiceNote(String text){TextView note=Ui.prose(this,text,12,Ui.MUTED);note.setLineSpacing(d(4),1.15f);body.addView(note);}
     private void settings4() {
         toggle(L.t("手动翻词时朗读"),L.t("点左右箭头后读当前词，暂停轮换时也生效；默认开启"),"speakOnFlip",prefs.speakOnFlip());
         toggle(L.t("复习时自动朗读"),L.t("回忆卡片读词；反向回忆揭晓后才读日语。"),"reviewAutoSpeak",prefs.reviewAutoSpeak());
@@ -422,10 +425,10 @@ public final class MainActivity extends Activity {
         toggle(L.t("朗读中文译文"),L.t("每轮先读日语再读中文；引擎不支持中文时跳过"),"readChinese",prefs.readChinese());
         slider(L.t("朗读语速"),"speechRate",50,150,5,Math.round(prefs.speechRate()*100)," %");
         slider(L.t("每段朗读后停顿"),"speechGap",0,3000,100,prefs.speechGap(),L.t(" 毫秒"));
-        body.addView(Ui.prose(this,L.t("语速和停顿从下一段生效。耳机断开、来电或音频焦点被其他应用取得时暂停，需手动继续。"),11,Ui.MUTED));
-        body.addView(Ui.prose(this,L.t("单词和例句分别按设置次数循环；开启中文后，每轮为「日语 → 中文」。切词间隔是最短停留时间，尚未朗读完会等待；手动暂停会停止声音；收球和锁屏是否继续，由上方开关决定。"),12,Ui.MUTED));Ui.gap(body,10);
-        voiceStatus=Ui.text(this,speech.status(),12,Ui.MUTED);body.addView(voiceStatus);Ui.gap(body,8);
-        body.addView(Ui.button(this,L.t("试读日语"),false,v->speech.speak("こんにちは。日本語の音声を確認します。",true)));Ui.gap(body,8);body.addView(Ui.button(this,L.t("试读中文"),false,v->speech.testChinese()));Ui.gap(body,8);body.addView(Ui.prose(this,L.t("离线能力是引擎报告的信息。请在断网状态分别试读确认；本应用不会自动更换引擎中的声音。"),12,Ui.MUTED));
+        Ui.gap(body,8);voiceNote(L.t("语速和停顿从下一段生效。耳机断开、来电或音频焦点被其他应用取得时暂停，需手动继续。"));Ui.gap(body,10);
+        voiceNote(L.t("单词和例句分别按设置次数循环；开启中文后，每轮为「日语 → 中文」。切词间隔是最短停留时间，尚未朗读完会等待；手动暂停会停止声音；收球和锁屏是否继续，由上方开关决定。"));Ui.gap(body,16);
+        voiceStatus=Ui.prose(this,speech.status(),12,Ui.MUTED);voiceStatus.setLineSpacing(d(4),1.15f);body.addView(voiceStatus);Ui.gap(body,8);
+        body.addView(Ui.button(this,L.t("试读日语"),false,v->speech.speak("こんにちは。日本語の音声を確認します。",true)));Ui.gap(body,8);body.addView(Ui.button(this,L.t("试读中文"),false,v->speech.testChinese()));Ui.gap(body,8);voiceNote(L.t("离线能力是引擎报告的信息。请在断网状态分别试读确认；本应用不会自动更换引擎中的声音。"));Ui.gap(body,12);
         body.addView(Ui.button(this,L.t("发音设置指引 · 无 Google Play 也可查看"),false,v->voiceGuide()));Ui.gap(body,8);
         fold(L.t("高级发音设置"),voiceAdvanced,open->voiceAdvanced=open,()->{
         java.util.List<Speech.Engine> engines=Speech.engines(this);
@@ -652,11 +655,11 @@ public final class MainActivity extends Activity {
     private void shareBackup(File file){try{startActivity(Intent.createChooser(BackupFiles.share(this,file),L.t("分享词间完整备份")));}catch(ActivityNotFoundException e){toast(L.t("没有可接收文件的应用，可改为保存到下载"));}}
     private Switch toggle(String title,String subtitle,String key,boolean checked) {
         LinearLayout row=Ui.row(this);row.setPadding(0,d(12),0,d(12));LinearLayout words=Ui.column(this);words.setPadding(0,0,d(16),0);
-        words.addView(Ui.bold(this,title,14,Ui.INK));Ui.gap(words,6);words.addView(Ui.prose(this,subtitle,12,Ui.MUTED));Ui.weighted(row,words);
+        words.addView(Ui.bold(this,title,14,Ui.INK));Ui.gap(words,6);TextView detail=Ui.prose(this,subtitle,12,Ui.MUTED);if(settingsCategory==4)detail.setLineSpacing(d(4),1.15f);words.addView(detail);Ui.weighted(row,words);
         Switch toggle=new Switch(this);toggle.setContentDescription(title);toggle.setChecked(checked);toggle.setOnCheckedChangeListener((button,value)->prefs.put(key,value));row.addView(toggle);body.addView(row);return toggle;
     }
     private void slider(String title,String key,int min,int max,int step,int current,String suffix) {
-        Ui.gap(body,8);TextView label=Ui.text(this,title+" · "+current+suffix,14,Ui.INK);body.addView(label);
+        Ui.gap(body,8);TextView label=Ui.prose(this,title+" · "+current+suffix,14,Ui.INK);body.addView(label);
         SeekBar seek=new SeekBar(this);seek.setMax((max-min)/step);seek.setProgress((current-min)/step);seek.setContentDescription(title);
         body.addView(seek,new LinearLayout.LayoutParams(-1,d(46)));
         seek.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){

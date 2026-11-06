@@ -66,6 +66,8 @@ final class Ui {
     static void exampleActionState(TextView view,boolean speaking){if(view==null)return;view.setText((speaking?"■  ":"▷  ")+L.t(speaking?"停止朗读":"朗读例句"));view.setContentDescription(L.t(speaking?"停止朗读":"朗读例句"));}
     static LinearLayout column(Context c){LinearLayout l=new LinearLayout(c);l.setOrientation(LinearLayout.VERTICAL);return l;}
     static LinearLayout row(Context c){LinearLayout l=new LinearLayout(c);l.setOrientation(LinearLayout.HORIZONTAL);l.setGravity(Gravity.CENTER_VERTICAL);return l;}
+    // 并排操作保留4dp空隙，原有权重平分剩余宽度。 / Keep a 4dp gap between actions and share the remaining width.
+    static LinearLayout actionRow(Context c){LinearLayout row=row(c);GradientDrawable divider=new GradientDrawable();divider.setColor(Color.TRANSPARENT);divider.setSize(dp(c,4),1);row.setDividerDrawable(divider);row.setShowDividers(LinearLayout.SHOW_DIVIDER_MIDDLE);return row;}
     static void gap(LinearLayout l,int dp){View v=new View(l.getContext());l.addView(v,new LinearLayout.LayoutParams(1,Ui.dp(l.getContext(),dp)));}
     static void weighted(LinearLayout l,View v){l.addView(v,new LinearLayout.LayoutParams(0,LinearLayout.LayoutParams.WRAP_CONTENT,1));}
     // 输入框随文字增高，最小高度保留触摸区域。 / Grow inputs with their text while retaining a minimum touch area.

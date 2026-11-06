@@ -49,6 +49,8 @@ final class Speech {
     void setOnUnavailable(Runnable callback){unavailable=callback;}
     void setOnChanged(Runnable callback){changed=callback;}
     String status(){return checking?L.t("正在检测日语语音…"):ready?L.t("日语语音已就绪 · ")+engineLabel+(chineseUnavailable?L.t(" · 中文不可用"):"")+"\n"+voiceAvailability("ja")+(lastFailure.isEmpty()?"":"\n"+lastFailure):L.t("缺少可用的日语语音；点击「获取日语语音」")+(lastFailure.isEmpty()?"":"\n"+lastFailure);}
+    // 学习页只展示简短状态，完整引擎信息留在发音设置。 / Keep study status brief; engine details stay in voice settings.
+    String summary(){return checking?L.t("正在检测日语语音…"):ready?L.t("日语语音已就绪"):L.t("日语语音未就绪");}
     String voiceAvailability(String language){
         if(!ready||tts==null)return L.t("语音尚未就绪");
         try{
