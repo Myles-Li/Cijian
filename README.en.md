@@ -36,6 +36,8 @@ Dictionary access, study and records work locally. The app has no INTERNET permi
 
 ## Demo
 
+https://github.com/user-attachments/assets/3560994a-93fb-4f57-abd5-515734313e35
+
 **[Watch the 47-second floating-study demo](https://myles-li.github.io/Cijian/)** · [Recording notes](docs/demo.md)
 
 Recorded by the author on an Android phone: word navigation, speech, details, and collapsing and reopening the window, with the original audio preserved.

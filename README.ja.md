@@ -36,6 +36,8 @@
 
 ## デモ動画
 
+https://github.com/user-attachments/assets/3560994a-93fb-4f57-abd5-515734313e35
+
 **[47秒のフロート学習デモを見る](https://myles-li.github.io/Cijian/)** · [録画について](docs/demo.md)
 
 作者がAndroidスマートフォンで録画しました。単語の切り替え、読み上げ、詳細、折りたたみ・再表示を紹介し、元の音声を保持しています。

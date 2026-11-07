@@ -38,6 +38,8 @@ Native Android app for learning Japanese through Chinese meanings. The interface
 
 ## 演示视频
 
+https://github.com/user-attachments/assets/3560994a-93fb-4f57-abd5-515734313e35
+
 **[观看 47 秒悬浮学习演示](https://myles-li.github.io/Cijian/)** · [录屏说明](docs/demo.md)
 
 作者在安卓手机上录制，展示悬浮窗翻词、朗读、详情及收起再展开；完整保留原声。
