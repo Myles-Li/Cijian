@@ -1,0 +1,7 @@
+out/
+xcuserdata/
+*.xcuserstate
+*.mobileprovision
+*.p12
+*.cer
+*.ipa

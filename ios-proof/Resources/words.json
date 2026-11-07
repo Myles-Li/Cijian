@@ -1,0 +1,23 @@
+[
+  {
+    "id": "0bb511e6-2ed7-11ef-a183-99ad05e145f0",
+    "word": "日常",
+    "reading": "にちじょう",
+    "meaning": "日常，平时",
+    "pos": "名"
+  },
+  {
+    "id": "0b5c8b2a-2ed7-11ef-a183-99ad05e145f0",
+    "word": "食べる",
+    "reading": "たべる",
+    "meaning": "吃",
+    "pos": "他動2"
+  },
+  {
+    "id": "0bee96b4-2ed7-11ef-a183-99ad05e145f0",
+    "word": "コミュニケーション",
+    "reading": "communication",
+    "meaning": "交流，沟通",
+    "pos": "名"
+  }
+]

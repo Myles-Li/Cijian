@@ -1,0 +1,33 @@
+name: iOS feasibility probe
+on:
+  push:
+    branches: [ios/feasibility]
+    paths: [ios-proof/**, .github/workflows/ios-proof.yml]
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: ios-feasibility-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  apple-probe:
+    runs-on: macos-15
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - name: Build unsigned device app and run iPad / iPhone simulator checks
+        run: python3 ios-proof/ci_probe.py
+      - name: Save verification evidence (not a signed installable release)
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        with:
+          name: ios-feasibility-evidence
+          retention-days: 7
+          if-no-files-found: warn
+          path: |
+            ios-proof/out/report.json
+            ios-proof/out/*.log
+            ios-proof/out/*-summary.json
+            ios-proof/out/*-last-status.json
+            ios-proof/out/*-screenshot-export/**
+            ios-proof/out/UNSIGNED-device-build.zip
