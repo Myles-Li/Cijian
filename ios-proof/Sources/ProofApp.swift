@@ -10,6 +10,11 @@ struct ProbeWord: Codable, Identifiable {
     let reading: String
     let meaning: String
     let pos: String
+    var displayReading: String {
+        let latin = reading.range(of: "[A-Za-z]", options: .regularExpression) != nil
+        let kana = reading.range(of: "[ぁ-ゖァ-ヺ]", options: .regularExpression) != nil
+        return latin && !kana ? "词源：" + reading : reading
+    }
 }
 
 enum ProbeDeck {
@@ -44,10 +49,6 @@ enum VoiceSelection {
             return $0.id < $1.id
         }
     }
-    static func choose(_ preferred: String, language: String, voices: [ProbeVoice]) -> ProbeVoice? {
-        let available = matching(language, in: voices)
-        return available.first(where: { !$0.id.isEmpty && $0.id == preferred }) ?? available.first
-    }
     static func rate(_ value: Double) -> Double { value.isFinite ? min(0.65, max(0.35, value)) : 0.5 }
 }
 
@@ -65,55 +66,104 @@ struct CijianProofApp: App {
 
 struct ProbeScreen: View {
     @ObservedObject var probe: StudyProbe
+    @StateObject private var download = OfflineVoiceDownload()
+    @State private var showPiP = false
     var body: some View {
         NavigationStack {
             ScrollView {
-                VStack(alignment: .leading, spacing: 20) {
-                    Text("这只是悬浮替代与安装验证，没有迁移完整词库或学习记录。")
-                        .font(.subheadline).foregroundStyle(.secondary)
-                    NavigationLink("声音与试听") { VoiceSettingsScreen(probe: probe) }
+                VStack(alignment: .leading, spacing: 16) {
+                    NavigationLink("声音与试听") { VoiceSettingsScreen(probe: probe, download: download) }
                         .accessibilityIdentifier("voiceSettings")
-                    FramePreview(probe: probe).aspectRatio(16 / 9, contentMode: .fit)
-                        .clipShape(RoundedRectangle(cornerRadius: 18))
-                        .accessibilityLabel("词条视频画面")
-                    Text(probe.currentWord?.word ?? "载入失败").font(.title.bold())
-                        .accessibilityIdentifier("word")
-                    Text("第 \(probe.index + 1) / \(probe.words.count) 词")
-                        .accessibilityIdentifier("position")
-                    HStack(spacing: 12) {
+                    VStack(alignment: .leading, spacing: 14) {
+                        Text("第 \(probe.index + 1) / \(probe.words.count) 词")
+                            .font(.subheadline).foregroundStyle(.secondary).accessibilityIdentifier("position")
+                        Text(probe.currentWord?.word ?? "载入失败").font(.largeTitle.bold())
+                            .fixedSize(horizontal: false, vertical: true).accessibilityIdentifier("word")
+                        Text(probe.currentWord?.displayReading ?? "").font(.title3)
+                            .fixedSize(horizontal: false, vertical: true).accessibilityIdentifier("reading")
+                        Text(probe.currentWord?.pos ?? "").font(.caption).foregroundStyle(.secondary)
+                        Divider()
+                        Text(probe.currentWord?.meaning ?? "").font(.title2)
+                            .fixedSize(horizontal: false, vertical: true).accessibilityIdentifier("meaning")
+                    }.frame(maxWidth: .infinity, alignment: .leading).padding(20)
+                        .background(Color.secondary.opacity(0.08), in: RoundedRectangle(cornerRadius: 18))
+                    ViewThatFits(in: .horizontal) {
+                        HStack(spacing: 8) { playbackControls }
+                        VStack(spacing: 8) { playbackControls }
+                    }.buttonStyle(.bordered)
+                    Text(probe.playing ? "正在播放" : "已暂停").accessibilityIdentifier("playbackState")
+                    Toggle("退出 App 后继续听词", isOn: $probe.backgroundListening)
+                        .accessibilityIdentifier("backgroundListening")
+                    Button("全部停止") { probe.stopAll() }.buttonStyle(.bordered)
+                        .accessibilityIdentifier("stop")
+                    if UIDevice.current.userInterfaceIdiom == .pad {
+                        Text("iPad 小窗：在系统“多任务与手势”中开启“窗口化 App”，再长按窗口顶部控制按钮选择“进入侧拉”。这里的词卡和按钮都能直接使用。")
+                            .font(.footnote).foregroundStyle(.secondary).accessibilityIdentifier("windowGuide")
+                    } else {
+                        Text("iPhone 可在 App 内学习或后台听词；系统不提供 iPad 的侧拉窗口。")
+                            .font(.footnote).foregroundStyle(.secondary)
+                    }
+                    DisclosureGroup("可选：画中画实验", isExpanded: $showPiP) {
+                        VStack(alignment: .leading, spacing: 12) {
+                            FramePreview(probe: probe).aspectRatio(16 / 9, contentMode: .fit)
+                                .clipShape(RoundedRectangle(cornerRadius: 12))
+                            Button("开启画中画验证", systemImage: "pip.enter") { probe.startPiP() }
+                                .buttonStyle(.bordered).disabled(!probe.pipPossible).accessibilityIdentifier("pip")
+                            Text("画中画仍带有系统媒体控件，不提供普通词卡按钮。关闭小窗会停止声音。")
+                                .font(.footnote).foregroundStyle(.secondary)
+                            Text(probe.pipStatus).accessibilityIdentifier("pipStatus")
+                        }.padding(.top, 8)
+                    }.accessibilityIdentifier("pipExperiment")
+                    Text(probe.voiceStatus).font(.footnote).accessibilityIdentifier("voiceStatus")
+                    Text(probe.lastEvent).font(.footnote).foregroundStyle(.secondary).accessibilityIdentifier("lastEvent")
+                    Text("验证包 0.3 · 三个原词库样本。默认暂停、默认系统语音；独立离线模型需要主动下载。尚未迁移完整学习记录。")
+                        .font(.footnote).foregroundStyle(.secondary)
+                }.padding(20).frame(maxWidth: 640).frame(maxWidth: .infinity)
+            }.navigationTitle("词间 · iOS 验证").navigationBarTitleDisplayMode(.inline)
+        }.tint(.primary)
+    }
+    @ViewBuilder private var playbackControls: some View {
                         Button("上一个") { probe.move(-1) }.accessibilityIdentifier("previous")
                         Button(probe.playing ? "暂停" : "开始听词") {
                             probe.playing ? probe.pause() : probe.play(requireVoice: true)
                         }.accessibilityIdentifier("play")
                         Button("下一个") { probe.move(1) }.accessibilityIdentifier("next")
-                    }.buttonStyle(.bordered)
-                    Button("开启画中画验证", systemImage: "pip.enter") { probe.startPiP() }
-                        .buttonStyle(.borderedProminent).disabled(!probe.pipPossible)
-                        .accessibilityIdentifier("pip")
-                    Toggle("退出 App 后继续听词", isOn: $probe.backgroundListening)
-                        .accessibilityIdentifier("backgroundListening")
-                    Text("默认不播放，每 12 秒换词。轻点小窗空白可收起系统播放按钮；小窗中的按钮由 iPadOS 提供。")
-                        .font(.footnote).foregroundStyle(.secondary)
-                    Text(probe.playing ? "正在播放" : "已暂停").accessibilityIdentifier("playbackState")
-                    Text(probe.voiceStatus).accessibilityIdentifier("voiceStatus")
-                    Text(probe.pipStatus).accessibilityIdentifier("pipStatus")
-                    Text(probe.lastEvent).font(.footnote).accessibilityIdentifier("lastEvent")
-                    Button("全部停止") { probe.stopAll() }.buttonStyle(.bordered)
-                        .accessibilityIdentifier("stop")
-                    Text("验证包 0.2 · 声音可在上方选择。暂停、音频中断或拔出耳机会停止；小窗不提供收藏或评分按钮。")
-                        .font(.footnote).foregroundStyle(.secondary)
-                }.padding(24)
-            }.navigationTitle("词间 · iOS 验证")
-        }
     }
 }
 
 struct VoiceSettingsScreen: View {
     @ObservedObject var probe: StudyProbe
+    @ObservedObject var download: OfflineVoiceDownload
     var body: some View {
         Form {
+            Section("语音引擎") {
+                Picker("引擎", selection: Binding(get: { probe.engine }, set: { probe.selectEngine($0) })) {
+                    Text("苹果系统语音 · 无需额外模型").tag("system")
+                    Text("Kokoro · 独立离线模型").tag("kokoro")
+                }.accessibilityIdentifier("speechEngine")
+                Text("独立模型下载后在本机合成，朗读不联网；当前验证三个词条和两句试听。自然度需实际试听。")
+                    .font(.footnote)
+                Text(download.status).accessibilityIdentifier("offlineModelStatus")
+                if download.downloading {
+                    ProgressView()
+                    Button("取消下载") { download.cancel() }.accessibilityIdentifier("cancelModelDownload")
+                } else if download.installed {
+                    Button("删除离线声音模型", role: .destructive) { probe.removeOffline(download) }
+                        .accessibilityIdentifier("removeModel")
+                } else {
+                    Button("下载可选声音模型 · 93.4 MB") { download.download() }
+                        .accessibilityIdentifier("downloadModel")
+                }
+                Text("默认不下载。声音模型可单独删除；系统语音仍可使用。首次下载需要联网。")
+                    .font(.footnote).foregroundStyle(.secondary)
+            }
             voiceSection("日语", language: "ja-JP", selected: probe.japaneseVoiceID, rate: probe.japaneseRate)
             voiceSection("中文", language: "zh-CN", selected: probe.chineseVoiceID, rate: probe.chineseRate)
+            Section("对比旧版") {
+                Button("恢复 0.1 系统语音设置") { probe.restoreLegacyVoice() }.accessibilityIdentifier("restoreLegacyVoice")
+                Text("恢复系统默认选声和 0.1 的日语语速，不改变当前词。系统更新或声音下载变化仍可能影响听感。")
+                    .font(.footnote)
+            }
             Section("下载更自然的声音") {
                 Text("先在系统的“无障碍／辅助功能 → 阅读与朗读（旧版叫朗读内容）→ 声音”中，下载日语和中文的增强或高级声音。无需开启旁白。")
                 Text("返回验证包后点“重新检测声音”。这里只能选择系统向 App 提供的声音；下载与个人听感需在设备上确认。")
@@ -121,19 +171,23 @@ struct VoiceSettingsScreen: View {
                 Text(probe.voiceStatus).font(.footnote).accessibilityIdentifier("selectedVoiceStatus")
             }
         }.navigationTitle("声音与试听")
-            .onAppear { probe.refreshVoices() }
+            .onAppear { probe.pause(); probe.refreshVoices() }
             .onDisappear { probe.stopPreview() }
     }
     private func voiceSection(_ title: String, language: String, selected: String, rate: Double) -> some View {
         Section(title) {
+            if probe.engine == "system" {
             Picker("声音", selection: Binding(get: { language == "ja-JP" ? probe.japaneseVoiceID : probe.chineseVoiceID },
                 set: { probe.selectVoice($0, language: language) })) {
-                Text("自动 · 优先已下载的高质量声音").tag("")
+                Text("系统默认声音").tag("")
                 ForEach(VoiceSelection.matching(language, in: probe.voices)) { Text($0.label).tag($0.id) }
                 if !selected.isEmpty && !probe.voices.contains(where: { $0.id == selected }) {
                     Text("所选声音暂不可用 · 使用自动回退").tag(selected)
                 }
             }.accessibilityIdentifier(language == "ja-JP" ? "japaneseVoice" : "chineseVoice")
+            } else {
+                Text(language == "ja-JP" ? "Kokoro · jf_alpha（日语）" : "Kokoro · zf_xiaobei（普通话）")
+            }
             Text(String(format: "语速 · %.2f 倍", rate / 0.5))
             Slider(value: Binding(get: { language == "ja-JP" ? probe.japaneseRate : probe.chineseRate },
                 set: { probe.setRate($0, language: language) }), in: 0.35...0.65, step: 0.025)
@@ -186,7 +240,7 @@ enum WordFrame {
         context.translateBy(x: 0, y: size.height); context.scaleBy(x: 1, y: -1)
         UIGraphicsPushContext(context); defer { UIGraphicsPopContext() }
         draw(word.word, in: CGRect(x: 64, y: 58, width: 1152, height: 210), font: 94, bold: true)
-        draw(word.reading + " · " + word.pos, in: CGRect(x: 64, y: 286, width: 1152, height: 100), font: 48)
+        draw(word.displayReading + " · " + word.pos, in: CGRect(x: 64, y: 286, width: 1152, height: 100), font: 48)
         draw(word.meaning, in: CGRect(x: 64, y: 414, width: 1152, height: 224), font: 58)
         draw("词间 · 画中画验证", in: CGRect(x: 64, y: 666, width: 1152, height: 42), font: 24)
         var description: CMVideoFormatDescription?
@@ -226,7 +280,7 @@ enum WordFrame {
 }
 
 final class StudyProbe: NSObject, ObservableObject, AVPictureInPictureControllerDelegate,
-    AVPictureInPictureSampleBufferPlaybackDelegate, AVSpeechSynthesizerDelegate {
+    AVPictureInPictureSampleBufferPlaybackDelegate, AVSpeechSynthesizerDelegate, AVAudioPlayerDelegate {
     @Published private(set) var words: [ProbeWord] = []
     @Published private(set) var index = 0
     @Published private(set) var playing = false
@@ -240,6 +294,7 @@ final class StudyProbe: NSObject, ObservableObject, AVPictureInPictureController
     @Published private(set) var chineseVoiceID: String
     @Published private(set) var japaneseRate: Double
     @Published private(set) var chineseRate: Double
+    @Published private(set) var engine: String
     var currentWord: ProbeWord? { words.indices.contains(index) ? words[index] : nil }
     private var display: AVSampleBufferDisplayLayer?
     private var pip: AVPictureInPictureController?
@@ -254,12 +309,17 @@ final class StudyProbe: NSObject, ObservableObject, AVPictureInPictureController
     private var completedSpeechCount = 0
     private let preferences: UserDefaults
     private var previewing = false
+    private let offline = OfflineSynthesizer()
+    private var offlineTask: Task<Void, Never>?
+    private var player: AVAudioPlayer?
+    private var wordDeadline = Date()
     init(preferences: UserDefaults = .standard) {
         self.preferences = preferences
         japaneseVoiceID = preferences.string(forKey: "probe.voice.ja") ?? ""
         chineseVoiceID = preferences.string(forKey: "probe.voice.zh") ?? ""
-        japaneseRate = VoiceSelection.rate(preferences.object(forKey: "probe.rate.ja") as? Double ?? 0.5)
+        japaneseRate = VoiceSelection.rate(preferences.object(forKey: "probe.rate.ja") as? Double ?? 0.425)
         chineseRate = VoiceSelection.rate(preferences.object(forKey: "probe.rate.zh") as? Double ?? 0.5)
+        engine = preferences.string(forKey: "probe.engine") == "kokoro" ? "kokoro" : "system"
         super.init()
         do { words = try ProbeDeck.load() } catch { lastEvent = error.localizedDescription }
         speech.delegate = self
@@ -278,10 +338,18 @@ final class StudyProbe: NSObject, ObservableObject, AVPictureInPictureController
                       reason == AVAudioSession.RouteChangeReason.oldDeviceUnavailable.rawValue else { return }
                 self?.pause(); self?.record("原音频设备断开，已暂停")
             })
+        observers.append(NotificationCenter.default.addObserver(forName: UIApplication.didReceiveMemoryWarningNotification,
+            object: nil, queue: .main) { [weak self] _ in
+                guard let self else { return }
+                self.pause()
+                Task { await self.offline.unload() }
+                self.record("系统内存不足，已暂停并释放离线模型")
+            })
         record("初始暂停")
     }
     func attach(_ layer: AVSampleBufferDisplayLayer) {
-        guard display == nil else { return }
+        guard display !== layer, pip?.isPictureInPictureActive != true else { return }
+        observation?.invalidate(); frameTimer?.invalidate()
         display = layer
         var timebase: CMTimebase?
         if CMTimebaseCreateWithSourceClock(allocator: kCFAllocatorDefault,
@@ -313,11 +381,14 @@ final class StudyProbe: NSObject, ObservableObject, AVPictureInPictureController
     func move(_ direction: Int) {
         guard !words.isEmpty else { return }
         cancelSpeech(); index = ProbeDeck.moved(index, by: direction, count: words.count)
-        render(); if playing { sayCurrent(); scheduleWord() }; record("切换词条")
+        render(); if playing { wordDeadline = Date().addingTimeInterval(12); sayCurrent() }; record("切换词条")
     }
     func play(requireVoice: Bool) {
         guard !words.isEmpty else { return }
-        if requireVoice && currentVoice("ja-JP") == nil {
+        if engine == "kokoro" && !OfflineVoiceFiles.present() {
+            voiceStatus = "离线模型尚未下载，请到声音与试听下载或选择系统语音"; record("未下载离线模型"); return
+        }
+        if engine == "system" && requireVoice && currentVoice("ja-JP") == nil {
             voiceStatus = "没有日语声音，未开始听词"; record("缺少日语声音"); return
         }
         do {
@@ -325,32 +396,60 @@ final class StudyProbe: NSObject, ObservableObject, AVPictureInPictureController
             try audio.setCategory(.playback, mode: .default)
             try audio.setActive(true)
         } catch { record("音频会话失败：" + error.localizedDescription); return }
-        cancelSpeech(); playing = true; sayCurrent(); scheduleWord()
+        cancelSpeech(); playing = true; wordDeadline = Date().addingTimeInterval(12); sayCurrent()
         pip?.invalidatePlaybackState(); record("用户开始")
     }
     private func scheduleWord() {
         wordTimer?.invalidate()
-        wordTimer = Timer.scheduledTimer(withTimeInterval: 12, repeats: false) { [weak self] _ in
+        // 等朗读完成再换词，长释义与首次模型加载不会被固定计时截断。
+        // Advance only after speech completes, including slow first inference.
+        wordTimer = Timer.scheduledTimer(withTimeInterval: max(1, wordDeadline.timeIntervalSinceNow), repeats: false) { [weak self] _ in
             guard let self, self.playing else { return }; self.move(1)
         }
     }
     private func cancelSpeech() {
-        speechGeneration = UUID(); activeUtterance = nil; chinesePending = nil; previewing = false; speech.stopSpeaking(at: .immediate)
+        speechGeneration = UUID(); activeUtterance = nil; chinesePending = nil; previewing = false
+        offlineTask?.cancel(); offlineTask = nil; player?.stop(); player = nil
+        wordTimer?.invalidate(); wordTimer = nil; speech.stopSpeaking(at: .immediate)
     }
     func refreshVoices() {
         voices = AVSpeechSynthesisVoice.speechVoices().map { ProbeVoice(id: $0.identifier, name: $0.name, language: $0.language, quality: $0.quality.rawValue) }
         func description(_ language: String, selected: String) -> String {
-            guard let voice = VoiceSelection.choose(selected, language: language, voices: voices) else { return "没有可用声音，请在系统下载" }
-            let fallback = !selected.isEmpty && voice.id != selected ? "（所选声音不可用，已回退）" : ""
+            guard let system = currentVoice(language) else { return "没有可用声音，请在系统下载" }
+            let voice = ProbeVoice(id: system.identifier, name: system.name, language: system.language, quality: system.quality.rawValue)
+            let fallback = !selected.isEmpty && voice.id != selected ? "（所选声音不可用，已回退系统默认）" : ""
             return voice.label + fallback
         }
-        voiceStatus = "日语：" + description("ja-JP", selected: japaneseVoiceID) + "\n中文：" + description("zh-CN", selected: chineseVoiceID)
+        voiceStatus = engine == "kokoro"
+            ? (OfflineVoiceFiles.present() ? "Kokoro 离线 · 日语 jf_alpha／中文 zf_xiaobei" : "Kokoro 离线模型尚未下载")
+            : "系统日语：" + description("ja-JP", selected: japaneseVoiceID) + "\n系统中文：" + description("zh-CN", selected: chineseVoiceID)
         record("已重新检测系统声音")
     }
     private func currentVoice(_ language: String) -> AVSpeechSynthesisVoice? {
         let selected = language == "ja-JP" ? japaneseVoiceID : chineseVoiceID
-        guard let choice = VoiceSelection.choose(selected, language: language, voices: voices) else { return nil }
-        return AVSpeechSynthesisVoice(identifier: choice.id)
+        if let choice = VoiceSelection.matching(language, in: voices).first(where: { $0.id == selected }),
+           let voice = AVSpeechSynthesisVoice(identifier: choice.id) { return voice }
+        return AVSpeechSynthesisVoice(language: language)
+    }
+    func selectEngine(_ value: String) {
+        pause(); engine = value == "kokoro" ? "kokoro" : "system"
+        preferences.set(engine, forKey: "probe.engine")
+        if engine == "system" { Task { await offline.unload() } }
+        refreshVoices()
+    }
+    func restoreLegacyVoice() {
+        selectEngine("system")
+        selectVoice("", language: "ja-JP"); selectVoice("", language: "zh-CN")
+        setRate(0.425, language: "ja-JP"); setRate(0.5, language: "zh-CN")
+        record("已恢复 0.1 的选声方式与语速，当前词不变")
+    }
+    func removeOffline(_ download: OfflineVoiceDownload) {
+        selectEngine("system")
+        Task { @MainActor in
+            await offline.unload()
+            do { try download.remove(); refreshVoices() }
+            catch { record("删除声音模型失败：" + error.localizedDescription) }
+        }
     }
     func selectVoice(_ identifier: String, language: String) {
         pause()
@@ -365,33 +464,77 @@ final class StudyProbe: NSObject, ObservableObject, AVPictureInPictureController
     }
     func preview(language: String) {
         pause(); refreshVoices()
-        guard let voice = currentVoice(language) else { record("试听所需声音尚未下载"); return }
+        if engine == "kokoro" && !OfflineVoiceFiles.present() { record("请先下载离线模型，或选择系统语音"); return }
         do { try AVAudioSession.sharedInstance().setActive(true) }
         catch { record("试听音频会话失败"); return }
         previewing = true
         let phrase = language == "ja-JP" ? "日本語を毎日少しずつ勉強します。" : "每天学一点，按自己的节奏学习。"
+        if engine == "kokoro" { speakOffline(phrase, language: language); return }
+        guard let voice = currentVoice(language) else { pause(); record("试听所需声音尚未下载"); return }
         let utterance = AVSpeechUtterance(string: phrase); utterance.voice = voice
         utterance.rate = Float(language == "ja-JP" ? japaneseRate : chineseRate)
         activeUtterance = utterance; speech.speak(utterance); record("正在试听")
     }
     func stopPreview() { if previewing { pause() } }
     private func sayCurrent() {
-        guard let word = currentWord, let voice = currentVoice("ja-JP") else { return }
+        guard let word = currentWord else { pause(); return }
+        chinesePending = word.meaning
+        if engine == "kokoro" { speakOffline(word.word, language: "ja-JP"); return }
+        guard let voice = currentVoice("ja-JP") else { pause(); record("日语声音不可用，已暂停"); return }
         let utterance = AVSpeechUtterance(string: word.word); utterance.voice = voice
         utterance.rate = Float(japaneseRate)
-        activeUtterance = utterance; chinesePending = word.meaning; speech.speak(utterance)
+        activeUtterance = utterance; speech.speak(utterance)
+    }
+    private func speakOffline(_ text: String, language: String) {
+        let token = speechGeneration
+        let speed = Float((language == "ja-JP" ? japaneseRate : chineseRate) / 0.5)
+        record("正在本机合成" + (language == "ja-JP" ? "日语" : "中文"))
+        offlineTask = Task { @MainActor [weak self] in
+            guard let self else { return }
+            do {
+                let data = try await offline.generate(text: text, language: language, speed: speed)
+                guard !Task.isCancelled, speechGeneration == token, playing || previewing else { return }
+                let audio = try AVAudioPlayer(data: data); audio.delegate = self
+                player = audio
+                guard audio.play() else { throw VoiceFailure.message("离线音频无法播放") }
+                record("正在播放离线合成语音")
+            } catch {
+                guard !Task.isCancelled, speechGeneration == token else { return }
+                pause(); record("离线语音失败：" + error.localizedDescription)
+            }
+        }
+    }
+    func audioPlayerDidFinishPlaying(_ audio: AVAudioPlayer, successfully flag: Bool) {
+        guard audio === player else { return }
+        player = nil
+        guard flag else { pause(); record("离线声音播放失败，已暂停"); return }
+        speechFinished()
+    }
+    func audioPlayerDecodeErrorDidOccur(_ audio: AVAudioPlayer, error: Error?) {
+        guard audio === player else { return }
+        pause(); record("离线声音解码失败，已暂停")
     }
     func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
         guard utterance === activeUtterance else { return }
+        activeUtterance = nil
+        speechFinished()
+    }
+    private func speechFinished() {
         if previewing { pause(); record("试听结束"); return }
         guard playing else { return }
         completedSpeechCount += 1
-        if let meaning = chinesePending, let voice = currentVoice("zh-CN") {
+        if let meaning = chinesePending {
             chinesePending = nil
+            if engine == "kokoro" { speakOffline(meaning, language: "zh-CN"); return }
+            guard let voice = currentVoice("zh-CN") else { scheduleWord(); record("未找到中文声音，已跳过译文"); return }
             let translated = AVSpeechUtterance(string: meaning); translated.voice = voice; translated.rate = Float(chineseRate)
             activeUtterance = translated; speech.speak(translated)
-        } else { activeUtterance = nil; chinesePending = nil }
+        } else { scheduleWord() }
         record("系统报告朗读完成，仍需人工试听")
+    }
+    func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didCancel utterance: AVSpeechUtterance) {
+        guard utterance === activeUtterance else { return }
+        pause(); record("系统取消朗读，已暂停")
     }
     func pause() {
         playing = false; wordTimer?.invalidate(); wordTimer = nil; cancelSpeech()
@@ -446,6 +589,7 @@ final class StudyProbe: NSObject, ObservableObject, AVPictureInPictureController
             "voice": voiceStatus, "completedSpeechCount": completedSpeechCount,
             "systemVersion": UIDevice.current.systemVersion, "device": UIDevice.current.model,
             "japaneseRate": japaneseRate, "chineseRate": chineseRate, "previewing": previewing,
+            "engine": engine, "offlineModelInstalled": OfflineVoiceFiles.present(),
             "time": Date().timeIntervalSince1970]
         if let data = try? JSONSerialization.data(withJSONObject: state, options: [.prettyPrinted, .sortedKeys]),
            let directory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
@@ -454,6 +598,7 @@ final class StudyProbe: NSObject, ObservableObject, AVPictureInPictureController
     }
     deinit {
         frameTimer?.invalidate(); wordTimer?.invalidate()
+        offlineTask?.cancel(); player?.stop()
         for observer in observers { NotificationCenter.default.removeObserver(observer) }
     }
 }

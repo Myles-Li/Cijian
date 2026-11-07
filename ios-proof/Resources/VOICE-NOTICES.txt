@@ -1,0 +1,21 @@
+Optional offline voice experiment, Cijian iOS proof 0.3
+
+Kokoro-82M v1.0 by hexgrad, Apache-2.0.
+https://huggingface.co/hexgrad/Kokoro-82M
+ONNX export by ONNX Community, Apache-2.0.
+https://huggingface.co/onnx-community/Kokoro-82M-v1.0-ONNX
+Pinned revision: 1939ad2a8e416c0acfeecc08a694d14ef25f2231
+Voice assets: jf_alpha (Japanese), zf_xiaobei (Mandarin).
+Model and voice assets are optional downloads, not bundled into this app.
+
+ONNX Runtime by Microsoft Corporation and contributors, MIT.
+https://github.com/microsoft/onnxruntime-swift-package-manager
+Pinned revision: b7fb7f7dea8a2469e6335d95a61b8f36d0dc83b2 (runtime 1.24.2).
+
+Misaki 0.9.4 by hexgrad, Apache-2.0, used by maintenance tools to
+precompute fixed-deck pronunciation indices; not executed on the phone.
+https://github.com/hexgrad/misaki
+
+The vocabulary content is independently licensed CC BY-NC 4.0.
+See the repository THIRD_PARTY_NOTICES.md.
+These notices do not grant a new license to Cijian application source code.

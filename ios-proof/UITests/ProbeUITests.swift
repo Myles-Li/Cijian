@@ -2,6 +2,12 @@ import XCTest
 
 final class ProbeUITests: XCTestCase {
     private var app: XCUIApplication!
+    private func reveal(_ element: XCUIElement) {
+        for _ in 0..<6 {
+            if element.isHittable { return }
+            app.swipeUp()
+        }
+    }
     override func setUpWithError() throws {
         continueAfterFailure = false
         app = XCUIApplication(); app.launch()
@@ -10,13 +16,14 @@ final class ProbeUITests: XCTestCase {
     func testVoiceSettingsAndPreviewDoNotStartContinuousPlayback() {
         app.buttons["voiceSettings"].tap()
         XCTAssertTrue(app.buttons["previewJapanese"].waitForExistence(timeout: 10))
+        reveal(app.buttons["previewJapanese"])
         app.buttons["previewJapanese"].tap()
-        if !app.buttons["previewChinese"].isHittable { app.swipeUp() }
+        reveal(app.buttons["previewChinese"])
         app.buttons["previewChinese"].tap()
         app.navigationBars.buttons.element(boundBy: 0).tap()
         XCTAssertEqual(app.staticTexts["playbackState"].label, "已暂停")
         app.buttons["voiceSettings"].tap()
-        app.swipeUp()
+        reveal(app.buttons["refreshVoices"])
         XCTAssertTrue(app.buttons["refreshVoices"].waitForExistence(timeout: 5))
         app.buttons["refreshVoices"].tap()
         attach("voice-selection-and-quality", XCUIScreen.main.screenshot())
@@ -32,8 +39,11 @@ final class ProbeUITests: XCTestCase {
         attach("iOS-probe-in-app", XCUIScreen.main.screenshot())
     }
     func testPiPStartsOnlyFromButtonAndCanStop() throws {
+        reveal(app.buttons["pipExperiment"])
+        app.buttons["pipExperiment"].tap()
         let pipButton = app.buttons["pip"]
         XCTAssertTrue(pipButton.waitForExistence(timeout: 10))
+        reveal(pipButton)
         let possible = XCTNSPredicateExpectation(predicate: NSPredicate(format: "enabled == true"), object: pipButton)
         guard XCTWaiter.wait(for: [possible], timeout: 18) == .completed else {
             attach("PiP-unavailable-on-runner", XCUIScreen.main.screenshot())
@@ -46,8 +56,19 @@ final class ProbeUITests: XCTestCase {
         sleep(3)
         attach("PiP-over-home-screen", XCUIScreen.main.screenshot())
         app.activate()
+        app.swipeDown()
         app.buttons["stop"].tap()
         XCTAssertEqual(app.staticTexts["playbackState"].label, "已暂停")
+    }
+    func testNativeCardAndOptionalModelAreDefault() {
+        XCTAssertTrue(app.staticTexts["meaning"].exists)
+        XCTAssertFalse(app.buttons["pip"].exists)
+        attach("native-word-card", XCUIScreen.main.screenshot())
+        app.buttons["voiceSettings"].tap()
+        XCTAssertTrue(app.buttons["downloadModel"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.staticTexts["offlineModelStatus"].label.contains("尚未下载"))
+        XCTAssertFalse(app.buttons["cancelModelDownload"].exists)
+        attach("optional-offline-model-not-downloaded", XCUIScreen.main.screenshot())
     }
     func testBackgroundListeningRequiresOptInAndCanStop() {
         app.buttons["play"].tap()

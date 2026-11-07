@@ -1,4 +1,4 @@
-"""Generate a dependency-free Xcode project for the isolated feasibility app."""
+"""Generate the isolated probe, with one pinned local-inference runtime."""
 from pathlib import Path
 import json
 from xml.sax.saxutils import escape
@@ -22,6 +22,8 @@ products = []
 groups = []
 targets = []
 app_target = None
+runtime_package = obj("XCRemoteSwiftPackageReference", repositoryURL="https://github.com/microsoft/onnxruntime-swift-package-manager",
+                      requirement={"kind": "revision", "revision": "b7fb7f7dea8a2469e6335d95a61b8f36d0dc83b2"})
 base = {"SDKROOT": "iphoneos", "IPHONEOS_DEPLOYMENT_TARGET": "17.0", "SWIFT_VERSION": "5.0",
         "CLANG_ENABLE_MODULES": "YES", "TARGETED_DEVICE_FAMILY": "1,2", "CODE_SIGN_STYLE": "Automatic",
         "SWIFT_OPTIMIZATION_LEVEL": "-Onone", "ENABLE_TESTABILITY": "YES", "DEBUG_INFORMATION_FORMAT": "dwarf",
@@ -34,16 +36,29 @@ def configurations(settings):
 for name, source, kind in [("CijianProof", "Sources/ProofApp.swift", "application"),
                            ("CijianProofTests", "Tests/ProbeTests.swift", "bundle.unit-test"),
                            ("CijianProofUITests", "UITests/ProbeUITests.swift", "bundle.ui-testing")]:
-    reference = obj("PBXFileReference", lastKnownFileType="sourcecode.swift", path=source, sourceTree="<group>")
-    groups.append(reference)
+    sources = sorted((ROOT / "Sources").glob("*.swift")) if kind == "application" else [ROOT / source]
+    references = []
+    for file in sources:
+        reference = obj("PBXFileReference", lastKnownFileType="sourcecode.swift", path=file.relative_to(ROOT).as_posix(), sourceTree="<group>")
+        groups.append(reference); references.append(obj("PBXBuildFile", fileRef=reference))
     source_phase = obj("PBXSourcesBuildPhase", buildActionMask=2147483647,
-                       files=[obj("PBXBuildFile", fileRef=reference)], runOnlyForDeploymentPostprocessing=0)
+                       files=references, runOnlyForDeploymentPostprocessing=0)
     resources = []
     if kind == "application":
-        word_ref = obj("PBXFileReference", lastKnownFileType="text.json", path="Resources/words.json", sourceTree="<group>")
-        groups.append(word_ref); resources.append(obj("PBXBuildFile", fileRef=word_ref))
+        for file in sorted((ROOT / "Resources").iterdir()):
+            if not file.is_file(): continue
+            reference = obj("PBXFileReference", lastKnownFileType="text.json" if file.suffix == ".json" else "text",
+                            path=file.relative_to(ROOT).as_posix(), sourceTree="<group>")
+            groups.append(reference); resources.append(obj("PBXBuildFile", fileRef=reference))
+    elif kind == "bundle.unit-test" and (ROOT / "out/TestModels").is_dir():
+        reference = obj("PBXFileReference", lastKnownFileType="folder", path="out/TestModels", sourceTree="<group>")
+        groups.append(reference); resources.append(obj("PBXBuildFile", fileRef=reference))
     resources_phase = obj("PBXResourcesBuildPhase", buildActionMask=2147483647, files=resources, runOnlyForDeploymentPostprocessing=0)
-    frameworks = obj("PBXFrameworksBuildPhase", buildActionMask=2147483647, files=[], runOnlyForDeploymentPostprocessing=0)
+    packages = []; linked = []
+    if kind == "application":
+        product = obj("XCSwiftPackageProductDependency", package=runtime_package, productName="onnxruntime")
+        packages.append(product); linked.append(obj("PBXBuildFile", productRef=product))
+    frameworks = obj("PBXFrameworksBuildPhase", buildActionMask=2147483647, files=linked, runOnlyForDeploymentPostprocessing=0)
     product = obj("PBXFileReference", explicitFileType="wrapper.application" if kind == "application" else "wrapper.cfbundle",
                   includeInIndex=0, path=name + (".app" if kind == "application" else ".xctest"), sourceTree="BUILT_PRODUCTS_DIR")
     products.append(product)
@@ -63,6 +78,7 @@ for name, source, kind in [("CijianProof", "Sources/ProofApp.swift", "applicatio
         dependencies = [obj("PBXTargetDependency", target=app_target)]
     target = obj("PBXNativeTarget", buildConfigurationList=configurations(settings), buildPhases=[source_phase, frameworks, resources_phase],
                  buildRules=[], dependencies=dependencies, name=name, productName=name, productReference=product,
+                 packageProductDependencies=packages,
                  productType="com.apple.product-type." + kind)
     targets.append(target)
     if app_target is None: app_target = target
@@ -72,11 +88,11 @@ main_group = obj("PBXGroup", children=groups + [product_group], sourceTree="<gro
 project = obj("PBXProject", attributes={"LastUpgradeCheck": "1600", "BuildIndependentTargetsInParallel": "YES"},
               buildConfigurationList=configurations({}), compatibilityVersion="Xcode 14.0", developmentRegion="zh_CN",
               knownRegions=["en", "zh_CN", "Base"], mainGroup=main_group, productRefGroup=product_group,
-              projectDirPath="", projectRoot="", targets=targets)
+              projectDirPath="", projectRoot="", targets=targets, packageReferences=[runtime_package])
 result = {"archiveVersion": 1, "classes": {}, "objectVersion": 56, "objects": objects, "rootObject": project}
 destination = ROOT / "CijianProof.xcodeproj"
 destination.mkdir(exist_ok=True)
-(destination / "project.pbxproj").write_text("// !$*UTF8*$!\n" + encode(result) + "\n", encoding="utf-8")
+(destination / "project.pbxproj").write_text("// !$*UTF8*$!\n" + encode(result) + "\n", encoding="utf-8", newline="\n")
 scheme_dir = destination / "xcshareddata/xcschemes"
 scheme_dir.mkdir(parents=True, exist_ok=True)
 
@@ -97,5 +113,5 @@ scheme = f'''<?xml version="1.0" encoding="UTF-8"?>
 <ProfileAction buildConfiguration="Release" shouldUseLaunchSchemeArgsEnv="YES" savedToolIdentifier="" useCustomWorkingDirectory="NO" debugDocumentVersioning="YES"><BuildableProductRunnable runnableDebuggingMode="0">{buildable(app_target)}</BuildableProductRunnable></ProfileAction>
 <AnalyzeAction buildConfiguration="Debug"/><ArchiveAction buildConfiguration="Release" revealArchiveInOrganizer="YES"/>
 </Scheme>'''
-(scheme_dir / "CijianProof.xcscheme").write_text(scheme, encoding="utf-8")
-print("Generated app, unit-test and UI-test targets; no developer credentials or external packages.")
+(scheme_dir / "CijianProof.xcscheme").write_text(scheme, encoding="utf-8", newline="\n")
+print("Generated app and tests; ONNX Runtime is pinned. Optional voice model is excluded from app resources.")
