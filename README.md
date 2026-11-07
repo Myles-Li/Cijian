@@ -12,7 +12,7 @@
 
 Native Android app for learning Japanese through Chinese meanings. The interface supports 简体中文 / English / 日本語. Interface language changes do not translate the dictionary.
 
-当前仅提供安卓版本；iOS移植暂缓。
+当前正式发布仍仅安卓；本实验分支另有[iOS可行性验证工程](ios-proof/README.md)，不是完整移植。画中画显示与真实iPad安装尚待验证。
 
 ## 下载
 
