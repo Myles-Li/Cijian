@@ -1,62 +1,39 @@
-# 词间 iOS 可行性验证
+# 词间 iOS 0.3 验证工程
 
-这是独立的0.3验证工程，不是已发布的完整iOS词间。安卓正式版仍为1.10.5。iPhone优先，目标设备包括iPad；用户提供的iPadOS版本为27.2。工程暂定最低iOS／iPadOS17，云端测试系统以实际报告为准。
+独立的原生可行性验证，安卓正式版仍为1.10.5。只含原词库三个样本，没有完整词库、正式复习或安卓记录迁移。iPhone优先，兼容iPad安装；最低系统17。用户提供的iPadOS为27.2，云端系统以实际报告为准。
 
-0.3候选：普通词卡成为主界面，画中画是可选实验。增加独立离线Kokoro引擎、按需下载／删除和0.1系统选声对比；云端及真机验证状态以[验证记录](VALIDATION.md)为准。用户已在真实iPad安装0.1并看见词卡、听到声音；对0.2的语音和画中画形式不满意，不能将0.2自动测试通过当作听感改善。
+## 当前候选
 
-## 轻量化与可选离线声音
+- 默认显示普通SwiftUI词卡和上一词／播放暂停／下一词／全部停止，可随系统窗口大小滚动和换行。
+- iPad可用系统窗口化App／侧拉显示完整交互；iPhone没有同样的侧拉。App不能自行创建任意跨App窗口。
+- 画中画放在折叠的可选实验入口，仍有系统媒体控件。没有把它当作已解决的安卓悬浮窗替代。
+- 使用苹果系统语音；默认按语言调用系统选声，支持已安装声音选择、分语言语速和试听。
+- 可恢复0.1的系统默认选声与日语0.425／中文0.5语速，保留当前词，保持暂停。不能保证不同系统下载状态下听感与旧版完全相同。
+- 朗读完成后再切词，防止长释义被固定计时截断。暂停、退出试听、音频中断、耳机断开和45秒无响应会停止；恢复由用户主动开始。
 
-默认不下载模型，使用苹果系统语音。用户主动点击“下载可选声音模型”后，获取Kokoro 1.0 int8模型与日中各一个音色，合计93,405,596字节（93.4MB／89.1MiB）。三个文件固定版本并核对SHA256；合成直接在设备CPU运行，不调用云端接口，不需账号或密钥。首次下载需联网，下载后可断网使用，也能单独删除。
+## 轻量化与声音方案状态
 
-模型不在应用安装包中；应用仍须包含ONNX Runtime运行组件，其体积另计。安装包压缩大小、安装后本体和模型存储必须分别报告。运行内存与手机速度还需要真机测试，不以模型文件大小代替内存占用。
+Kokoro 1.0 int8的93.4MB候选曾完成电脑合成，中文小样未通过用户听感验收，**已从当前应用候选移除**，ONNX Runtime及下载入口也一并移除。实验代码保留在Git历史，未作为正式iOS版发布。
 
-当前只为三个原词库样本和两句试听预生成发音索引，以免把整套日中分词词典放进手机；不是完整词库或任意文本输入。系统语音选择器与Kokoro是两个不同引擎。音质、词音和日语重音需要人工试听，不承诺优于苹果或安卓声音。
+当前应用不带独立声音模型或第三方推理运行库。用户随后确认第一组jf_alpha日语可接受，中文需重选；新的声音组合及手机合成／预生成离线发音包方式仍在评估，不能把“已听到新小样”写成已经移植并验证。应用压缩大小和解压大小以最终设备构建实测为准。
 
-依据：[量化模型与大小](https://huggingface.co/onnx-community/Kokoro-82M-v1.0-ONNX/blob/1939ad2a8e416c0acfeecc08a694d14ef25f2231/onnx/model_quantized.onnx)、[Kokoro原项目](https://github.com/hexgrad/kokoro)、[微软ONNX Runtime](https://github.com/microsoft/onnxruntime-swift-package-manager)。完整许可随Resources文本提供，不改变词间代码许可决定。
+## 构建与验证
 
-## 验证什么
-
-1. 使用系统画中画显示真实词卡视频帧，查看拖动、缩放、退到其他App后的画面与系统媒体操作。没有跨App任意UIKit控件，也没有伪装成视频通话。
-2. 使用系统日语／中文语音，明确选择后台听词；默认暂停。测试中断、耳机断开、全部停止和关闭画中画。未实现静音音频保活，也不保证任意后台定时器一直运行。
-3. 编译iPhone／iPad目标，运行模拟器，再落实自己的iPad签名安装。模拟器成功不等于iPad实测，更不等于苹果审核通过。
-
-词条只取原库三个记录，内容和ID未改写。来源egg rolls／5mdld的anki-jlpt-decks，独立遵守仓库的[第三方说明](../THIRD_PARTY_NOTICES.md)和CC BY-NC4.0。不含用户学习记录，不导入安卓数据库，不录制或发布演示视频。
-
-## Mac构建与测试
-
-用Xcode打开`CijianProof.xcodeproj`，选择`CijianProof`方案和模拟器即可。标准Python可重新生成工程：
+在Mac用Xcode打开CijianProof.xcodeproj，选择CijianProof和模拟器，或运行：
 
 ```sh
 python3 make_project.py
 python3 ci_probe.py
 ```
 
-`ci_probe.py`只在macOS运行，下载测试用可选模型（仅放测试包，不放应用），先编译未签名设备目标，再在已安装的iPad／iPhone模拟器运行原生测试。它不会上传到App Store Connect，不访问个人开发者证书。结果、截图及跳过项在`out/`，不能把跳过的画中画或缺少声音测试计为成功。
+ci_probe.py先构建设备目标，再在iPad和iPhone模拟器运行原生测试。结果、截图、跳过项与未签名设备程序在out/，不使用个人证书、不上传App Store Connect。模拟器通过不等于iPad声音、后台可靠性、真实iPhone或苹果审核通过。[实际验证记录](VALIDATION.md)。
 
-## 装到你的iPad
+## 安装与真机验收
 
-`UNSIGNED-device-build.zip`只是未签名编译产物，**不能直接安装**。GitHub下载或LocalSend传输都不能代替签名。
+[Windows个人签名步骤](INSTALL-WINDOWS.md)。用户已用Sideloadly个人免费账号安装0.1并在真实iPad看到词卡、听见声音，对0.2听感不满意；每个后续候选都要单独复验。免费签名需要按其有效期重新部署，下载或LocalSend传输不能代替签名。无需向助手提供Apple账号密码、验证码或私人证书。
 
-- 借到Mac：Xcode登录自己的免费Apple账号，设置签名团队，连接iPad并按系统要求允许开发者模式。免费开发签名通常7天到期，需要重新部署。
-- 给其他人方便测试：自己的Apple Developer Program会员、App Store Connect与TestFlight；外部测试首个构建须审核，每个构建最多测试90天。正式App Store发布另行审核。
-- 用户已选择Windows免费个人签名路线：[Sideloadly步骤](INSTALL-WINDOWS.md)。工具官网声明支持iOS27系列，用户已使用这条路线安装0.1；0.2可使用相同账号及设置重新签名覆盖，仍需单独验收。
+0.3请先检查普通词卡、iPad侧拉、快速翻词、暂停和恢复0.1选声。锁屏持续3分钟、蓝牙／耳机、来电、真实iPhone与审核仍需分别验证，不用状态标签代替实际观察。
 
-**设备产物没有Apple签名，需要由用户个人签名。0.1已安装，0.2得到负面听感反馈；0.3需单独签名覆盖和真机验证。** 不要求上传Apple账号密码、双重验证码或私人证书。
+词条保留原ID及内容，来源egg rolls／5mdld的anki-jlpt-decks，CC BY-NC4.0，见仓库[第三方说明](../THIRD_PARTY_NOTICES.md)。不读取安卓记录，不重录演示视频。
 
-## 系统限制及判定
-
-画中画用于媒体展示，收藏、熟悉、详情、评分等任意触摸按钮无法照搬到小窗中。词卡作为画中画内容的实际体验与审核适用性均需独立验证；若读不清、控制不足或平台拒绝，就不将其作为完整移植的前提。后台听词只在用户主动开始后进行；不实现开机自动显示悬浮窗。
-
-验收至少包括：画中画退出App后可见、长词可读、暂停真实停止、关闭后无残留语音、日中声音切换、锁屏听词、蓝牙拔出、手机来电，以及iPad横竖屏。真实声音和真实设备只能由真机确认。
-
-依据：[苹果画中画API](https://developer.apple.com/documentation/avkit/adopting-picture-in-picture-in-a-custom-player)、[后台音频](https://developer.apple.com/documentation/avfoundation/configuring-your-app-for-media-playback)、[账号与免费签名](https://developer.apple.com/help/account/basics/about-your-developer-account/)、[TestFlight](https://developer.apple.com/help/app-store-connect/test-a-beta-version/testflight-overview/)、[会员费用](https://developer.apple.com/programs/whats-included/)。
-
-## 0.2声音验证与iPad替代窗口
-
-在“声音与试听”中分别选择日语与中文声音，查看实际名称和基础／增强／高级质量；自动优选只考虑系统通过API提供的已安装声音。可以独立试听和调语速，偏好会保留；离开试听页不会擅自开始连续播放。正常基准语速为1.00倍。
-
-更自然的声音通常需先在系统“无障碍／辅助功能 → 阅读与朗读（旧版朗读内容）→ 声音”中下载，回到验证App重新检测。无需开启旁白；并非每个系统声音都一定向第三方App提供。不能保证苹果声音与安卓引擎相同。参考[苹果声音下载说明](https://support.apple.com/zh-cn/111798)。
-
-画中画仍保留系统播放／暂停、关闭与返回控件；点小窗可能显示系统覆盖层。0.2使用公开requiresLinearPlayback简化快进／快退，没有使用隐藏系统控件的私有接口，未宣称去掉LIVE标签。
-
-iPad还可尝试“设置 → 多任务与手势 → 窗口化App”，在词间验证窗口顶部进入侧拉；这提供完整App交互，不是安卓悬浮球。iPhone没有相同的侧拉窗口模式。[苹果iPad窗口与侧拉说明](https://support.apple.com/zh-cn/125309)。
+依据：[苹果iPad窗口与侧拉](https://support.apple.com/zh-cn/125309)、[系统画中画](https://developer.apple.com/documentation/avkit/adopting-picture-in-picture-in-a-custom-player)、[后台音频](https://developer.apple.com/documentation/avfoundation/configuring-your-app-for-media-playback)、[系统声音下载](https://support.apple.com/zh-cn/111798)、[个人账号与签名](https://developer.apple.com/help/account/basics/about-your-developer-account/)。

@@ -60,15 +60,15 @@ final class ProbeUITests: XCTestCase {
         app.buttons["stop"].tap()
         XCTAssertEqual(app.staticTexts["playbackState"].label, "已暂停")
     }
-    func testNativeCardAndOptionalModelAreDefault() {
+    func testNativeCardAndLegacyRecovery() {
         XCTAssertTrue(app.staticTexts["meaning"].exists)
         XCTAssertFalse(app.buttons["pip"].exists)
         attach("native-word-card", XCUIScreen.main.screenshot())
         app.buttons["voiceSettings"].tap()
-        XCTAssertTrue(app.buttons["downloadModel"].waitForExistence(timeout: 5))
-        XCTAssertTrue(app.staticTexts["offlineModelStatus"].label.contains("尚未下载"))
-        XCTAssertFalse(app.buttons["cancelModelDownload"].exists)
-        attach("optional-offline-model-not-downloaded", XCUIScreen.main.screenshot())
+        let restore = app.buttons["restoreLegacyVoice"]
+        reveal(restore); restore.tap()
+        app.navigationBars.buttons.element(boundBy: 0).tap()
+        XCTAssertEqual(app.staticTexts["playbackState"].label, "已暂停")
     }
     func testBackgroundListeningRequiresOptInAndCanStop() {
         app.buttons["play"].tap()

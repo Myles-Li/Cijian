@@ -29,8 +29,6 @@ jobs:
             ios-proof/out/*.log
             ios-proof/out/*-summary.json
             ios-proof/out/*-last-status.json
-            ios-proof/out/model-provenance.json
-            ios-proof/out/*-offline-samples/**
             ios-proof/out/*-screenshot-export/**/*.png
             ios-proof/out/*-screenshot-export/**/manifest.json
             ios-proof/out/UNSIGNED-device-build.zip

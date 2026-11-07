@@ -13,8 +13,6 @@ def run(command, log=None, timeout=600, check=True):
     if log: (OUT / log).write_text(result.stdout, encoding="utf-8")
     if log: print("END", log, "exit", result.returncode, flush=True)
     if check and result.returncode:
-        for line in result.stdout.splitlines():
-            if "error:" in line: print(line, flush=True)
         print(result.stdout[-16000:], flush=True)
         raise RuntimeError(f"Command failed ({result.returncode}): {command[:3]}")
     return result
@@ -29,7 +27,6 @@ with (ROOT / "Info.plist").open("rb") as file:
 def save(): (OUT / "report.json").write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
 save()
-run(["python3", "prepare_test_models.py"], "test-model-download.log", timeout=600)
 run(["python3", "make_project.py"], "project-generation.log")
 run(["plutil", "-lint", "Info.plist", "CijianProof.xcodeproj/project.pbxproj"], "project-lint.log")
 common = ["xcodebuild", "-project", "CijianProof.xcodeproj", "-scheme", "CijianProof", "-configuration", "Debug"]
@@ -38,9 +35,9 @@ run(common + ["-destination", "generic/platform=iOS", "-derivedDataPath", str(OU
 app = OUT / "device/Build/Products/Debug-iphoneos/CijianProof.app"
 assert app.is_dir()
 report["app_bundle_bytes"] = sum(p.stat().st_size for p in app.rglob("*") if p.is_file())
-report["optional_model_bytes"] = 93405596
-assert not list(app.rglob("*.onnx")) and not list(app.rglob("jf_alpha.bin")), "Optional model leaked into app"
-report["optional_model_bundled"] = False
+assert not list(app.rglob("*.onnx")) and not list(app.rglob("onnxruntime*"))
+report["external_voice_runtime_bundled"] = False
+report["rejected_kokoro_model_bundled"] = False
 run(["ditto", "-c", "-k", "--keepParent", str(app), str(OUT / "UNSIGNED-device-build.zip")])
 report["unsigned_device_zip_bytes"] = (OUT / "UNSIGNED-device-build.zip").stat().st_size
 report["unsigned_device_build"] = "PASSED; not directly installable"
@@ -66,10 +63,6 @@ for family in ["iPad", "iPhone"]:
     if container.returncode == 0:
         state = Path(container.stdout.strip()) / "Documents/proof-status.json"
         if state.exists(): (OUT / (family + "-last-status.json")).write_bytes(state.read_bytes())
-        generated = Path(container.stdout.strip()) / "Documents/offline-samples"
-        if generated.is_dir():
-            import shutil
-            shutil.copytree(generated, OUT / (family + "-offline-samples"), dirs_exist_ok=True)
     (OUT / (family + "-screenshot-export")).mkdir(exist_ok=True)
     run(["xcrun", "xcresulttool", "export", "attachments", "--path", str(result_path),
          "--output-path", str(OUT / (family + "-screenshot-export"))], check=False)
