@@ -52,17 +52,24 @@ enum VoiceFailure: LocalizedError {
 }
 
 final class OfflineVoiceDownload: ObservableObject {
-    @Published private(set) var installed = OfflineVoiceFiles.present()
+    @Published private(set) var installed: Bool
     @Published private(set) var downloading = false
-    @Published private(set) var status = OfflineVoiceFiles.present() ? "离线模型已下载 · 93.4 MB" : "尚未下载 · 额外占用 93.4 MB"
+    @Published private(set) var status: String
+    private let directory: URL
     private var operation: Task<Void, Never>?
     private var generation = UUID()
+    init(directory: URL = OfflineVoiceFiles.directory) {
+        self.directory = directory
+        installed = OfflineVoiceFiles.present(in: directory)
+        status = installed ? "离线模型已下载 · 93.4 MB" : "尚未下载 · 额外占用 93.4 MB"
+    }
     func download() {
         guard !downloading else { return }
         downloading = true; let token = UUID(); generation = token
+        let destinationRoot = directory
         operation = Task { @MainActor [weak self] in
             do {
-                var directory = OfflineVoiceFiles.directory
+                var directory = destinationRoot
                 try FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)
                 var values = URLResourceValues(); values.isExcludedFromBackup = true
                 try directory.setResourceValues(values)
@@ -86,7 +93,7 @@ final class OfflineVoiceDownload: ObservableObject {
                 self?.installed = true; self?.status = "离线模型已下载 · 93.4 MB，可断网使用"
             } catch {
                 guard self?.generation == token else { return }
-                self?.installed = OfflineVoiceFiles.present()
+                self?.installed = OfflineVoiceFiles.present(in: destinationRoot)
                 self?.status = Task.isCancelled ? "下载已取消，可重新下载" : "下载失败：" + error.localizedDescription
             }
             guard self?.generation == token else { return }
@@ -95,13 +102,13 @@ final class OfflineVoiceDownload: ObservableObject {
     }
     func cancel() {
         operation?.cancel(); operation = nil; generation = UUID(); downloading = false
-        installed = OfflineVoiceFiles.present(); status = "下载已取消，可重新下载"
+        installed = OfflineVoiceFiles.present(in: directory); status = "下载已取消，可重新下载"
     }
     func remove() throws {
         cancel()
         // 只删除本功能的三个固定文件。 / Remove only this feature's fixed assets.
         for asset in OfflineVoiceFiles.assets {
-            let url = OfflineVoiceFiles.directory.appendingPathComponent(asset.name)
+            let url = directory.appendingPathComponent(asset.name)
             if FileManager.default.fileExists(atPath: url.path) { try FileManager.default.removeItem(at: url) }
         }
         installed = false; status = "声音模型已删除 · 已释放存储空间"

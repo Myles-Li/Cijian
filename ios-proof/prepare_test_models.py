@@ -1,4 +1,4 @@
-"""Download optional pinned model assets for tests only; never bundle into the app."""
+"""仅供测试下载固定模型，不放应用包。 / Pinned test-only models, excluded from the app."""
 from pathlib import Path
 import hashlib, urllib.request, json
 

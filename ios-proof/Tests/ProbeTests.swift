@@ -68,6 +68,49 @@ final class ProbeTests: XCTestCase {
         try Data("invalid model".utf8).write(to: file)
         XCTAssertThrowsError(try OfflineVoiceFiles.verify(file, asset: OfflineVoiceFiles.assets[0]))
     }
+    @MainActor
+    func testCancelledNeuralPreviewAndModelDeletionDoNotRestartAudio() async throws {
+        guard let models = Bundle(for: ProbeTests.self).url(forResource: "TestModels", withExtension: nil) else {
+            throw XCTSkip("Optional test model absent.")
+        }
+        let directory = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString)
+        try FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)
+        let suite = "CijianProofTests." + UUID().uuidString
+        let preferences = try XCTUnwrap(UserDefaults(suiteName: suite))
+        defer {
+            preferences.removePersistentDomain(forName: suite)
+            for asset in OfflineVoiceFiles.assets { try? FileManager.default.removeItem(at: directory.appendingPathComponent(asset.name)) }
+            try? FileManager.default.removeItem(at: directory)
+        }
+        let probe = StudyProbe(preferences: preferences, offlineDirectory: directory)
+        let download = OfflineVoiceDownload(directory: directory)
+        probe.selectEngine("kokoro"); probe.play(requireVoice: true)
+        XCTAssertFalse(probe.playing)
+        XCTAssertTrue(probe.voiceStatus.contains("尚未下载"))
+        for asset in OfflineVoiceFiles.assets {
+            try FileManager.default.copyItem(at: models.appendingPathComponent(asset.name), to: directory.appendingPathComponent(asset.name))
+        }
+        probe.preview(language: "ja-JP")
+        try await Task.sleep(nanoseconds: 20_000_000)
+        probe.move(1); probe.pause()
+        try await Task.sleep(nanoseconds: 2_000_000_000)
+        XCTAssertFalse(probe.hasActiveAudio)
+        XCTAssertFalse(probe.playing)
+        let installed = OfflineVoiceDownload(directory: directory)
+        XCTAssertTrue(installed.installed)
+        probe.removeOffline(installed)
+        for _ in 0..<100 {
+            if !installed.installed { break }
+            try await Task.sleep(nanoseconds: 100_000_000)
+        }
+        XCTAssertFalse(installed.installed)
+        XCTAssertFalse(OfflineVoiceFiles.present(in: directory))
+        XCTAssertEqual(probe.engine, "system")
+        XCTAssertFalse(probe.hasActiveAudio)
+        XCTAssertFalse(probe.playing)
+        XCTAssertTrue(try FileManager.default.contentsOfDirectory(atPath: directory.path).isEmpty)
+        XCTAssertFalse(download.downloading)
+    }
     func testVoicePickerRespectsLanguageAndListsQuality() {
         let basic = ProbeVoice(id: "ja-basic", name: "A", language: "ja-JP", quality: 1)
         let enhanced = ProbeVoice(id: "ja-enhanced", name: "B", language: "ja-JP", quality: 2)

@@ -1,9 +1,9 @@
-"""Maintenance-only G2P; emit indices for the fixed sample deck, not runtime dictionaries."""
+"""维护端生成固定样本索引。 / Maintenance-only G2P, without on-device dictionaries."""
 from pathlib import Path
 import json, urllib.request, os, hashlib
 import unidic_lite
 
-# This proof uses Misaki's original Kokoro 1.0 cutlet frontend and a local UniDic.
+# 使用原Kokoro 1.0的前端。 / Use the original 1.0 cutlet frontend with local UniDic.
 os.environ["UNIDIC_DIR"] = unidic_lite.DICDIR
 import unidic
 unidic.DICDIR = unidic_lite.DICDIR
