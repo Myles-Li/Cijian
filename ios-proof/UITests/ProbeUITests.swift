@@ -7,6 +7,20 @@ final class ProbeUITests: XCTestCase {
         app = XCUIApplication(); app.launch()
         XCTAssertTrue(app.staticTexts["position"].waitForExistence(timeout: 15))
     }
+    func testVoiceSettingsAndPreviewDoNotStartContinuousPlayback() {
+        app.buttons["voiceSettings"].tap()
+        XCTAssertTrue(app.buttons["previewJapanese"].waitForExistence(timeout: 10))
+        app.buttons["previewJapanese"].tap()
+        if !app.buttons["previewChinese"].isHittable { app.swipeUp() }
+        app.buttons["previewChinese"].tap()
+        app.navigationBars.buttons.element(boundBy: 0).tap()
+        XCTAssertEqual(app.staticTexts["playbackState"].label, "已暂停")
+        app.buttons["voiceSettings"].tap()
+        app.swipeUp()
+        XCTAssertTrue(app.buttons["refreshVoices"].waitForExistence(timeout: 5))
+        app.buttons["refreshVoices"].tap()
+        attach("voice-selection-and-quality", XCUIScreen.main.screenshot())
+    }
     func testInitialPauseAndRapidNavigation() {
         XCTAssertEqual(app.staticTexts["playbackState"].label, "已暂停")
         let first = app.staticTexts["word"].label
