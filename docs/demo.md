@@ -1,6 +1,6 @@
 # 词间 · Cijian — 悬浮学习演示 / Demo / デモ
 
-**[▶ 播放视频 / Play video / 動画を再生（约47秒）](videos/floating-study.mp4)**
+**[▶ 播放视频 / Play video / 動画を再生（约47秒）](https://myles-li.github.io/Cijian/)**
 
 [直接下载 MP4 / Download MP4 / MP4をダウンロード](https://raw.githubusercontent.com/Myles-Li/Cijian/main/docs/videos/floating-study.mp4)
 

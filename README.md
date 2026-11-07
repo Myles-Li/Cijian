@@ -8,7 +8,7 @@ A lightweight Android app for Japanese study, inside the app or in a floating wi
 
 **1.10.5 · Android 8.0+** · [下载 APK / Download / ダウンロード](https://github.com/Myles-Li/Cijian/releases/latest)
 
-**[▶ 47 秒悬浮学习实录 / Watch the 47-second demo / 47秒の実機デモ](docs/videos/floating-study.mp4)** · [演示说明 / Demo notes / 動画について](docs/demo.md)
+**[▶ 47 秒悬浮学习实录 / Watch the 47-second demo / 47秒の実機デモ](https://myles-li.github.io/Cijian/)** · [演示说明 / Demo notes / 動画について](docs/demo.md)
 
 点击语言标题，在本页展开全文；点击另一种语言即可切换。
 Select a language below to read it on this page. / 言語名をクリックすると、このページ内で全文を読めます。

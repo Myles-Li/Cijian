@@ -36,7 +36,7 @@
 
 ## デモ動画
 
-[▶ 47秒のフローティング学習デモ](docs/videos/floating-study.mp4) · [動画について](docs/demo.md)
+[▶ 47秒のフローティング学習デモ](https://myles-li.github.io/Cijian/) · [動画について](docs/demo.md)
 
 ## 画面と構造
 

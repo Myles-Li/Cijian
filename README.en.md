@@ -36,7 +36,7 @@ Dictionary access, study and records work locally. The app has no INTERNET permi
 
 ## Demo
 
-[▶ Watch the 47-second floating-study demo](docs/videos/floating-study.mp4) · [Recording notes](docs/demo.md)
+[▶ Watch the 47-second floating-study demo](https://myles-li.github.io/Cijian/) · [Recording notes](docs/demo.md)
 
 ## Screens and structure
 
