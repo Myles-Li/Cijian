@@ -3,6 +3,49 @@ import AVFoundation
 @testable import CijianProof
 
 final class ProbeTests: XCTestCase {
+    func testAllEightOfflineSampleClipsDecodeAndCoverTheDeck() throws {
+        let clips = try SampleAudioCatalog.load()
+        XCTAssertEqual(clips.count, 8)
+        for word in try ProbeDeck.load() {
+            XCTAssertTrue(clips.contains { $0.text == word.word && $0.language == "ja-JP" })
+            XCTAssertTrue(clips.contains { $0.text == word.meaning && $0.language == "zh-CN" })
+        }
+        for clip in clips {
+            let file = try AVAudioFile(forReading: SampleAudioCatalog.url(text: clip.text, language: clip.language))
+            XCTAssertGreaterThan(file.length, 0)
+            XCTAssertEqual(file.processingFormat.channelCount, 1)
+        }
+    }
+    @MainActor
+    func testOfflineSamplePreviewFinishesAndRapidStopStaysSilent() async throws {
+        let suite = "CijianProofTests." + UUID().uuidString
+        let preferences = try XCTUnwrap(UserDefaults(suiteName: suite))
+        defer { preferences.removePersistentDomain(forName: suite) }
+        let probe = StudyProbe(preferences: preferences)
+        XCTAssertEqual(probe.audioSource, "system")
+        probe.selectAudioSource("samples")
+        XCTAssertEqual(probe.playbackSpeed("ja-JP"), 1, accuracy: 0.001)
+        probe.preview(language: "ja-JP")
+        XCTAssertTrue(probe.hasActiveAudio)
+        for _ in 0..<80 {
+            if !probe.hasActiveAudio { break }
+            try await Task.sleep(nanoseconds: 100_000_000)
+        }
+        XCTAssertEqual(probe.lastEvent, "试听结束")
+        XCTAssertFalse(probe.playing)
+        probe.play(requireVoice: true)
+        XCTAssertTrue(probe.hasActiveAudio)
+        for _ in 0..<10 { probe.move(1); probe.pause() }
+        XCTAssertFalse(probe.hasActiveAudio)
+        XCTAssertFalse(probe.playing)
+        probe.setPlaybackSpeed(1.1, language: "zh-CN")
+        let restored = StudyProbe(preferences: preferences)
+        XCTAssertEqual(restored.audioSource, "samples")
+        XCTAssertEqual(restored.sampleChineseSpeed, 1.1, accuracy: 0.001)
+        XCTAssertFalse(restored.playing)
+        probe.restoreLegacyVoice()
+        XCTAssertEqual(probe.audioSource, "system")
+    }
     @MainActor
     func testLegacySettingsRestoreWithoutChangingWordOrAutoplay() throws {
         let suite = "CijianProofTests." + UUID().uuidString

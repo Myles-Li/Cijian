@@ -70,6 +70,21 @@ final class ProbeUITests: XCTestCase {
         app.navigationBars.buttons.element(boundBy: 0).tap()
         XCTAssertEqual(app.staticTexts["playbackState"].label, "已暂停")
     }
+    func testOfflineSampleSelectionPreviewAndLeavingStopsAudio() {
+        app.buttons["voiceSettings"].tap()
+        let sources = app.segmentedControls["audioSource"]
+        XCTAssertTrue(sources.waitForExistence(timeout: 10))
+        sources.buttons["离线样本"].tap()
+        reveal(app.buttons["previewJapanese"]); app.buttons["previewJapanese"].tap()
+        app.navigationBars.buttons.element(boundBy: 0).tap()
+        XCTAssertEqual(app.staticTexts["playbackState"].label, "已暂停")
+        app.buttons["play"].tap()
+        XCTAssertEqual(app.staticTexts["playbackState"].label, "正在播放")
+        app.buttons["stop"].tap()
+        XCTAssertEqual(app.staticTexts["playbackState"].label, "已暂停")
+        app.buttons["voiceSettings"].tap()
+        app.segmentedControls["audioSource"].buttons["系统语音"].tap()
+    }
     func testBackgroundListeningRequiresOptInAndCanStop() {
         app.buttons["play"].tap()
         if app.staticTexts["playbackState"].label == "正在播放" {

@@ -35,6 +35,9 @@ run(common + ["-destination", "generic/platform=iOS", "-derivedDataPath", str(OU
 app = OUT / "device/Build/Products/Debug-iphoneos/CijianProof.app"
 assert app.is_dir()
 report["app_bundle_bytes"] = sum(p.stat().st_size for p in app.rglob("*") if p.is_file())
+report["fixed_sample_audio_bytes"] = sum(p.stat().st_size for p in app.glob("*.m4a"))
+report["fixed_sample_clip_count"] = len(list(app.glob("*.m4a")))
+assert report["fixed_sample_clip_count"] == 8
 assert not list(app.rglob("*.onnx")) and not list(app.rglob("onnxruntime*"))
 report["external_voice_runtime_bundled"] = False
 report["rejected_kokoro_model_bundled"] = False

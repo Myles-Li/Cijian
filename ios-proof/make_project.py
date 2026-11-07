@@ -40,8 +40,11 @@ for name, source, kind in [("CijianProof", "Sources/ProofApp.swift", "applicatio
                        files=[obj("PBXBuildFile", fileRef=reference)], runOnlyForDeploymentPostprocessing=0)
     resources = []
     if kind == "application":
-        word_ref = obj("PBXFileReference", lastKnownFileType="text.json", path="Resources/words.json", sourceTree="<group>")
-        groups.append(word_ref); resources.append(obj("PBXBuildFile", fileRef=word_ref))
+        for file in sorted((ROOT / "Resources").iterdir()):
+            if not file.is_file(): continue
+            reference = obj("PBXFileReference", lastKnownFileType="text.json" if file.suffix == ".json" else "file",
+                path=file.relative_to(ROOT).as_posix(), sourceTree="<group>")
+            groups.append(reference); resources.append(obj("PBXBuildFile", fileRef=reference))
     resources_phase = obj("PBXResourcesBuildPhase", buildActionMask=2147483647, files=resources, runOnlyForDeploymentPostprocessing=0)
     frameworks = obj("PBXFrameworksBuildPhase", buildActionMask=2147483647, files=[], runOnlyForDeploymentPostprocessing=0)
     product = obj("PBXFileReference", explicitFileType="wrapper.application" if kind == "application" else "wrapper.cfbundle",

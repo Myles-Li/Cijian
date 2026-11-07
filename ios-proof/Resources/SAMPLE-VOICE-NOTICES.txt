@@ -1,0 +1,23 @@
+Cijian iOS 0.3 fixed-deck offline audio samples
+
+Japanese: Kokoro-82M v1.0, jf_alpha.
+https://huggingface.co/hexgrad/Kokoro-82M
+ONNX export: onnx-community/Kokoro-82M-v1.0-ONNX
+Pinned revision: 1939ad2a8e416c0acfeecc08a694d14ef25f2231
+
+Mandarin: Kokoro-82M v1.1-zh, zf_001 (female A).
+https://huggingface.co/hexgrad/Kokoro-82M-v1.1-zh
+ONNX export: onnx-community/Kokoro-82M-v1.1-zh-ONNX
+Pinned revision: 6cc0f0d2ebe369a68b0df87c2b65c1af8c0ac3e3
+
+Both models are Apache-2.0. The complete license is supplied in
+SAMPLE-VOICE-LICENSE.txt. Models are not bundled or run on the phone.
+Recordings were synthesized offline on a Windows CPU and compressed
+to mono AAC at 24 kHz, 64 kbit/s for this three-word feasibility probe.
+Misaki 0.9.4 was used for maintenance-side pronunciation preparation.
+
+Vocabulary: egg rolls / 5mdld, anki-jlpt-decks, CC BY-NC 4.0.
+https://github.com/5mdld/anki-jlpt-decks
+https://creativecommons.org/licenses/by-nc/4.0/
+Vocabulary text and original IDs have not been changed.
+These notices do not add a license to Cijian source code.

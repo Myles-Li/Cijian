@@ -52,6 +52,31 @@ enum VoiceSelection {
     static func rate(_ value: Double) -> Double { value.isFinite ? min(0.65, max(0.35, value)) : 0.5 }
 }
 
+struct SampleClip: Codable {
+    let text: String
+    let language: String
+    let file: String
+    let voice: String
+}
+
+// 只播放验证词条的短录音，手机不运行声音模型。
+// Play fixed probe recordings without an on-device neural runtime.
+enum SampleAudioCatalog {
+    static func load() throws -> [SampleClip] {
+        guard let url = Bundle.main.url(forResource: "voice-clips", withExtension: "json") else {
+            throw NSError(domain: "CijianSampleAudio", code: 1, userInfo: [NSLocalizedDescriptionKey: "缺少离线声音样本目录"])
+        }
+        return try JSONDecoder().decode([SampleClip].self, from: Data(contentsOf: url))
+    }
+    static func url(text: String, language: String) throws -> URL {
+        guard let clip = try load().first(where: { $0.text == text && $0.language == language }),
+              let url = Bundle.main.url(forResource: clip.file, withExtension: nil) else {
+            throw NSError(domain: "CijianSampleAudio", code: 2, userInfo: [NSLocalizedDescriptionKey: "这段文字尚未加入离线声音样本"])
+        }
+        return url
+    }
+}
+
 @main
 struct CijianProofApp: App {
     @StateObject private var probe = StudyProbe()
@@ -115,7 +140,7 @@ struct ProbeScreen: View {
                     }.accessibilityIdentifier("pipExperiment")
                     Text(probe.voiceStatus).font(.footnote).accessibilityIdentifier("voiceStatus")
                     Text(probe.lastEvent).font(.footnote).foregroundStyle(.secondary).accessibilityIdentifier("lastEvent")
-                    Text("验证包 0.3 · 三个原词库样本。默认暂停，使用系统语音。尚未迁移完整学习记录。")
+                    Text("验证包 0.3 · 三个原词库样本。默认暂停、系统语音；可在声音页切换离线声音样本。尚未迁移完整学习记录。")
                         .font(.footnote).foregroundStyle(.secondary)
                 }.padding(20).frame(maxWidth: 640).frame(maxWidth: .infinity)
             }.navigationTitle("词间 · iOS 验证").navigationBarTitleDisplayMode(.inline)
@@ -134,6 +159,14 @@ struct VoiceSettingsScreen: View {
     @ObservedObject var probe: StudyProbe
     var body: some View {
         Form {
+            Section("朗读声音") {
+                Picker("声音来源", selection: Binding(get: { probe.audioSource }, set: { probe.selectAudioSource($0) })) {
+                    Text("系统语音").tag("system")
+                    Text("离线样本").tag("samples")
+                }.pickerStyle(.segmented).accessibilityIdentifier("audioSource")
+                Text("离线样本使用已试听的日语女声和中文女声 A，只含这三个词及试听句。手机直接播放短音频，无需下载或运行大模型。完整词库发音尚未加入。")
+                    .font(.footnote).foregroundStyle(.secondary)
+            }
             voiceSection("日语", language: "ja-JP", selected: probe.japaneseVoiceID, rate: probe.japaneseRate)
             voiceSection("中文", language: "zh-CN", selected: probe.chineseVoiceID, rate: probe.chineseRate)
             Section("对比旧版") {
@@ -153,6 +186,7 @@ struct VoiceSettingsScreen: View {
     }
     private func voiceSection(_ title: String, language: String, selected: String, rate: Double) -> some View {
         Section(title) {
+            if probe.audioSource == "system" {
             Picker("声音", selection: Binding(get: { language == "ja-JP" ? probe.japaneseVoiceID : probe.chineseVoiceID },
                 set: { probe.selectVoice($0, language: language) })) {
                 Text("系统默认声音").tag("")
@@ -161,9 +195,10 @@ struct VoiceSettingsScreen: View {
                     Text("所选声音暂不可用 · 使用自动回退").tag(selected)
                 }
             }.accessibilityIdentifier(language == "ja-JP" ? "japaneseVoice" : "chineseVoice")
-            Text(String(format: "语速 · %.2f 倍", rate / 0.5))
-            Slider(value: Binding(get: { language == "ja-JP" ? probe.japaneseRate : probe.chineseRate },
-                set: { probe.setRate($0, language: language) }), in: 0.35...0.65, step: 0.025)
+            } else { Text(language == "ja-JP" ? "第一组日语女声" : "中文女声 A") }
+            Text(String(format: "语速 · %.2f 倍", probe.playbackSpeed(language)))
+            Slider(value: Binding(get: { probe.playbackSpeed(language) },
+                set: { probe.setPlaybackSpeed($0, language: language) }), in: 0.7...1.3, step: 0.05)
                 .accessibilityIdentifier(language == "ja-JP" ? "japaneseRate" : "chineseRate")
             Button("试听" + title) { probe.preview(language: language) }
                 .accessibilityIdentifier(language == "ja-JP" ? "previewJapanese" : "previewChinese")
@@ -254,7 +289,7 @@ enum WordFrame {
 }
 
 final class StudyProbe: NSObject, ObservableObject, AVPictureInPictureControllerDelegate,
-    AVPictureInPictureSampleBufferPlaybackDelegate, AVSpeechSynthesizerDelegate {
+    AVPictureInPictureSampleBufferPlaybackDelegate, AVSpeechSynthesizerDelegate, AVAudioPlayerDelegate {
     @Published private(set) var words: [ProbeWord] = []
     @Published private(set) var index = 0
     @Published private(set) var playing = false
@@ -268,6 +303,9 @@ final class StudyProbe: NSObject, ObservableObject, AVPictureInPictureController
     @Published private(set) var chineseVoiceID: String
     @Published private(set) var japaneseRate: Double
     @Published private(set) var chineseRate: Double
+    @Published private(set) var audioSource: String
+    @Published private(set) var sampleJapaneseSpeed: Double
+    @Published private(set) var sampleChineseSpeed: Double
     var currentWord: ProbeWord? { words.indices.contains(index) ? words[index] : nil }
     private var display: AVSampleBufferDisplayLayer?
     private var pip: AVPictureInPictureController?
@@ -283,12 +321,21 @@ final class StudyProbe: NSObject, ObservableObject, AVPictureInPictureController
     private let preferences: UserDefaults
     private var previewing = false
     private var wordDeadline = Date()
+    private var samplePlayer: AVAudioPlayer?
+    var hasActiveAudio: Bool { speech.isSpeaking || samplePlayer?.isPlaying == true }
     init(preferences: UserDefaults = .standard) {
         self.preferences = preferences
         japaneseVoiceID = preferences.string(forKey: "probe.voice.ja") ?? ""
         chineseVoiceID = preferences.string(forKey: "probe.voice.zh") ?? ""
         japaneseRate = VoiceSelection.rate(preferences.object(forKey: "probe.rate.ja") as? Double ?? 0.425)
         chineseRate = VoiceSelection.rate(preferences.object(forKey: "probe.rate.zh") as? Double ?? 0.5)
+        audioSource = preferences.string(forKey: "probe.audioSource") == "samples" ? "samples" : "system"
+        func speed(_ key: String) -> Double {
+            let value = preferences.object(forKey: key) as? Double ?? 1
+            return value.isFinite ? min(1.3, max(0.7, value)) : 1
+        }
+        sampleJapaneseSpeed = speed("probe.sample.speed.ja")
+        sampleChineseSpeed = speed("probe.sample.speed.zh")
         super.init()
         do { words = try ProbeDeck.load() } catch { lastEvent = error.localizedDescription }
         speech.delegate = self
@@ -353,7 +400,7 @@ final class StudyProbe: NSObject, ObservableObject, AVPictureInPictureController
     }
     func play(requireVoice: Bool) {
         guard !words.isEmpty else { return }
-        if requireVoice && currentVoice("ja-JP") == nil {
+        if audioSource == "system" && requireVoice && currentVoice("ja-JP") == nil {
             voiceStatus = "没有日语声音，未开始听词"; record("缺少日语声音"); return
         }
         do {
@@ -374,6 +421,7 @@ final class StudyProbe: NSObject, ObservableObject, AVPictureInPictureController
     }
     private func cancelSpeech() {
         activeUtterance = nil; chinesePending = nil; previewing = false
+        samplePlayer?.stop(); samplePlayer = nil
         wordTimer?.invalidate(); wordTimer = nil; speech.stopSpeaking(at: .immediate)
         speechWatchdog?.invalidate(); speechWatchdog = nil
     }
@@ -392,7 +440,7 @@ final class StudyProbe: NSObject, ObservableObject, AVPictureInPictureController
             let fallback = !selected.isEmpty && voice.id != selected ? "（所选声音不可用，已回退系统默认）" : ""
             return voice.label + fallback
         }
-        voiceStatus = "系统日语：" + description("ja-JP", selected: japaneseVoiceID) + "\n系统中文：" + description("zh-CN", selected: chineseVoiceID)
+        voiceStatus = audioSource == "samples" ? "离线样本 · 第一组日语女声／中文女声 A" : "系统日语：" + description("ja-JP", selected: japaneseVoiceID) + "\n系统中文：" + description("zh-CN", selected: chineseVoiceID)
         record("已重新检测系统声音")
     }
     private func currentVoice(_ language: String) -> AVSpeechSynthesisVoice? {
@@ -402,9 +450,24 @@ final class StudyProbe: NSObject, ObservableObject, AVPictureInPictureController
         return AVSpeechSynthesisVoice(language: language)
     }
     func restoreLegacyVoice() {
+        selectAudioSource("system")
         selectVoice("", language: "ja-JP"); selectVoice("", language: "zh-CN")
         setRate(0.425, language: "ja-JP"); setRate(0.5, language: "zh-CN")
         record("已恢复 0.1 的选声方式与语速，当前词不变")
+    }
+    func selectAudioSource(_ value: String) {
+        pause(); audioSource = value == "samples" ? "samples" : "system"
+        preferences.set(audioSource, forKey: "probe.audioSource"); refreshVoices()
+    }
+    func playbackSpeed(_ language: String) -> Double {
+        if audioSource == "samples" { return language == "ja-JP" ? sampleJapaneseSpeed : sampleChineseSpeed }
+        return (language == "ja-JP" ? japaneseRate : chineseRate) / 0.5
+    }
+    func setPlaybackSpeed(_ value: Double, language: String) {
+        if audioSource == "system" { setRate(value * 0.5, language: language); return }
+        pause(); let speed = value.isFinite ? min(1.3, max(0.7, value)) : 1
+        if language == "ja-JP" { sampleJapaneseSpeed = speed; preferences.set(speed, forKey: "probe.sample.speed.ja") }
+        else { sampleChineseSpeed = speed; preferences.set(speed, forKey: "probe.sample.speed.zh") }
     }
     func selectVoice(_ identifier: String, language: String) {
         pause()
@@ -423,6 +486,7 @@ final class StudyProbe: NSObject, ObservableObject, AVPictureInPictureController
         catch { record("试听音频会话失败"); return }
         previewing = true
         let phrase = language == "ja-JP" ? "日本語を毎日少しずつ勉強します。" : "每天学一点，按自己的节奏学习。"
+        if audioSource == "samples" { playSample(phrase, language: language); return }
         guard let voice = currentVoice(language) else { pause(); record("试听所需声音尚未下载"); return }
         let utterance = AVSpeechUtterance(string: phrase); utterance.voice = voice
         utterance.rate = Float(language == "ja-JP" ? japaneseRate : chineseRate)
@@ -432,10 +496,30 @@ final class StudyProbe: NSObject, ObservableObject, AVPictureInPictureController
     private func sayCurrent() {
         guard let word = currentWord else { pause(); return }
         chinesePending = word.meaning
+        if audioSource == "samples" { playSample(word.word, language: "ja-JP"); return }
         guard let voice = currentVoice("ja-JP") else { pause(); record("日语声音不可用，已暂停"); return }
         let utterance = AVSpeechUtterance(string: word.word); utterance.voice = voice
         utterance.rate = Float(japaneseRate)
         activeUtterance = utterance; watchSpeech(); speech.speak(utterance)
+    }
+    private func playSample(_ text: String, language: String) {
+        do {
+            let audio = try AVAudioPlayer(contentsOf: SampleAudioCatalog.url(text: text, language: language))
+            audio.delegate = self; audio.enableRate = true; audio.rate = Float(playbackSpeed(language))
+            samplePlayer = audio; watchSpeech()
+            guard audio.play() else { throw NSError(domain: "CijianSampleAudio", code: 3) }
+            record("正在播放离线声音样本")
+        } catch { pause(); record("离线声音样本不可用：" + error.localizedDescription) }
+    }
+    func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
+        guard player === samplePlayer else { return }
+        samplePlayer = nil
+        guard flag else { pause(); record("离线声音播放失败，已暂停"); return }
+        speechFinished()
+    }
+    func audioPlayerDecodeErrorDidOccur(_ player: AVAudioPlayer, error: Error?) {
+        guard player === samplePlayer else { return }
+        pause(); record("离线声音解码失败，已暂停")
     }
     func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
         guard utterance === activeUtterance else { return }
@@ -449,11 +533,12 @@ final class StudyProbe: NSObject, ObservableObject, AVPictureInPictureController
         completedSpeechCount += 1
         if let meaning = chinesePending {
             chinesePending = nil
+            if audioSource == "samples" { playSample(meaning, language: "zh-CN"); return }
             guard let voice = currentVoice("zh-CN") else { scheduleWord(); record("未找到中文声音，已跳过译文"); return }
             let translated = AVSpeechUtterance(string: meaning); translated.voice = voice; translated.rate = Float(chineseRate)
             activeUtterance = translated; watchSpeech(); speech.speak(translated)
         } else { scheduleWord() }
-        record("系统报告朗读完成，仍需人工试听")
+        record("朗读完成，仍需真机试听")
     }
     func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didCancel utterance: AVSpeechUtterance) {
         guard utterance === activeUtterance else { return }
@@ -512,6 +597,7 @@ final class StudyProbe: NSObject, ObservableObject, AVPictureInPictureController
             "voice": voiceStatus, "completedSpeechCount": completedSpeechCount,
             "systemVersion": UIDevice.current.systemVersion, "device": UIDevice.current.model,
             "japaneseRate": japaneseRate, "chineseRate": chineseRate, "previewing": previewing,
+            "audioSource": audioSource, "sampleJapaneseSpeed": sampleJapaneseSpeed, "sampleChineseSpeed": sampleChineseSpeed,
             "time": Date().timeIntervalSince1970]
         if let data = try? JSONSerialization.data(withJSONObject: state, options: [.prettyPrinted, .sortedKeys]),
            let directory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
@@ -520,6 +606,7 @@ final class StudyProbe: NSObject, ObservableObject, AVPictureInPictureController
     }
     deinit {
         frameTimer?.invalidate(); wordTimer?.invalidate(); speechWatchdog?.invalidate()
+        samplePlayer?.stop()
         for observer in observers { NotificationCenter.default.removeObserver(observer) }
     }
 }

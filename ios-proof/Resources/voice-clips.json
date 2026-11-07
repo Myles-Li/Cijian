@@ -1,0 +1,74 @@
+[
+  {
+    "text": "日常",
+    "language": "ja-JP",
+    "file": "clip-ja-0.m4a",
+    "voice": "Kokoro 1.0 jf_alpha",
+    "sha256": "90b6c834f87774bf6543e30a18af64aecb7f400bd8b4d7907e694be18a174131",
+    "bytes": 12853,
+    "source_pcm_sha256": "f911e4fdbb0c734ca943e71f8f3801046391cde51236e6b417b844f5c9700328"
+  },
+  {
+    "text": "日常，平时",
+    "language": "zh-CN",
+    "file": "clip-zh-0.m4a",
+    "voice": "Kokoro 1.1 zh zf_001",
+    "sha256": "0232c7328b701a12bdbb3f595baab480f90c6485dc2621af49fd8a0920547e8c",
+    "bytes": 17573,
+    "source_pcm_sha256": "63ea104094b5955bf8273ce3982b7ef54c1581d6ddadc2395a9e5ec363283073"
+  },
+  {
+    "text": "食べる",
+    "language": "ja-JP",
+    "file": "clip-ja-1.m4a",
+    "voice": "Kokoro 1.0 jf_alpha",
+    "sha256": "099a9d34ec6acc21217f17f40dc33a888c4f608cc62d4adb753481cd2b995b92",
+    "bytes": 10494,
+    "source_pcm_sha256": "07bd3f7290fd23fcb314114f861d360679b56c77e6e8fa4cb91375c24b3e9a18"
+  },
+  {
+    "text": "吃",
+    "language": "zh-CN",
+    "file": "clip-zh-1.m4a",
+    "voice": "Kokoro 1.1 zh zf_001",
+    "sha256": "45eed618c89cc4ce9add7163fe4f6c70ae5b0caee3e27e8173b1803c4666b815",
+    "bytes": 7192,
+    "source_pcm_sha256": "a4a0688ec8d82cc3f35af357a68b9d692399dd2cf312091b9612d0613534e729"
+  },
+  {
+    "text": "コミュニケーション",
+    "language": "ja-JP",
+    "file": "clip-ja-2.m4a",
+    "voice": "Kokoro 1.0 jf_alpha",
+    "sha256": "fb3d2da2e0b2c1b6e32af283008b74ea0e292739699fe387ecf8602def92b911",
+    "bytes": 16086,
+    "source_pcm_sha256": "db7973f21e035538216192b0d1766528299eace2afab360b81d5acf93c36c30a"
+  },
+  {
+    "text": "交流，沟通",
+    "language": "zh-CN",
+    "file": "clip-zh-2.m4a",
+    "voice": "Kokoro 1.1 zh zf_001",
+    "sha256": "ccc6e3d28e98f50563b476cd446ea850fd235e27f9e614418938067f8a3df7c0",
+    "bytes": 17612,
+    "source_pcm_sha256": "4cd4c6f2e0f2579546cb8e2c4c7433f77a8dbfd22e7d76bf411c54eae49a36b7"
+  },
+  {
+    "text": "日本語を毎日少しずつ勉強します。",
+    "language": "ja-JP",
+    "file": "preview-ja.m4a",
+    "voice": "Kokoro 1.0 jf_alpha",
+    "sha256": "43ad744b574a683d5a90a22228e07227613688b9285fb2f24bbbb900313cdb49",
+    "bytes": 30663,
+    "source_pcm_sha256": "ce017405dff194f39bc82fd96dc3115c144c067959cdac0259bc3cf5f8fef3bb"
+  },
+  {
+    "text": "每天学一点，按自己的节奏学习。",
+    "language": "zh-CN",
+    "file": "preview-zh.m4a",
+    "voice": "Kokoro 1.1 zh zf_001",
+    "sha256": "d6f711cd2b72c8007597af7f234757f95d6b4b38ae4d12a949984aa772a993c5",
+    "bytes": 36817,
+    "source_pcm_sha256": "6d87443f62f2fd43a5af46d06e5ffc19bfb7dea7d0cead7c9fed0a7b466e5bee"
+  }
+]
