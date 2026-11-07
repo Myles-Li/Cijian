@@ -60,8 +60,9 @@ final class OfflineVoiceDownload: ObservableObject {
     private var generation = UUID()
     init(directory: URL = OfflineVoiceFiles.directory) {
         self.directory = directory
-        installed = OfflineVoiceFiles.present(in: directory)
-        status = installed ? "离线模型已下载 · 93.4 MB" : "尚未下载 · 额外占用 93.4 MB"
+        let ready = OfflineVoiceFiles.present(in: directory)
+        installed = ready
+        status = ready ? "离线模型已下载 · 93.4 MB" : "尚未下载 · 额外占用 93.4 MB"
     }
     func download() {
         guard !downloading else { return }

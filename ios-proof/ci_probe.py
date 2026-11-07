@@ -13,6 +13,8 @@ def run(command, log=None, timeout=600, check=True):
     if log: (OUT / log).write_text(result.stdout, encoding="utf-8")
     if log: print("END", log, "exit", result.returncode, flush=True)
     if check and result.returncode:
+        for line in result.stdout.splitlines():
+            if "error:" in line: print(line, flush=True)
         print(result.stdout[-16000:], flush=True)
         raise RuntimeError(f"Command failed ({result.returncode}): {command[:3]}")
     return result
