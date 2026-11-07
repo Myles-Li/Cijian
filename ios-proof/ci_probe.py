@@ -1,15 +1,17 @@
 """Run on a standard GitHub macOS runner; never sign or publish an installable app."""
 from pathlib import Path
-import subprocess, json, platform, zipfile, os
+import subprocess, json, platform, zipfile, os, plistlib
 
 ROOT = Path(__file__).resolve().parent
 OUT = ROOT / "out"
 OUT.mkdir(exist_ok=True)
 
 def run(command, log=None, timeout=600, check=True):
+    if log: print("BEGIN", log, flush=True)
     result = subprocess.run(command, cwd=ROOT, stdout=subprocess.PIPE, stderr=subprocess.STDOUT,
                             text=True, encoding="utf-8", errors="replace", timeout=timeout)
     if log: (OUT / log).write_text(result.stdout, encoding="utf-8")
+    if log: print("END", log, "exit", result.returncode, flush=True)
     if check and result.returncode:
         print(result.stdout[-16000:], flush=True)
         raise RuntimeError(f"Command failed ({result.returncode}): {command[:3]}")
@@ -18,6 +20,9 @@ def run(command, log=None, timeout=600, check=True):
 report = {"stage": "starting", "device_install": "NOT TESTED: no signing credentials or physical iPad connection",
           "app_review": "NOT SUBMITTED", "user_reported_iPadOS": "27.2", "real_iPad_PiP_and_audio": "NOT TESTED",
           "host": platform.platform(), "xcode": run(["xcodebuild", "-version"]).stdout, "simulators": []}
+with (ROOT / "Info.plist").open("rb") as file:
+    info = plistlib.load(file)
+    report["probe_version"] = info["CFBundleShortVersionString"]
 
 def save(): (OUT / "report.json").write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
