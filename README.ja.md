@@ -1,6 +1,6 @@
 # 词间 · Cijian
 
-[同页三语阅读 / Read all three languages on one page / 3言語を同じページで読む](README.md)
+[简体中文](README.md) | [English](README.en.md) | **日本語**
 
 中国語の語義で日本語を学ぶ、軽量なAndroidアプリです。アプリ内で集中して学習するほか、他のアプリに重ねたフローティングウィンドウですき間時間に単語を繰り返し確認できます。
 
@@ -36,7 +36,9 @@
 
 ## デモ動画
 
-[▶ 47秒のフローティング学習デモ](https://myles-li.github.io/Cijian/) · [動画について](docs/demo.md)
+**[47秒のフロート学習デモを見る](https://myles-li.github.io/Cijian/)** · [録画について](docs/demo.md)
+
+作者がAndroidスマートフォンで録画しました。単語の切り替え、読み上げ、詳細、折りたたみ・再表示を紹介し、元の音声を保持しています。
 
 ## 画面と構造
 

@@ -1,6 +1,6 @@
 # 词间 · Cijian
 
-[同页三语阅读 / Read all three languages on one page / 3言語を同じページで読む](README.md)
+[简体中文](README.md) | **English** | [日本語](README.ja.md)
 
 A lightweight Android app for learning Japanese through Chinese meanings, either inside the app or in a floating window over other apps.
 
@@ -36,7 +36,9 @@ Dictionary access, study and records work locally. The app has no INTERNET permi
 
 ## Demo
 
-[▶ Watch the 47-second floating-study demo](https://myles-li.github.io/Cijian/) · [Recording notes](docs/demo.md)
+**[Watch the 47-second floating-study demo](https://myles-li.github.io/Cijian/)** · [Recording notes](docs/demo.md)
+
+Recorded by the author on an Android phone: word navigation, speech, details, and collapsing and reopening the window, with the original audio preserved.
 
 ## Screens and structure
 
