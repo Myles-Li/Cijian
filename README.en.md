@@ -1,6 +1,6 @@
 # 词间 · Cijian
 
-[简体中文](README.md) | **English** | [日本語](README.ja.md)
+[同页三语阅读 / Read all three languages on one page / 3言語を同じページで読む](README.md)
 
 A lightweight Android app for learning Japanese through Chinese meanings, either inside the app or in a floating window over other apps.
 
@@ -10,7 +10,7 @@ Developed with assistance from **GPT-6.1 Sol**, with **25+ hours of effort over 
 
 **Important language scope:** menus and help support Simplified Chinese, English and Japanese. Dictionary meanings and example translations remain Chinese. Selecting English or Japanese does not translate the dictionary.
 
-Currently Android only; the iOS port remains deferred.
+The official release is Android only. An [iOS feasibility prototype](https://github.com/Myles-Li/Cijian/tree/ios/feasibility/ios-proof) is being tested on a separate branch; a full iOS app has not been released.
 
 ## Download
 
@@ -33,6 +33,10 @@ Currently Android only; the iOS port remains deferred.
 - Light, dark and system themes; preset and custom colours; three UI languages; tutorials and a kana chart.
 
 Dictionary access, study and records work locally. The app has no INTERNET permission, account system or ads. An external TTS engine may use online voices under its own network behaviour. The current app does not provide English dictionary meanings, a grammar course or user-dictionary import.
+
+## Demo
+
+[▶ Watch the 47-second floating-study demo](docs/videos/floating-study.mp4) · [Recording notes](docs/demo.md)
 
 ## Screens and structure
 
